@@ -1,6 +1,6 @@
-import { MainLayout } from "../../layouts/MainLayout";
+import { MainLayout } from "../../components/templates/MainLayout";
 import { useTranslation } from "react-i18next";
-import { Button } from "../../components/ui/Button";
+import { Button } from "../../components/atoms/Button";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
 import { Home } from "lucide-react";

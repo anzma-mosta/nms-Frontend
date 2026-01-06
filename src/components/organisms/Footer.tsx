@@ -9,7 +9,7 @@ import {
   Github,
 } from "lucide-react";
 import { ROUTES } from "../../constants/routes";
-import { Button } from "../ui/Button";
+import { Button } from "../atoms/Button";
 
 export const Footer = () => {
   const { t, i18n } = useTranslation();
@@ -19,13 +19,14 @@ export const Footer = () => {
       { name: t("nav.courses"), href: ROUTES.COURSES },
       { name: t("nav.instructors"), href: ROUTES.INSTRUCTORS },
       { name: t("nav.about"), href: ROUTES.ABOUT },
+      { name: t("nav.services"), href: ROUTES.SERVICES },
       { name: t("nav.contact"), href: ROUTES.CONTACT },
     ],
     support: [
-      { name: t("home.faq.title"), href: "/faq" },
-      { name: t("footer.terms"), href: "/terms" },
-      { name: t("footer.privacy"), href: "/privacy" },
-      { name: t("footer.help"), href: "/help" },
+      { name: t("nav.become_instructor"), href: ROUTES.BECOME_INSTRUCTOR },
+      { name: t("home.faq.title"), href: "#" },
+      { name: t("footer.terms"), href: ROUTES.TERMS },
+      { name: t("footer.privacy"), href: ROUTES.PRIVACY },
     ],
     social: [
       { icon: Facebook, href: "#", name: "Facebook" },
@@ -50,9 +51,7 @@ export const Footer = () => {
               </span>
             </Link>
             <p className="text-muted-foreground leading-relaxed">
-              {i18n.language === "ar"
-                ? "نحن نسعى لتوفير أفضل تجربة تعليمية عربية متكاملة، لتمكين العقول وبناء مهارات المستقبل بأحدث الوسائل التقنية."
-                : "We strive to provide the best integrated educational experience, empowering minds and building future skills with the latest technical means."}
+              {t("footer.platform_desc")}
             </p>
             <div className="flex gap-4">
               {footerLinks.social.map((item) => (

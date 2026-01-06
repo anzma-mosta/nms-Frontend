@@ -1,7 +1,7 @@
 import { type ReactNode, useState } from "react";
-import { ThemeToggle } from "../components/common/ThemeToggle";
-import { LanguageToggle } from "../components/common/LanguageToggle";
-import { Footer } from "../components/common/Footer";
+import { ThemeToggle } from "../atoms/ThemeToggle";
+import { LanguageToggle } from "../atoms/LanguageToggle";
+import { Footer } from "../organisms/Footer";
 import { useTranslation } from "react-i18next";
 import {
   BookOpen,
@@ -15,11 +15,14 @@ import {
   Users,
   Info,
   Phone,
+  Zap,
+  ShoppingBag,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import { ROUTES } from "../constants/routes";
-import { cn } from "../utils/cn";
-import { Button } from "../components/ui/Button";
+import { ROUTES } from "../../constants/routes";
+import { cn } from "../../utils/cn";
+import { Button } from "../atoms/Button";
+import { useAppSelector } from "../../store";
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -27,14 +30,17 @@ interface MainLayoutProps {
 
 export const MainLayout = ({ children }: MainLayoutProps) => {
   const { t, i18n } = useTranslation();
+  const isAr = i18n.language === "ar";
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { items } = useAppSelector((state) => state.cart);
 
   const navigation = [
     { name: t("nav.home"), href: ROUTES.HOME, icon: LayoutIcon },
     { name: t("nav.courses"), href: ROUTES.COURSES, icon: BookOpen },
     { name: t("nav.instructors"), href: ROUTES.INSTRUCTORS, icon: Users },
     { name: t("nav.about"), href: ROUTES.ABOUT, icon: Info },
+    // { name: isAr ? "خدماتنا" : "Services", href: ROUTES.SERVICES, icon: Zap },
     { name: t("nav.contact"), href: ROUTES.CONTACT, icon: Phone },
   ];
 
@@ -103,10 +109,19 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
             </div>
 
             <div className="flex items-center gap-3">
+              <Link to={ROUTES.CART} className="relative p-2 hover:bg-secondary rounded-full transition-all group">
+                <ShoppingBag className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                {items.length > 0 && (
+                  <span className="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center animate-in zoom-in duration-300">
+                    {items.length}
+                  </span>
+                )}
+              </Link>
               <LanguageToggle />
               <ThemeToggle />
               <div className="hidden sm:flex items-center gap-2">
-                <Button variant="ghost" size="sm" className="relative">
+                {/*  for notifications */}
+                {/* <Button variant="ghost" size="sm" className="relative">
                   <Bell className="w-5 h-5 text-muted-foreground" />
                   <span
                     className={cn(
@@ -114,7 +129,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
                       i18n.language === "ar" ? "left-2" : "right-2"
                     )}
                   ></span>
-                </Button>
+                </Button> */}
                 <div className="w-px h-6 bg-border mx-1"></div>
                 <Link to={ROUTES.LOGIN}>
                   <Button variant="ghost" size="sm" className="gap-2">
@@ -176,3 +191,5 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
     </div>
   );
 };
+
+export default MainLayout;

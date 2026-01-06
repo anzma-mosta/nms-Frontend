@@ -7,30 +7,29 @@ export const TopInstructors = () => {
 
   const instructors = [
     {
-      name: i18n.language === "ar" ? "د. محمد شاكر" : "Dr. Mohamed Shaker",
-      role:
-        i18n.language === "ar" ? "خبير تطوير الويب" : "Web Development Expert",
+      name: t("home.instructors.i1.name"),
+      role: t("home.instructors.i1.role"),
       rating: 4.9,
       students: "15k+",
       image: "https://i.pravatar.cc/150?u=11",
     },
     {
-      name: i18n.language === "ar" ? "أ. ليلى حسن" : "Mrs. Laila Hassan",
-      role: i18n.language === "ar" ? "مصممة واجهات" : "UI/UX Designer",
+      name: t("home.instructors.i2.name"),
+      role: t("home.instructors.i2.role"),
       rating: 4.8,
       students: "12k+",
       image: "https://i.pravatar.cc/150?u=12",
     },
     {
-      name: i18n.language === "ar" ? "م. يوسف رضا" : "Eng. Youssef Reda",
-      role: i18n.language === "ar" ? "خبير الذكاء الاصطناعي" : "AI Specialist",
+      name: t("home.instructors.i3.name"),
+      role: t("home.instructors.i3.role"),
       rating: 4.9,
       students: "8k+",
       image: "https://i.pravatar.cc/150?u=13",
     },
     {
-      name: i18n.language === "ar" ? "د. سارة كمال" : "Dr. Sarah Kamal",
-      role: i18n.language === "ar" ? "مديرة مشاريع" : "Project Manager",
+      name: t("home.instructors.i4.name"),
+      role: t("home.instructors.i4.role"),
       rating: 4.7,
       students: "10k+",
       image: "https://i.pravatar.cc/150?u=14",

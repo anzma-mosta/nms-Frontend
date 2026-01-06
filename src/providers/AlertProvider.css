@@ -1,0 +1,74 @@
+.swal-custom-container {
+  z-index: 9999;
+}
+
+.swal-custom-popup {
+  border-radius: 1.5rem !important;
+  background-color: var(--card) !important;
+  color: var(--foreground) !important;
+  padding: 2rem !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+}
+
+.swal-custom-title {
+  font-family: inherit !important;
+  font-weight: 800 !important;
+  color: var(--foreground) !important;
+  font-size: 1.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.swal-custom-content {
+  font-family: inherit !important;
+  color: var(--muted-foreground) !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+.swal-custom-confirm {
+  background-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
+  padding: 0.75rem 2rem !important;
+  border-radius: 0.75rem !important;
+  font-weight: 700 !important;
+  font-family: inherit !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  border: none !important;
+  margin: 0.5rem !important;
+}
+
+.swal-custom-confirm:hover {
+  opacity: 0.9 !important;
+  transform: translateY(-1px) !important;
+}
+
+.swal-custom-cancel {
+  background-color: var(--secondary) !important;
+  color: var(--secondary-foreground) !important;
+  padding: 0.75rem 2rem !important;
+  border-radius: 0.75rem !important;
+  font-weight: 700 !important;
+  font-family: inherit !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  border: 1px solid var(--border) !important;
+  margin: 0.5rem !important;
+}
+
+.swal-custom-cancel:hover {
+  background-color: var(--muted) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* RTL Support */
+[dir="rtl"] .swal-custom-popup {
+  text-align: right !important;
+}
+
+/* Dark Mode support */
+.dark .swal-custom-popup {
+  background-color: var(--card) !important;
+  border-color: var(--border) !important;
+}

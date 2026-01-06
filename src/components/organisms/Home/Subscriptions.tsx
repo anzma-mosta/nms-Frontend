@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Check, Zap } from "lucide-react";
-import { Button } from "../../../components/ui/Button";
+import { Button } from "../../atoms/Button";
 import { cn } from "../../../utils/cn";
 
 export const Subscriptions = () => {

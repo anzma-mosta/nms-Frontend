@@ -1,5 +1,5 @@
-import { MainLayout } from "../../layouts/MainLayout";
-import { ContactUs } from "../Home/components/ContactUs";
+import { MainLayout } from "../../components/templates/MainLayout";
+import { ContactUs } from "../../components/organisms/Home/ContactUs";
 
 const Contact = () => {
   return (

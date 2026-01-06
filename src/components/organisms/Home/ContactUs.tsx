@@ -9,7 +9,7 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
-import { Button } from "../../../components/ui/Button";
+import { Button } from "../../atoms/Button";
 import { cn } from "../../../utils/cn";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

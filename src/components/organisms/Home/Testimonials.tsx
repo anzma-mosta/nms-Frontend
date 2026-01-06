@@ -6,30 +6,21 @@ export const Testimonials = () => {
 
   const testimonials = [
     {
-      text:
-        i18n.language === "ar"
-          ? "المنصة غيرت حياتي المهنية بالكامل. الدورات عملية جداً والمحتوى محدث باستمرار."
-          : "The platform completely changed my career. The courses are very practical and the content is constantly updated.",
-      author: i18n.language === "ar" ? "أحمد سمير" : "Ahmed Samir",
-      role: i18n.language === "ar" ? "مطور واجهات" : "Frontend Developer",
+      text: t("home.testimonials.t1.text"),
+      author: t("home.testimonials.t1.author"),
+      role: t("home.testimonials.t1.role"),
       image: "https://i.pravatar.cc/150?u=21",
     },
     {
-      text:
-        i18n.language === "ar"
-          ? "أفضل تجربة تعليمية عربية خضتها. المدربون متعاونون جداً والشرح مبسط."
-          : "The best Arabic educational experience I've had. The instructors are very helpful and the explanation is simplified.",
-      author: i18n.language === "ar" ? "منى محمود" : "Mona Mahmoud",
-      role: i18n.language === "ar" ? "مصممة جرافيك" : "Graphic Designer",
+      text: t("home.testimonials.t2.text"),
+      author: t("home.testimonials.t2.author"),
+      role: t("home.testimonials.t2.role"),
       image: "https://i.pravatar.cc/150?u=22",
     },
     {
-      text:
-        i18n.language === "ar"
-          ? "المشاريع العملية في الدورات ساعدتني في بناء معرض أعمال قوي حصلت من خلاله على وظيفة أحلامي."
-          : "The practical projects in the courses helped me build a strong portfolio through which I got my dream job.",
-      author: i18n.language === "ar" ? "خالد وليد" : "Khaled Walid",
-      role: i18n.language === "ar" ? "محلل بيانات" : "Data Analyst",
+      text: t("home.testimonials.t3.text"),
+      author: t("home.testimonials.t3.author"),
+      role: t("home.testimonials.t3.role"),
       image: "https://i.pravatar.cc/150?u=23",
     },
   ];

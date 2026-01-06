@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Languages } from "lucide-react";
-import { Button } from "../ui/Button";
+import { Button } from "../atoms/Button";
 
 export const LanguageToggle = () => {
   const { i18n } = useTranslation();

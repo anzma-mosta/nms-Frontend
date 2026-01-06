@@ -6,6 +6,7 @@ import "./i18n";
 import { QueryProvider } from "./providers/QueryProvider";
 import { ReduxProvider } from "./providers/ReduxProvider";
 import { ThemeProvider } from "./providers/ThemeProvider";
+import { AlertProvider } from "./providers/AlertProvider";
 import { HelmetProvider } from "react-helmet-async";
 import { AppRouter } from "./routes";
 
@@ -19,7 +20,9 @@ createRoot(document.getElementById("root")!).render(
       <ReduxProvider>
         <QueryProvider>
           <ThemeProvider defaultTheme="light" storageKey="nms-theme">
-            <AppRouter />
+            <AlertProvider>
+              <AppRouter />
+            </AlertProvider>
           </ThemeProvider>
         </QueryProvider>
       </ReduxProvider>

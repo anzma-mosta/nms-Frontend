@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { ArrowLeft } from "lucide-react";
-import { Button } from "../../../components/ui/Button";
+import { Button } from "../../atoms/Button";
 import { cn } from "../../../utils/cn";
 
 export const FinalCTA = () => {
