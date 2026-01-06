@@ -15,51 +15,43 @@ const Instructors = () => {
   const instructors = [
     {
       id: "inst1",
-      name: isAr ? "د. أحمد علي" : "Dr. Ahmed Ali",
-      role: isAr ? "خبير تطوير الويب" : "Web Development Expert",
+      name: t("instructor.list.inst1.name"),
+      role: t("instructor.list.inst1.role"),
       rating: 4.9,
       students: "15,000+",
       courses: 12,
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
-      bio: isAr
-        ? "أكثر من 10 سنوات خبرة في تطوير المواقع وتدريب الآلاف من المبرمجين حول العالم."
-        : "Over 10 years of experience in web development and training thousands of developers worldwide.",
+      bio: t("instructor.list.inst1.bio"),
     },
     {
       id: "inst2",
-      name: isAr ? "م. سارة حسن" : "Eng. Sarah Hassan",
-      role: isAr ? "مصممة تجربة مستخدم" : "UI/UX Designer",
+      name: t("instructor.list.inst2.name"),
+      role: t("instructor.list.inst2.role"),
       rating: 4.8,
       students: "8,500+",
       courses: 8,
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80",
-      bio: isAr
-        ? "متخصصة في بناء واجهات مستخدم جذابة وسهلة الاستخدام للشركات الناشئة."
-        : "Specialized in building attractive and user-friendly interfaces for startups.",
+      bio: t("instructor.list.inst2.bio"),
     },
     {
       id: "inst3",
-      name: isAr ? "أ. محمود سعد" : "Mr. Mahmoud Saad",
-      role: isAr ? "مستشار إدارة مشاريع" : "Project Management Consultant",
+      name: t("instructor.list.inst3.name"),
+      role: t("instructor.list.inst3.role"),
       rating: 4.7,
       students: "12,000+",
       courses: 15,
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
-      bio: isAr
-        ? "خبير في منهجيات Agile و PMP مع خبرة واسعة في إدارة المشاريع التقنية."
-        : "Expert in Agile and PMP methodologies with extensive experience in managing tech projects.",
+      bio: t("instructor.list.inst3.bio"),
     },
     {
       id: "inst4",
-      name: isAr ? "د. ليلى خالد" : "Dr. Layla Khaled",
-      role: isAr ? "عالمة بيانات" : "Data Scientist",
+      name: t("instructor.list.inst4.name"),
+      role: t("instructor.list.inst4.role"),
       rating: 4.9,
       students: "6,000+",
       courses: 6,
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
-      bio: isAr
-        ? "باحثة في مجال الذكاء الاصطناعي وخبيرة في تحليل البيانات الضخمة."
-        : "AI researcher and big data analysis expert.",
+      bio: t("instructor.list.inst4.bio"),
     },
   ];
 

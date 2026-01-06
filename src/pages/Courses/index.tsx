@@ -20,7 +20,7 @@ const Courses = () => {
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold mb-4">{t("courses.title")}</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            {t("home.about.description")}
+            {t("courses.description")}
           </p>
         </div>
       </div>

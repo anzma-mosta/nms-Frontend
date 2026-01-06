@@ -347,10 +347,33 @@
     "top_instructor": "Top Instructor of 2023",
     "joined": "Joined {{year}}",
     "no_results_title": "No instructors found",
-    "no_results_desc": "Try searching with different keywords"
+    "no_results_desc": "Try searching with different keywords",
+    "list": {
+      "inst1": {
+        "name": "Dr. Ahmed Ali",
+        "role": "Web Development Expert",
+        "bio": "Over 10 years of experience in web development and training thousands of developers worldwide."
+      },
+      "inst2": {
+        "name": "Eng. Sarah Hassan",
+        "role": "UI/UX Designer",
+        "bio": "Specialized in building attractive and user-friendly interfaces for startups."
+      },
+      "inst3": {
+        "name": "Mr. Mahmoud Saad",
+        "role": "Project Management Consultant",
+        "bio": "Expert in Agile and PMP methodologies with extensive experience in managing tech projects."
+      },
+      "inst4": {
+        "name": "Dr. Layla Khaled",
+        "role": "Data Scientist",
+        "bio": "AI researcher and big data analysis expert."
+      }
+    }
   },
   "courses": {
     "title": "All Courses",
+    "description": "Explore a wide range of training courses in various technical and creative fields to develop your skills.",
     "search_placeholder": "Search for a course...",
     "no_results_title": "No courses found",
     "no_results_desc": "Try searching with different keywords",
