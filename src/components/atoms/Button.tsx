@@ -3,7 +3,7 @@ import { cn } from "../../utils/cn";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "ghost";
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "icon";
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -20,6 +20,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       sm: "h-9 px-3 text-xs",
       md: "h-10 px-4 py-2",
       lg: "h-11 px-8",
+      icon: "h-10 w-10 p-0",
     };
 
     return (

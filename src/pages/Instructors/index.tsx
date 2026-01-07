@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { MainLayout } from "../../components/templates/MainLayout";
 import { useTranslation } from "react-i18next";
-import { Star, BookOpen, Users, ArrowRight, ArrowLeft, Search, Filter } from "lucide-react";
+import { ArrowRight, ArrowLeft, Search, Filter } from "lucide-react";
 import { Button } from "../../components/atoms/Button";
 import { Reveal } from "../../components/atoms/Reveal";
 import { Link } from "react-router-dom";
@@ -91,7 +91,7 @@ const Instructors = () => {
                   {instructor.bio}
                 </p>
 
-                <Link to={`${ROUTES.INSTRUCTOR_DETAILS.replace(":id", instructor.id)}`}>
+                <Link to={`${ROUTES.INSTRUCTOR_DETAILS.replace(":id", instructor.id || "")}`}>
                   <Button variant="outline" className="w-full rounded-xl gap-2 group/btn">
                     {t("common.details")}
                     {isAr ? <ArrowLeft className="w-4 h-4 group-hover/btn:-translate-x-1 transition-transform" /> : <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />}

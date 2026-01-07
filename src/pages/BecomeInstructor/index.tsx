@@ -1,7 +1,7 @@
 import { MainLayout } from "../../components/templates/MainLayout";
 import { useTranslation } from "react-i18next";
 import { Button } from "../../components/atoms/Button";
-import { GraduationCap, BookOpen, Users, Star, CheckCircle2, ArrowLeft, Send, User, Mail, Briefcase, FileText } from "lucide-react";
+import { GraduationCap, BookOpen, Users, Star, ArrowLeft, Send, User, Mail, Briefcase, FileText } from "lucide-react";
 import { Reveal } from "../../components/atoms/Reveal";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -19,6 +19,8 @@ const BecomeInstructor = () => {
     specialty: z.string().min(2, { message: t("become_instructor.form.validation.specialty_required") }),
     experience: z.string().min(10, { message: t("become_instructor.form.validation.experience_min") }),
   });
+
+  type InstructorFormValues = z.infer<typeof instructorSchema>;
 
   const {
     register,

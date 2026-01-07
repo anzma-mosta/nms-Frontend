@@ -1,4 +1,3 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ArrowRight, GraduationCap, Users, TrendingUp, Award } from "lucide-react";
@@ -8,7 +7,7 @@ import { ROUTES } from "../../../constants/routes";
 import { cn } from "../../../utils/cn";
 
 export const InstructorCTA = () => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const isAr = i18n.language === "ar";
 
   const stats = [

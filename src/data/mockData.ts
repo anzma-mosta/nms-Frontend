@@ -1,5 +1,5 @@
 import i18n from "../i18n";
-import { Course, Instructor } from "../types";
+import type { Course, Instructor } from "../types";
 
 export const getMockCourses = (lang: string): Course[] => {
   const coursesData = i18n.t("courses.list", { lng: lang, returnObjects: true }) as any;

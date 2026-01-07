@@ -24,6 +24,7 @@ import { cn } from "../../utils/cn";
 import { ROUTES } from "../../constants/routes";
 import { getMockCourses } from "../../data/mockData";
 import { motion, AnimatePresence } from "framer-motion";
+import type { Course, CurriculumSection, Lesson as LessonType } from "../../types";
 
 const Lesson = () => {
   const { courseId, lessonId } = useParams();
@@ -34,23 +35,26 @@ const Lesson = () => {
 
   // Mock course data
   const coursesDB = useMemo(() => getMockCourses(i18n.language), [i18n.language]);
-  const course = useMemo(() => {
-    return coursesDB.find(c => c.id.toString() === courseId) || coursesDB[0];
+  const course = useMemo((): Course => {
+    return (coursesDB.find(c => c.id.toString() === courseId) || coursesDB[0]) as Course;
   }, [courseId, coursesDB]);
 
   // Find current lesson
-  const currentLesson = useMemo(() => {
-    for (const section of course.curriculum) {
-      const lesson = section.lessons.find(l => l.id === lessonId);
-      if (lesson) return lesson;
+  const currentLesson = useMemo((): LessonType => {
+    if (course.curriculum) {
+      for (const section of course.curriculum) {
+        const lesson = section.lessons.find(l => l.id === lessonId);
+        if (lesson) return lesson;
+      }
+      return course.curriculum[0].lessons[0];
     }
-    return course.curriculum[0].lessons[0];
+    return { id: "", title: "", duration: "" };
   }, [course, lessonId]);
 
   // Navigation Logic
   const navigation = useMemo(() => {
-    const allLessons = course.curriculum.flatMap(s => s.lessons);
-    const currentIndex = allLessons.findIndex(l => l.id === (lessonId || allLessons[0].id));
+    const allLessons = (course.curriculum || []).flatMap(s => s.lessons);
+    const currentIndex = allLessons.findIndex(l => l.id === (lessonId || allLessons[0]?.id));
     return {
       prev: currentIndex > 0 ? allLessons[currentIndex - 1] : null,
       next: currentIndex < allLessons.length - 1 ? allLessons[currentIndex + 1] : null,
@@ -358,14 +362,14 @@ const Lesson = () => {
                 </div>
                 
                 <div className="flex-1 overflow-y-auto no-scrollbar">
-                  {course.curriculum.map((section, idx) => (
+                  {course.curriculum?.map((section: CurriculumSection, idx: number) => (
                     <div key={idx} className="border-b last:border-0 dark:border-slate-800">
                       <div className="p-4 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-between group">
                         <span className="font-bold text-xs uppercase tracking-wider text-muted-foreground">{section.title}</span>
                         <span className="text-[10px] font-bold bg-white dark:bg-slate-900 px-2 py-0.5 rounded-full border shadow-sm">{section.lessons.length}</span>
                       </div>
                       <div className="py-1">
-                        {section.lessons.map((lesson) => (
+                        {section.lessons.map((lesson: LessonType) => (
                           <Link 
                             key={lesson.id}
                             to={`${ROUTES.LESSON.replace(":courseId", courseId || "1").replace(":lessonId", lesson.id)}`}

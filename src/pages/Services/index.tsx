@@ -1,7 +1,7 @@
 import { MainLayout } from "../../components/templates/MainLayout";
 import { useTranslation } from "react-i18next";
 import { Reveal } from "../../components/atoms/Reveal";
-import { BookOpen, Video, Users, Trophy, Target, Zap } from "lucide-react";
+import { Video, Users, Trophy, Target } from "lucide-react";
 
 const Services = () => {
   const { t } = useTranslation();

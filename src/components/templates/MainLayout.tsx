@@ -9,13 +9,11 @@ import {
   Menu,
   X,
   User,
-  Bell,
   GraduationCap,
   Layout as LayoutIcon,
   Users,
   Info,
   Phone,
-  Zap,
   ShoppingBag,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
@@ -30,7 +28,6 @@ interface MainLayoutProps {
 
 export const MainLayout = ({ children }: MainLayoutProps) => {
   const { t, i18n } = useTranslation();
-  const isAr = i18n.language === "ar";
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const { items } = useAppSelector((state) => state.cart);

@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 import { 
   Star, Users, Clock, Award, BookOpen, PlayCircle, 
   CheckCircle2, Share2, Heart, ShieldCheck, Info,
-  ChevronRight, Download, MessageSquare, BarChart,
-  Globe, Calendar, Zap, Target, HelpCircle, ChevronDown
+  Globe, Calendar, Zap, Target, HelpCircle, ChevronDown,
+  Download, MessageSquare, BarChart
 } from "lucide-react";
 import { Button } from "../../components/atoms/Button";
 import { Badge } from "../../components/atoms/Badge";
@@ -15,12 +15,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
 import { getMockCourses } from "../../data/mockData";
-import { t } from "i18next";
+import type { Course } from "../../types";
 
 const CourseDetails = () => {
   const { id } = useParams();
-  const { i18n } = useTranslation();
-  const isAr = i18n.language === "ar";
+  const { i18n, t } = useTranslation();
   const [activeAccordion, setActiveAccordion] = useState<number | null>(0);
   const [isEnrolled, setIsEnrolled] = useState(false);
 
@@ -28,8 +27,8 @@ const CourseDetails = () => {
   const coursesDB = useMemo(() => getMockCourses(i18n.language), [i18n.language]);
 
   // Find the current course
-  const course = useMemo(() => {
-    return coursesDB.find(c => c.id.toString() === id) || coursesDB[0];
+  const course = useMemo((): Course => {
+    return (coursesDB.find(c => c.id.toString() === id) || coursesDB[0]) as Course;
   }, [id, coursesDB]);
 
   return (
@@ -83,7 +82,11 @@ const CourseDetails = () => {
                         <span className="text-slate-400">({course.reviews})</span>
                       </div>
                       <p className="text-slate-400">
-                        {t("course_details.enrolled_students", { count: course.students.toLocaleString() })}
+                        {t("course_details.enrolled_students", { 
+                          count: typeof course.students === 'number' 
+                            ? course.students 
+                            : parseInt(course.students.toString().replace(/,/g, ""), 10) || 0 
+                        })}
                       </p>
                     </div>
                   </div>
@@ -173,7 +176,7 @@ const CourseDetails = () => {
                   {t("course_details.learning_outcomes_title")}
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
-                  {course.learningPoints.map((point, i) => (
+                  {course.learningPoints?.map((point, i) => (
                     <div key={i} className="flex items-start gap-4 group">
                       <div className="w-6 h-6 rounded-full bg-green-500/10 flex items-center justify-center shrink-0 mt-1 group-hover:bg-green-500 group-hover:text-white transition-colors">
                         <CheckCircle2 className="w-4 h-4" />
@@ -196,7 +199,7 @@ const CourseDetails = () => {
                 </div>
                 
                 <div className="space-y-4">
-                  {course.curriculum.map((section, idx) => (
+                  {course.curriculum?.map((section, idx) => (
                     <div key={idx} className="border border-border/50 rounded-2xl overflow-hidden bg-card transition-all hover:border-primary/20 shadow-sm">
                       <button 
                         onClick={() => setActiveAccordion(activeAccordion === idx ? null : idx)}
@@ -284,7 +287,7 @@ const CourseDetails = () => {
                     {t("course_details.requirements_title")}
                   </h3>
                   <ul className="space-y-4">
-                    {course.requirements.map((req, i) => (
+                    {course.requirements?.map((req, i) => (
                       <li key={i} className="flex items-start gap-3 text-muted-foreground">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
                         {req}

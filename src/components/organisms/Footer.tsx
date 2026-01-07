@@ -12,7 +12,7 @@ import { ROUTES } from "../../constants/routes";
 import { Button } from "../atoms/Button";
 
 export const Footer = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const footerLinks = {
     platform: [

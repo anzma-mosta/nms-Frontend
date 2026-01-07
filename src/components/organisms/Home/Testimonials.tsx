@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Quote } from "lucide-react";
 
 export const Testimonials = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const testimonials = [
     {

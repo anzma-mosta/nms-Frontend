@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Reveal } from "../../components/atoms/Reveal";
 
 const Terms = () => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const isAr = i18n.language === "ar";
 
   return (

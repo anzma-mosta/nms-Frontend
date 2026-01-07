@@ -40,6 +40,19 @@ export interface Testimonial {
   avatar: string;
 }
 
+export interface Lesson {
+  id: string;
+  title: string;
+  duration: string;
+  isPreview?: boolean;
+  free?: boolean;
+}
+
+export interface CurriculumSection {
+  title: string;
+  lessons: Lesson[];
+}
+
 export interface Course {
   id: string;
   title: string;
@@ -47,8 +60,20 @@ export interface Course {
   rating: number;
   students: number | string;
   price: string;
+  oldPrice?: string;
   image: string;
   category: string;
+  description?: string;
+  learningPoints?: string[];
+  duration?: string;
+  isPurchased?: boolean;
+  progress?: number;
+  curriculum?: CurriculumSection[];
+  level?: string;
+  language?: string;
+  lastUpdated?: string;
+  reviews?: number | string;
+  requirements?: string[];
 }
 
 export interface Instructor {
@@ -61,6 +86,7 @@ export interface Instructor {
   reviewsCount: number;
   studentsCount: number;
   coursesCount: number;
+  students?: string;
   location: string;
   joinedDate: string;
   bio: string;

@@ -7,18 +7,10 @@ import { useAppDispatch, useAppSelector } from "../../store";
 import { addToCart } from "../../store/slices/cartSlice";
 import { ROUTES } from "../../constants/routes";
 import { t } from "i18next";
+import type { Course } from "../../types";
 
 interface CourseCardProps {
-  course: {
-    id : string  ;
-    title: string;
-    instructor: string;
-    rating: number;
-    students: number;
-    price: string;
-    image: string;
-    category: string;
-  };
+  course: Course;
 }
 
 export const CourseCard = ({ course }: CourseCardProps) => {

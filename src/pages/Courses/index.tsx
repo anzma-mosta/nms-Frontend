@@ -48,7 +48,7 @@ const Courses = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {courses.map((course, i) => (
+          {courses.map((course) => (
             <CourseCard
               key={course.id}
               course={{
@@ -56,7 +56,9 @@ const Courses = () => {
                 title: course.title,
                 instructor: course.instructor,
                 rating: course.rating,
-                students: course.students,
+                students: typeof course.students === "string" 
+                  ? parseInt(course.students.replace(/,/g, ""), 10) || 0 
+                  : course.students,
                 price: course.price,
                 image: course.image,
                 category: course.category || "Uncategorized",

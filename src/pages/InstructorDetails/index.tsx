@@ -8,26 +8,24 @@ import {
   Github,
   Twitter,
   Linkedin,
-  Globe,
   Award,
   Calendar,
   ArrowRight,
   ArrowLeft,
   Mail,
   MapPin,
+  Globe,
   Briefcase,
   GraduationCap,
   Quote,
-  ExternalLink,
   ShieldCheck,
 } from "lucide-react";
 import { MainLayout } from "../../components/templates/MainLayout";
 import { Button } from "../../components/atoms/Button";
 import { Reveal } from "../../components/atoms/Reveal";
 import { ROUTES } from "../../constants/routes";
-import CourseCard from "../../components/molecules/CourseCard";
-import { cn } from "../../utils/cn";
-import type { Education } from "../../types";
+import { CourseCard } from "../../components/molecules/CourseCard";
+import type { Education, Experience, Course, Testimonial } from "../../types";
 
 const InstructorDetails = () => {
   const { id = "inst1" } = useParams();
