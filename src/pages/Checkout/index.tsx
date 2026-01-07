@@ -59,6 +59,13 @@ const Checkout = () => {
     console.log("Payment Data:", data);
     dispatch(clearCart());
     navigate(ROUTES.ORDER_SUCCESS);
+    //  apply sweet alert to show success message
+    swal({
+      title: "Success!",
+      text: "Your order has been placed successfully!",
+      icon: "success",
+      button: "OK",
+    });
   };
 
   return (
@@ -261,3 +268,7 @@ const Checkout = () => {
 };
 
 export default Checkout;
+function swal(_arg0: { title: string; text: string; icon: string; button: string; }) {
+  throw new Error("Function not implemented.");
+}
+

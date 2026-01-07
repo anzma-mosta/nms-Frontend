@@ -176,7 +176,7 @@ const CourseDetails = () => {
                   {t("course_details.learning_outcomes_title")}
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
-                  {course.learningPoints?.map((point, i) => (
+                  {course.learningPoints?.map((point: string, i: number) => (
                     <div key={i} className="flex items-start gap-4 group">
                       <div className="w-6 h-6 rounded-full bg-green-500/10 flex items-center justify-center shrink-0 mt-1 group-hover:bg-green-500 group-hover:text-white transition-colors">
                         <CheckCircle2 className="w-4 h-4" />
@@ -199,34 +199,37 @@ const CourseDetails = () => {
                 </div>
                 
                 <div className="space-y-4">
-                  {course.curriculum?.map((section, idx) => (
-                    <div key={idx} className="border border-border/50 rounded-2xl overflow-hidden bg-card transition-all hover:border-primary/20 shadow-sm">
+                  {course.curriculum?.map((section: any, idx: number) => (
+                    <div 
+                      key={idx} 
+                      className="border border-border/60 rounded-3xl overflow-hidden bg-card/50 backdrop-blur-sm"
+                    >
                       <button 
                         onClick={() => setActiveAccordion(activeAccordion === idx ? null : idx)}
-                        className="w-full flex items-center justify-between p-6 text-right"
+                        className="w-full flex items-center justify-between p-6 text-right hover:bg-muted/50 transition-colors"
                       >
                         <div className="flex items-center gap-4">
-                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${activeAccordion === idx ? 'bg-primary text-white' : 'bg-muted text-muted-foreground'}`}>
+                          <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-bold">
                             {idx + 1}
                           </div>
-                          <span className="text-lg font-bold">{section.title}</span>
+                          <div className="text-right">
+                            <h3 className="font-bold text-lg">{section.title}</h3>
+                            <p className="text-sm text-muted-foreground">{section.lessons.length} {t("course_details.lessons_label")}</p>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-4">
-                          <span className="hidden md:block text-sm text-muted-foreground">{section.lessons.length} {t("course_details.lessons_label")}</span>
-                          <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${activeAccordion === idx ? 'rotate-180' : ''}`} />
-                        </div>
+                        <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${activeAccordion === idx ? 'rotate-180' : ''}`} />
                       </button>
-                      
+
                       <AnimatePresence>
                         {activeAccordion === idx && (
-                          <motion.div
+                          <motion.div 
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
+                            className="overflow-hidden"
                           >
-                            <div className="px-6 pb-6 space-y-2 border-t border-border/50 pt-4">
-                              {section.lessons.map((lesson, lIdx) => {
+                            <div className="p-2 pt-0 space-y-1">
+                              {section.lessons.map((lesson: any, lIdx: number) => {
                                 const hasAccess = isEnrolled || lesson.free;
                                 const lessonLink = ROUTES.LESSON
                                   .replace(":courseId", id || "1")
@@ -286,14 +289,14 @@ const CourseDetails = () => {
                     <Info className="w-5 h-5 text-primary" />
                     {t("course_details.requirements_title")}
                   </h3>
-                  <ul className="space-y-4">
-                    {course.requirements?.map((req, i) => (
-                      <li key={i} className="flex items-start gap-3 text-muted-foreground">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                        {req}
-                      </li>
+                  <div className="space-y-4">
+                    {course.requirements?.map((req: string, i: number) => (
+                      <div key={i} className="flex items-center gap-4 bg-muted/30 p-4 rounded-2xl border border-border/50">
+                        <div className="w-2 h-2 rounded-full bg-primary" />
+                        <span className="font-medium">{req}</span>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               </Reveal>
               <Reveal delay={0.1}>

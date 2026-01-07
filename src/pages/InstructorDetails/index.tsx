@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
@@ -40,10 +39,8 @@ const InstructorDetails = () => {
     id,
     name: instructorData.name,
     role: instructorData.role,
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&q=80",
-    coverImage:
-      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1600&q=80",
+    image:"https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&q=80" ,
+    coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1600&q=80",
     rating: instructorData.rating || 4.9,
     reviewsCount: instructorData.reviewsCount || 4500,
     studentsCount: instructorData.studentsCount || 15000,
@@ -225,7 +222,7 @@ const InstructorDetails = () => {
                   {t("instructor.technical_skills")}
                 </h3>
                 <div className="flex flex-wrap gap-4">
-                  {instructor.skills.map((skill: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | Iterable<React.ReactNode> | null | undefined, i: React.Key | null | undefined) => (
+                  {instructor.skills.map((skill: string, i: number) => (
                     <div key={i} className="group relative">
                       <div className="absolute inset-0 bg-primary rounded-2xl blur-md opacity-0 group-hover:opacity-20 transition-opacity"></div>
                       <span className="relative bg-muted/50 text-foreground px-6 py-3 rounded-2xl font-bold border border-border group-hover:border-primary group-hover:bg-primary/5 transition-all flex items-center gap-3">
@@ -239,58 +236,60 @@ const InstructorDetails = () => {
             </Reveal>
 
             {/* Featured Course - New Section */}
-            <Reveal delay={0.1}>
-              <div className="bg-slate-900 text-white rounded-[40px] p-8 md:p-12 overflow-hidden relative group">
-                <div className="absolute top-0 mb-2 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[100px] group-hover:scale-150 transition-transform duration-1000"></div>
-                <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
-                  <div className="w-full md:w-2/5 aspect-video rounded-3xl overflow-hidden shadow-2xl">
-                    <img
-                      src={instructor.courses[0].image}
-                      alt="Featured"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                  </div>
-                  <div className="flex-1 space-y-4">
-                    <span className="bg-primary px-4 mb-2 py-1 rounded-full text-xs font-black uppercase tracking-widest">
-                      {t("instructor.featured_course")}
-                    </span>
-                    <h3 className="text-3xl mt-2 font-black">
-                      {instructor.courses[0].title}
-                    </h3>
-                    <p className="text-slate-400 line-clamp-2">
-                      {t("instructor.featured_desc")}
-                    </p>
-                    <div className="flex items-center gap-6 pt-2">
-                      <div className="flex items-center gap-2">
-                        <Star className="w-5 h-5 text-orange-400 fill-current" />
-                        <span className="font-bold">
-                          {instructor.courses[0].rating}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Users className="w-5 h-5 text-primary" />
-                        <span className="font-bold">
-                          {instructor.courses[0].students}
-                        </span>
-                      </div>
+            {instructor.courses.length > 0 && (
+              <Reveal delay={0.1}>
+                <div className="bg-slate-900 text-white rounded-[40px] p-8 md:p-12 overflow-hidden relative group">
+                  <div className="absolute top-0 mb-2 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[100px] group-hover:scale-150 transition-transform duration-1000"></div>
+                  <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+                    <div className="w-full md:w-2/5 aspect-video rounded-3xl overflow-hidden shadow-2xl">
+                      <img
+                        src={instructor.courses[0]?.image}
+                        alt="Featured"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
                     </div>
-                    <Link
-                      to={`${ROUTES.COURSE_DETAILS.replace(":id", instructor.courses[0].id)}`}
-                      className="block pt-4"
-                    >
-                      <Button className="rounded-2xl px-8 h-12 font-bold group/btn">
-                        {t("instructor.enroll_now")}
-                        {isAr ? (
-                          <ArrowLeft className="w-4 h-4 mr-2 group-hover/btn:-translate-x-1 transition-transform" />
-                        ) : (
-                          <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                        )}
-                      </Button>
-                    </Link>
+                    <div className="flex-1 space-y-4">
+                      <span className="bg-primary px-4 mb-2 py-1 rounded-full text-xs font-black uppercase tracking-widest">
+                        {t("instructor.featured_course")}
+                      </span>
+                      <h3 className="text-3xl mt-2 font-black">
+                        {instructor.courses[0]?.title}
+                      </h3>
+                      <p className="text-slate-400 line-clamp-2">
+                        {t("instructor.featured_desc")}
+                      </p>
+                      <div className="flex items-center gap-6 pt-2">
+                        <div className="flex items-center gap-2">
+                          <Star className="w-5 h-5 text-orange-400 fill-current" />
+                          <span className="font-bold">
+                            {instructor.courses[0]?.rating}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Users className="w-5 h-5 text-primary" />
+                          <span className="font-bold">
+                            {instructor.courses[0]?.students}
+                          </span>
+                        </div>
+                      </div>
+                      <Link
+                        to={`${ROUTES.COURSE_DETAILS.replace(":id", instructor.courses[0]?.id || "")}`}
+                        className="block pt-4"
+                      >
+                        <Button className="rounded-2xl px-8 h-12 font-bold group/btn">
+                          {t("instructor.enroll_now")}
+                          {isAr ? (
+                            <ArrowLeft className="w-4 h-4 mr-2 group-hover/btn:-translate-x-1 transition-transform" />
+                          ) : (
+                            <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                          )}
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Reveal>
+              </Reveal>
+            )}
 
             {/* Experience & Education Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
