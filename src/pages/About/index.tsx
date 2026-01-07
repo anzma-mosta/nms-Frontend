@@ -6,31 +6,28 @@ import { useAlert } from "../../providers/AlertProvider";
 import { Target, Eye, Users, Award, Shield, Zap, BellRing } from "lucide-react";
 
 const About = () => {
-  const { i18n } = useTranslation();
+  const { t } = useTranslation();
   const { showAlert } = useAlert();
-  const isAr = i18n.language === "ar";
 
   const handleShowAlert = () => {
     showAlert({
-      title: isAr ? "تنبيه ذكي (SweetAlert2)" : "Smart Alert (SweetAlert2)",
-      message: isAr 
-        ? "لقد تم تحديث نظام التنبيهات لاستخدام SweetAlert2 مع تصميم مخصص. هل ترغب في رؤية تنبيه نجاح؟" 
-        : "The alert system has been updated to use SweetAlert2 with a custom design. Would you like to see a success alert?",
+      title: t("about.alert.title"),
+      message: t("about.alert.message"),
       type: "question",
       actions: [
         {
-          label: isAr ? "نعم، أرني" : "Yes, show me",
+          label: t("about.alert.confirm"),
           onClick: () => {
             showAlert({
-              title: isAr ? "عمل رائع!" : "Great Job!",
-              message: isAr ? "تم تشغيل تنبيه النجاح بنجاح." : "Success alert triggered successfully.",
+              title: t("about.alert.success_title"),
+              message: t("about.alert.success_message"),
               type: "success"
             });
           },
           variant: "default",
         },
         {
-          label: isAr ? "لا شكراً" : "No thanks",
+          label: t("about.alert.cancel"),
           onClick: () => console.log("Cancelled"),
           variant: "outline",
         },
@@ -39,33 +36,27 @@ const About = () => {
   };
 
   const stats = [
-    { label: isAr ? "طالب" : "Students", value: "10K+" },
-    { label: isAr ? "معلم" : "Instructors", value: "200+" },
-    { label: isAr ? "دورة" : "Courses", value: "500+" },
-    { label: isAr ? "ساعة تدريبية" : "Training Hours", value: "20K+" },
+    { label: t("about.stats.students"), value: "10K+" },
+    { label: t("about.stats.instructors"), value: "200+" },
+    { label: t("about.stats.courses"), value: "500+" },
+    { label: t("about.stats.hours"), value: "20K+" },
   ];
 
   const values = [
     {
       icon: <Shield className="w-8 h-8" />,
-      title: isAr ? "الجودة" : "Quality",
-      description: isAr 
-        ? "نلتزم بتقديم أعلى مستويات الجودة في محتوانا التعليمي." 
-        : "We are committed to providing the highest quality in our educational content.",
+      title: t("about.values.quality_title"),
+      description: t("about.values.quality_desc"),
     },
     {
       icon: <Zap className="w-8 h-8" />,
-      title: isAr ? "الابتكار" : "Innovation",
-      description: isAr 
-        ? "نستخدم أحدث التقنيات والأساليب لجعل التعلم ممتعاً وفعالاً." 
-        : "We use the latest technologies and methods to make learning fun and effective.",
+      title: t("about.values.innovation_title"),
+      description: t("about.values.innovation_desc"),
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: isAr ? "المجتمع" : "Community",
-      description: isAr 
-        ? "نؤمن بقوة التعاون والتعلم الجماعي في بناء جيل واعد." 
-        : "We believe in the power of collaboration and collective learning in building a promising generation.",
+      title: t("about.values.community_title"),
+      description: t("about.values.community_desc"),
     },
   ];
 
@@ -77,14 +68,12 @@ const About = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <Reveal>
               <h1 className="text-4xl lg:text-6xl font-black mb-6">
-                {isAr ? "عن" : "About"} <span className="text-primary">NMS Academy</span>
+                {t("about.title")} <span className="text-primary">NMS Academy</span>
               </h1>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-10">
-                {isAr 
-                  ? "نحن منصة تعليمية رائدة تهدف إلى تمكين العقول العربية وتزويدها بالمهارات اللازمة للنجاح في سوق العمل الحديث." 
-                  : "We are a leading educational platform aiming to empower Arabic minds and equip them with the skills needed for success in the modern labor market."}
+                {t("about.description")}
               </p>
             </Reveal>
             <Reveal delay={0.2}>
@@ -94,7 +83,7 @@ const About = () => {
                   className="rounded-full px-8 h-12 font-bold gap-2"
                 >
                   <BellRing className="w-5 h-5" />
-                  <span>{isAr ? "عرض التنبيه الذكي" : "Show Smart Alert"}</span>
+                  <span>{t("about.show_alert_btn")}</span>
                 </Button>
               </div>
             </Reveal>
@@ -121,7 +110,7 @@ const About = () => {
                       </div>
                       <div>
                         <p className="text-2xl font-bold">5+</p>
-                        <p className="text-sm text-muted-foreground">{isAr ? "سنوات خبرة" : "Years Experience"}</p>
+                        <p className="text-sm text-muted-foreground">{t("about.stats.years_exp")}</p>
                       </div>
                     </div>
                   </div>
@@ -130,23 +119,21 @@ const About = () => {
               <Reveal delay={0.2}>
                 <div className="space-y-8">
                   <div className="space-y-4">
-                    <h2 className="text-3xl font-bold">{isAr ? "رؤيتنا ورسالتنا" : "Our Vision & Mission"}</h2>
+                    <h2 className="text-3xl font-bold">{t("about.vision_mission.title")}</h2>
                     <p className="text-lg text-muted-foreground leading-relaxed">
-                      {isAr 
-                        ? "بدأت رحلتنا برؤية بسيطة: جعل التعليم عالي الجودة متاحاً للجميع في أي مكان وزمان. نحن نسعى جاهدين لسد الفجوة بين التعليم التقليدي ومتطلبات سوق العمل." 
-                        : "Our journey began with a simple vision: making high-quality education accessible to everyone, anywhere, anytime. We strive to bridge the gap between traditional education and labor market requirements."}
+                      {t("about.vision_mission.description")}
                     </p>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="p-6 rounded-2xl bg-secondary/30 border border-border">
                       <Target className="w-8 h-8 text-primary mb-4" />
-                      <h3 className="font-bold mb-2">{isAr ? "مهمتنا" : "Our Mission"}</h3>
-                      <p className="text-sm text-muted-foreground">{isAr ? "تمكين الطلاب من خلال توفير أفضل الموارد التعليمية." : "Empowering students by providing the best educational resources."}</p>
+                      <h3 className="font-bold mb-2">{t("about.vision_mission.mission_title")}</h3>
+                      <p className="text-sm text-muted-foreground">{t("about.vision_mission.mission_desc")}</p>
                     </div>
                     <div className="p-6 rounded-2xl bg-secondary/30 border border-border">
                       <Eye className="w-8 h-8 text-primary mb-4" />
-                      <h3 className="font-bold mb-2">{isAr ? "رؤيتنا" : "Our Vision"}</h3>
-                      <p className="text-sm text-muted-foreground">{isAr ? "أن نكون المنصة التعليمية المفضلة في الوطن العربي." : "To be the preferred educational platform in the Arab world."}</p>
+                      <h3 className="font-bold mb-2">{t("about.vision_mission.vision_title")}</h3>
+                      <p className="text-sm text-muted-foreground">{t("about.vision_mission.vision_desc")}</p>
                     </div>
                   </div>
                 </div>
@@ -160,7 +147,7 @@ const About = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <Reveal>
-                <h2 className="text-3xl font-bold mb-4">{isAr ? "قيمنا الجوهرية" : "Our Core Values"}</h2>
+                <h2 className="text-3xl font-bold mb-4">{t("about.values.title")}</h2>
               </Reveal>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -351,23 +351,98 @@
     "list": {
       "inst1": {
         "name": "Dr. Ahmed Ali",
-        "role": "Web Development Expert",
-        "bio": "Over 10 years of experience in web development and training thousands of developers worldwide."
+        "role": "Full-Stack Web Expert",
+        "bio": "Over 10 years of experience in web development and training thousands of developers worldwide. Specialized in JavaScript, React, and Node.js technologies. Worked as a Senior Software Developer at top global companies before moving to professional training.",
+        "location": "Riyadh, Saudi Arabia",
+        "rating": 4.9,
+        "reviewsCount": 4500,
+        "studentsCount": 15000,
+        "coursesCount": 12,
+        "joinedYear": "2020",
+        "skills": [
+          "React",
+          "Node.js",
+          "TypeScript",
+          "Next.js",
+          "AWS",
+          "Docker",
+          "GraphQL",
+          "PostgreSQL"
+        ],
+        "experience": [
+          {
+            "company": "Google",
+            "role": "Senior Software Engineer",
+            "period": "2018 - 2021",
+            "desc": "Leading UI development team for Cloud platform."
+          },
+          {
+            "company": "Amazon",
+            "role": "Frontend Developer",
+            "period": "2015 - 2018",
+            "desc": "Developing and optimizing shopping experience for millions of users."
+          }
+        ],
+        "education": [
+          {
+            "school": "King Saud University",
+            "degree": "PhD in Computer Science",
+            "year": "2015"
+          },
+          {
+            "school": "Stanford University",
+            "degree": "MSc in Software Engineering",
+            "year": "2012"
+          }
+        ],
+        "testimonials": [
+          {
+            "name": "Sarah Mohamed",
+            "role": "React Course Student",
+            "content": "Best explanation I've ever seen, Dr. Ahmed simplifies complex information amazingly."
+          },
+          {
+            "name": "Khaled Waleed",
+            "role": "Junior Frontend Developer",
+            "content": "Thanks to his courses, I was able to get my first job in programming."
+          }
+        ],
+        "courses": [
+          {
+            "title": "Full-Stack Web Development Basics",
+            "category": "Programming",
+            "price": "$135"
+          },
+          {
+            "title": "Mastering React & Next.js",
+            "category": "Programming",
+            "price": "$160"
+          }
+        ]
       },
       "inst2": {
         "name": "Eng. Sarah Hassan",
         "role": "UI/UX Designer",
-        "bio": "Specialized in building attractive and user-friendly interfaces for startups."
+        "bio": "Specialized in building attractive and user-friendly interfaces for startups.",
+        "rating": 4.8,
+        "studentsCount": 8500,
+        "coursesCount": 8
       },
       "inst3": {
         "name": "Mr. Mahmoud Saad",
         "role": "Project Management Consultant",
-        "bio": "Expert in Agile and PMP methodologies with extensive experience in managing tech projects."
+        "bio": "Expert in Agile and PMP methodologies with extensive experience in managing tech projects.",
+        "rating": 4.7,
+        "studentsCount": 12000,
+        "coursesCount": 15
       },
       "inst4": {
         "name": "Dr. Layla Khaled",
         "role": "Data Scientist",
-        "bio": "AI researcher and big data analysis expert."
+        "bio": "AI researcher and big data analysis expert.",
+        "rating": 4.9,
+        "studentsCount": 6000,
+        "coursesCount": 6
       }
     }
   },
@@ -381,6 +456,104 @@
     "sort_by": "Sort by",
     "sort_newest": "Newest",
     "sort_best_selling": "Best Selling",
-    "sort_highest_rated": "Highest Rated"
+    "sort_highest_rated": "Highest Rated",
+    "list": {
+      "course1": {
+        "title": "Ultimate Full-Stack Web Development Diploma",
+        "instructor": "Dr. Ahmed Ali",
+        "lastUpdated": "January 2026",
+        "language": "English",
+        "level": "Zero to Hero",
+        "description": "Embark on an intensive educational journey to become a full-stack web developer. We start from HTML & CSS basics to building complex applications with React, Node.js, and MongoDB.",
+        "learningPoints": [
+          "Build real-world, scalable web applications",
+          "Master Backend technologies with Node.js & Express",
+          "Design professional UIs with React & Tailwind",
+          "Manage SQL & NoSQL databases"
+        ],
+        "requirements": [
+          "A computer and internet connection",
+          "No prior programming experience required"
+        ],
+        "curriculum": [
+          {
+            "id": "m1",
+            "title": "Strong Foundations (HTML5 & CSS3)",
+            "lessons": [
+              { "id": "l1", "title": "Introduction to Modern Web", "duration": "25:00" },
+              { "id": "l2", "title": "Building Professional Structures", "duration": "45:00" }
+            ]
+          },
+          {
+            "id": "m2",
+            "title": "Frontend Programming (JavaScript Mastery)",
+            "lessons": [
+              { "id": "l3", "title": "JavaScript Fundamentals", "duration": "120:00" }
+            ]
+          }
+        ]
+      },
+      "course2": {
+        "title": "Modern UI/UX Design",
+        "instructor": "Eng. Sarah Hassan",
+        "lastUpdated": "December 2025",
+        "language": "English",
+        "level": "Intermediate",
+        "description": "Learn the secrets of designing attractive UIs and smooth UX using Figma and Adobe XD.",
+        "learningPoints": [
+          "Master modern Figma tools",
+          "Understand user psychology principles"
+        ],
+        "requirements": [
+          "No prior requirements"
+        ],
+        "curriculum": [
+          {
+            "id": "m1",
+            "title": "Design Fundamentals",
+            "lessons": [
+              { "id": "l1", "title": "Intro to UI/UX", "duration": "15:00" }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "about": {
+    "title": "About",
+    "description": "We are a leading educational platform aiming to empower Arabic minds and equip them with the skills needed for success in the modern labor market.",
+    "show_alert_btn": "Show Smart Alert",
+    "alert": {
+      "title": "Smart Alert (SweetAlert2)",
+      "message": "The alert system has been updated to use SweetAlert2 with a custom design. Would you like to see a success alert?",
+      "confirm": "Yes, show me",
+      "cancel": "No thanks",
+      "success_title": "Great Job!",
+      "success_message": "Success alert triggered successfully."
+    },
+    "stats": {
+      "students": "Students",
+      "instructors": "Instructors",
+      "courses": "Courses",
+      "hours": "Training Hours",
+      "years_exp": "Years Experience"
+    },
+    "vision_mission": {
+      "title": "Our Vision & Mission",
+      "description": "Our journey began with a simple vision: making high-quality education accessible to everyone, anywhere, anytime. We strive to bridge the gap between traditional education and labor market requirements.",
+      "mission_title": "Our Mission",
+      "mission_desc": "Empowering students by providing the best educational resources.",
+      "vision_title": "Our Vision",
+      "vision_desc": "To be the preferred educational platform in the Arab world."
+    },
+    "values": {
+      "title": "Our Core Values",
+      "quality_title": "Quality",
+      "quality_desc": "We are committed to providing the highest quality in our educational content.",
+      "innovation_title": "Innovation",
+      "innovation_desc": "We use the latest technologies and methods to make learning fun and effective.",
+      "community_title": "Community",
+      "community_desc": "We believe in the power of collaboration and collective learning in building a promising generation."
+    }
   }
 }

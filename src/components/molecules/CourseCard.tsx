@@ -10,7 +10,7 @@ import { t } from "i18next";
 
 interface CourseCardProps {
   course: {
-    id: string;
+    id : string  ;
     title: string;
     instructor: string;
     rating: number;
@@ -58,7 +58,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
             isAr ? "right-4" : "left-4"
           )}
         >
-          {course.category}
+          {/* {course.category} */}
         </div>
       </div>
       <div className="p-6 flex flex-col flex-1">

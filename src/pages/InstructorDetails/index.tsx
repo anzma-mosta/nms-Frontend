@@ -29,124 +29,55 @@ import CourseCard from "../../components/molecules/CourseCard";
 import { cn } from "../../utils/cn";
 
 const InstructorDetails = () => {
-  const { id } = useParams();
+  const { id = "inst1" } = useParams();
   const { t, i18n } = useTranslation();
   const isAr = i18n.language === "ar";
 
+  // Get translated data for the specific instructor
+  const instructorData = t(`instructor.list.${id}`, { returnObjects: true }) as any;
+
   // Mock data for instructor
   const instructor = {
-    id: id || "inst1",
-    name: isAr ? "د. أحمد علي" : "Dr. Ahmed Ali",
-    role: isAr ? "خبير تطوير الويب المتكامل" : "Full-Stack Web Expert",
+    id,
+    name: instructorData.name,
+    role: instructorData.role,
     image:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&q=80",
     coverImage:
       "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1600&q=80",
-    rating: 4.9,
-    reviewsCount: 4500,
-    studentsCount: 15000,
-    coursesCount: 12,
-    location: isAr ? "الرياض، السعودية" : "Riyadh, Saudi Arabia",
-    joinedDate: t("instructor.joined", { year: "2020" }),
-    bio: isAr
-      ? "أكثر من 10 سنوات خبرة في تطوير المواقع وتدريب الآلاف من المبرمجين حول العالم. متخصص في تقنيات JavaScript و React و Node.js. عملت كمطور برمجيات أول في كبرى الشركات العالمية قبل الانتقال للتدريب الاحترافي."
-      : "Over 10 years of experience in web development and training thousands of developers worldwide. Specialized in JavaScript, React, and Node.js technologies. Worked as a Senior Software Developer at top global companies before moving to professional training.",
-    skills: [
-      "React",
-      "Node.js",
-      "TypeScript",
-      "Next.js",
-      "AWS",
-      "Docker",
-      "GraphQL",
-      "PostgreSQL",
-    ],
+    rating: instructorData.rating || 4.9,
+    reviewsCount: instructorData.reviewsCount || 4500,
+    studentsCount: instructorData.studentsCount || 15000,
+    coursesCount: instructorData.coursesCount || 12,
+    location: instructorData.location,
+    joinedDate: t("instructor.joined", { year: instructorData.joinedYear || "2020" }),
+    bio: instructorData.bio,
+    skills: instructorData.skills || [],
     social: {
       github: "https://github.com",
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
       website: "https://example.com",
     },
-    experience: [
-      {
-        company: isAr ? "جوجل" : "Google",
-        role: isAr ? "مطور برمجيات أول" : "Senior Software Engineer",
-        period: "2018 - 2021",
-        desc: isAr
-          ? "قيادة فريق تطوير واجهات المستخدم لمنصة Cloud."
-          : "Leading UI development team for Cloud platform.",
-      },
-      {
-        company: isAr ? "أمازون" : "Amazon",
-        role: isAr ? "مطور واجهات" : "Frontend Developer",
-        period: "2015 - 2018",
-        desc: isAr
-          ? "تطوير وتحسين تجربة التسوق لملايين المستخدمين."
-          : "Developing and optimizing shopping experience for millions of users.",
-      },
-    ],
-    education: [
-      {
-        school: isAr ? "جامعة الملك سعود" : "King Saud University",
-        degree: isAr ? "دكتوراه في علوم الحاسب" : "PhD in Computer Science",
-        year: "2015",
-      },
-      {
-        school: isAr ? "جامعة ستانفورد" : "Stanford University",
-        degree: isAr
-          ? "ماجستير هندسة البرمجيات"
-          : "MSc in Software Engineering",
-        year: "2012",
-      },
-    ],
-    testimonials: [
-      {
-        id: 1,
-        name: isAr ? "سارة محمد" : "Sarah Mohamed",
-        role: isAr ? "طالبة في دورة React" : "React Course Student",
-        content: isAr
-          ? "أفضل شرح رأيته على الإطلاق، الدكتور أحمد يبسط المعلومات المعقدة بشكل مذهل."
-          : "Best explanation I've ever seen, Dr. Ahmed simplifies complex information amazingly.",
-        avatar:
-          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80",
-      },
-      {
-        id: 2,
-        name: isAr ? "خالد وليد" : "Khaled Waleed",
-        role: isAr ? "مطور واجهات جونيور" : "Junior Frontend Developer",
-        content: isAr
-          ? "بفضل دوراته تمكنت من الحصول على وظيفتي الأولى في مجال البرمجة."
-          : "Thanks to his courses, I was able to get my first job in programming.",
-        avatar:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80",
-      },
-    ],
-    courses: [
-      {
-        id: "1",
-        title: isAr
-          ? "أساسيات تطوير الويب المتكامل"
-          : "Full-Stack Web Development Basics",
-        category: isAr ? "برمجة" : "Programming",
-        instructor: isAr ? "د. أحمد علي" : "Dr. Ahmed Ali",
-        rating: 4.8,
-        students: "1,200",
-        price: isAr ? "499 ر.س" : "$135",
-        image:
-          "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
-      },
-      {
-        id: "2",
-        title: isAr ? "احتراف React و Next.js" : "Mastering React & Next.js",
-        category: isAr ? "برمجة" : "Programming",
-        instructor: isAr ? "د. أحمد علي" : "Dr. Ahmed Ali",
-        rating: 4.9,
-        students: "850",
-        price: isAr ? "599 ر.س" : "$160",
-        image:
-          "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
-      },
-    ],
+    experience: instructorData.experience || [],
+    education: instructorData.education || [],
+    testimonials: (instructorData.testimonials || []).map((test: any, index: number) => ({
+      ...test,
+      id: index + 1,
+      avatar: index === 0 
+        ? "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80"
+        : "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80"
+    })),
+    courses: (instructorData.courses || []).map((course: any, index: number) => ({
+      ...course,
+      id: (index + 1).toString(),
+      instructor: instructorData.name,
+      rating: 4.8 + (index * 0.1),
+      students: index === 0 ? "1,200" : "850",
+      image: index === 0
+        ? "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80"
+        : "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80"
+    })),
   };
 
   return (

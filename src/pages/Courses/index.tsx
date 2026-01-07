@@ -9,8 +9,7 @@ import { getMockCourses } from "../../data/mockData";
 import { useMemo } from "react";
 
 const Courses = () => {
-  const { t, i18n } = useTranslation();
-  const isAr = i18n.language === "ar";
+  const { t, i18n } = useTranslation()
 
   const courses = useMemo(() => getMockCourses(i18n.language), [i18n.language]);
 
@@ -50,7 +49,19 @@ const Courses = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses.map((course, i) => (
-            <CourseCard key={i} course={course} />
+            <CourseCard
+              key={course.id}
+              course={{
+                id: String(course.id),
+                title: course.title,
+                instructor: course.instructor,
+                rating: course.rating,
+                students: course.students,
+                price: course.price,
+                image: course.image,
+                category: course.category || "Uncategorized",
+              }}
+            />
           ))}
         </div>
 
