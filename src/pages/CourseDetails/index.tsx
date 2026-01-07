@@ -95,13 +95,13 @@ const CourseDetails = () => {
                 <div className="flex flex-wrap gap-8 items-center pt-6 border-t border-white/10 mt-8">
                   <div className="flex items-center gap-3">
                     <div className="flex -space-x-2">
-                      {[1, 2, 3].map((i) => (
+                      {[1, 2, 3].map((num: number) => (
                         <div
-                          key={i}
+                          key={num}
                           className="w-10 h-10 rounded-full border-2 border-[#0F172A] bg-slate-700 flex items-center justify-center overflow-hidden"
                         >
                           <img
-                            src={`https://i.pravatar.cc/100?img=${i + 10}`}
+                            src={`https://i.pravatar.cc/100?img=${num + 10}`}
                             alt="student"
                           />
                         </div>
@@ -389,9 +389,9 @@ const CourseDetails = () => {
                     {t("course_details.requirements_title")}
                   </h3>
                   <div className="space-y-4">
-                    {course.requirements?.map((req: string, i: number) => (
+                    {course.requirements?.map((req: string, idx: number) => (
                       <div
-                        key={i}
+                        key={idx}
                         className="flex items-center gap-4 bg-muted/30 p-4 rounded-2xl border border-border/50"
                       >
                         <div className="w-2 h-2 rounded-full bg-primary" />

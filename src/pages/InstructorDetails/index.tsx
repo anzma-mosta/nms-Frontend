@@ -183,8 +183,8 @@ const InstructorDetails = () => {
                       value: instructor.reviewsCount.toLocaleString(),
                       icon: Quote,
                     },
-                  ].map((stat, i) => (
-                    <div key={i} className="text-center lg:text-right">
+                  ].map((stat, idx) => (
+                    <div key={idx} className="text-center lg:text-right">
                       <p className="text-3xl md:text-4xl font-black text-primary mb-1">
                         {stat.value}
                       </p>
@@ -212,9 +212,9 @@ const InstructorDetails = () => {
                       { icon: Twitter, link: instructor.social.twitter },
                       { icon: Linkedin, link: instructor.social.linkedin },
                       { icon: Globe, link: instructor.social.website },
-                    ].map((soc, i) => (
+                    ].map((soc, idx) => (
                       <a
-                        key={i}
+                        key={idx}
                         href={soc.link}
                         className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-primary hover:text-white transition-all text-slate-400"
                       >
@@ -251,8 +251,8 @@ const InstructorDetails = () => {
                   {t("instructor.technical_skills")}
                 </h3>
                 <div className="flex flex-wrap gap-4">
-                  {instructor.skills.map((skill: string, i: number) => (
-                    <div key={i} className="group relative">
+                  {instructor.skills.map((skill: string, idx: number) => (
+                    <div key={idx} className="group relative">
                       <div className="absolute inset-0 bg-primary rounded-2xl blur-md opacity-0 group-hover:opacity-20 transition-opacity"></div>
                       <span className="relative bg-muted/50 text-foreground px-6 py-3 rounded-2xl font-bold border border-border group-hover:border-primary group-hover:bg-primary/5 transition-all flex items-center gap-3">
                         <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
@@ -330,8 +330,8 @@ const InstructorDetails = () => {
                     {t("instructor.experience")}
                   </h2>
                   <div className="space-y-8 relative before:absolute before:right-3 before:top-2 before:bottom-2 before:w-0.5 before:bg-border">
-                    {instructor.experience.map((exp: Experience, i: number) => (
-                      <div key={i} className="relative pr-10">
+                    {instructor.experience.map((exp: Experience, idx: number) => (
+                      <div key={idx} className="relative pr-10">
                         <div className="absolute right-0 top-1.5 w-6 h-6 bg-background border-4 border-primary rounded-full z-10"></div>
                         <p className="text-sm font-bold text-primary mb-1">
                           {exp.period}
@@ -357,8 +357,8 @@ const InstructorDetails = () => {
                     {t("instructor.education")}
                   </h2>
                   <div className="space-y-8">
-                    {instructor.education.map((edu: Education, i: number) => (
-                      <div key={i} className="flex gap-4">
+                    {instructor.education.map((edu: Education, idx: number) => (
+                      <div key={idx} className="flex gap-4">
                         <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0">
                           <Award className="w-6 h-6 text-primary" />
                         </div>
@@ -436,9 +436,9 @@ const InstructorDetails = () => {
                       icon: BookOpen,
                     },
                     { title: t("instructor.top_instructor"), icon: Star },
-                  ].map((ach, i) => (
+                  ].map((ach, idx) => (
                     <div
-                      key={i}
+                      key={idx}
                       className="flex items-center gap-4 bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-white/5"
                     >
                       <ach.icon className="w-6 h-6 shrink-0" />
