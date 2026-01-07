@@ -122,10 +122,7 @@ const CourseDetails = () => {
                           count:
                             typeof course.students === "number"
                               ? course.students
-                              : parseInt(
-                                  course.students.toString().replace(/,/g, ""),
-                                  10
-                                ) || 0,
+                              : 0,
                         })}
                       </p>
                     </div>

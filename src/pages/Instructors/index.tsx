@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { MainLayout } from "../../components/templates/MainLayout";
 import { useTranslation } from "react-i18next";
-import { ArrowRight, ArrowLeft, Search, Filter } from "lucide-react";
+import { Search, Filter, ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "../../components/atoms/Button";
 import { Reveal } from "../../components/atoms/Reveal";
 import { Link } from "react-router-dom";
@@ -110,7 +110,7 @@ const Instructors = () => {
                 </p>
 
                 <Link
-                  to={`${ROUTES.INSTRUCTOR_DETAILS.replace(":id", instructor.id || "")}`}
+                  to={ROUTES.INSTRUCTOR_DETAILS.replace(":id", instructor.id)}
                 >
                   <Button
                     variant="outline"

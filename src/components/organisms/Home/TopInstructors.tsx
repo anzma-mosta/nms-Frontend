@@ -48,7 +48,7 @@ export const TopInstructors = () => {
                 <span className="font-bold">{ins.rating}</span>
               </div>
               <div className="text-muted-foreground font-medium">
-                {ins.students} {t("home.active_students")}
+                {ins.studentsCount} {t("home.active_students")}
               </div>
             </div>
           </div>

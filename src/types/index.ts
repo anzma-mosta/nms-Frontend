@@ -58,7 +58,7 @@ export interface Course {
   title: string;
   instructor: string;
   rating: number;
-  students: number | string;
+  students: number;
   price: string;
   oldPrice?: string;
   image: string;
@@ -72,7 +72,7 @@ export interface Course {
   level?: string;
   language?: string;
   lastUpdated?: string;
-  reviews?: number | string;
+  reviews?: number;
   requirements?: string[];
 }
 

@@ -53,7 +53,7 @@ const Lesson = () => {
   const currentLesson = useMemo((): LessonType => {
     if (course.curriculum) {
       for (const section of course.curriculum) {
-        const lesson = section.lessons.find((l) => l.id === lessonId);
+        const lesson = section.lessons.find((l: LessonType) => l.id === lessonId);
         if (lesson) return lesson;
       }
       return course.curriculum[0].lessons[0];
@@ -63,9 +63,9 @@ const Lesson = () => {
 
   // Navigation Logic
   const navigation = useMemo(() => {
-    const allLessons = (course.curriculum || []).flatMap((s) => s.lessons);
+    const allLessons = (course.curriculum || []).flatMap((s: CurriculumSection) => s.lessons);
     const currentIndex = allLessons.findIndex(
-      (l) => l.id === (lessonId || allLessons[0]?.id)
+      (l: LessonType) => l.id === (lessonId || allLessons[0]?.id)
     );
     return {
       prev: currentIndex > 0 ? allLessons[currentIndex - 1] : null,
@@ -105,7 +105,7 @@ const Lesson = () => {
                 variant="ghost"
                 size="icon"
                 className="lg:hidden"
-                onClick={() => setIsSidebarOpen(true)}
+                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
               >
                 <Menu className="w-5 h-5" />
               </Button>

@@ -62,9 +62,9 @@ const Courses = () => {
                 instructor: course.instructor,
                 rating: course.rating,
                 students:
-                  typeof course.students === "string"
-                    ? parseInt(course.students.replace(/,/g, ""), 10) || 0
-                    : course.students,
+                  typeof course.students === "number"
+                    ? course.students
+                    : 0,
                 price: course.price,
                 image: course.image,
                 category: course.category || "Uncategorized",

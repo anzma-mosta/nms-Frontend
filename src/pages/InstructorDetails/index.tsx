@@ -96,7 +96,7 @@ const InstructorDetails = () => {
         id: (index + 1).toString(),
         instructor: instructorData.name,
         rating: 4.8 + index * 0.1,
-        students: index === 0 ? "1,200" : "850",
+        students: index === 0 ? 1200 : 850,
         image:
           index === 0
             ? "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80"
@@ -407,9 +407,9 @@ const InstructorDetails = () => {
                       course={{
                         ...course,
                         students:
-                          typeof course.students === "string"
-                            ? parseInt(course.students.replace(/,/g, ""), 10)
-                            : course.students,
+                          typeof course.students === "number"
+                            ? course.students
+                            : 0,
                       }}
                     />
                   ))}

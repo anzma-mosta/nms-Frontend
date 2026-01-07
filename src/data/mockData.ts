@@ -1,5 +1,5 @@
 import i18n from "../i18n";
-import { type Course, type Instructor } from "../types";
+import type { Course, Instructor } from "../types";
 
 export const getMockCourses = (lang: string): Course[] => {
   const coursesData = i18n.t("courses.list", {
@@ -27,7 +27,7 @@ export const getMockCourses = (lang: string): Course[] => {
   });
 };
 
-export const getMockInstructors = (lang: string): Partial<Instructor>[] => {
+export const getMockInstructors = (lang: string): Instructor[] => {
   const instructorsData = i18n.t("instructor.list", {
     lng: lang,
     returnObjects: true,
@@ -44,13 +44,44 @@ export const getMockInstructors = (lang: string): Partial<Instructor>[] => {
     const instructor = instructorsData[key];
     return {
       id: key,
-      name: instructor.name,
-      role: instructor.role,
+      name: instructor.name || "Instructor",
+      role: instructor.role || "Expert",
       rating: instructor.rating || 4.7,
+      reviewsCount: instructor.reviewsCount || 120,
       studentsCount: instructor.studentsCount || 5000,
       coursesCount: instructor.coursesCount || 5,
       image: images[index] || images[0],
-      bio: instructor.bio,
+      coverImage:
+        "https://images.unsplash.com/photo-1557683316-973673baf926?w=1200&q=80",
+      location: "Casablanca, Morocco",
+      joinedDate: "2023",
+      bio:
+        instructor.bio ||
+        "Professional instructor with years of experience in the field.",
+      skills: ["React", "TypeScript", "Node.js"],
+      social: {
+        github: "#",
+        twitter: "#",
+        linkedin: "#",
+        website: "#",
+      },
+      experience: [
+        {
+          period: "2020 - Present",
+          role: "Senior Developer",
+          company: "Tech Solutions",
+          desc: "Leading development teams and architecting scalable solutions.",
+        },
+      ],
+      education: [
+        {
+          year: "2018",
+          degree: "Master in Computer Science",
+          school: "University of Technology",
+        },
+      ],
+      testimonials: [],
+      courses: [],
     };
   });
 };
