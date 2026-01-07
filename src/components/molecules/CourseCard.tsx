@@ -1,4 +1,4 @@
-import { Star, Users, ShoppingCart, Check } from "lucide-react";
+import { Star, Users, ShoppingCart, Check, Clock, BookOpen, ArrowRight, PlayCircle, Heart } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { cn } from "../../utils/cn";
@@ -6,15 +6,16 @@ import { Button } from "../atoms/Button";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { addToCart } from "../../store/slices/cartSlice";
 import { ROUTES } from "../../constants/routes";
-import { t } from "i18next";
+import { motion, AnimatePresence } from "framer-motion";
 import type { Course } from "../../types";
+import { Badge } from "../atoms/Badge";
 
 interface CourseCardProps {
   course: Course;
 }
 
 export const CourseCard = ({ course }: CourseCardProps) => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const navigate = useNavigate();
   const isAr = i18n.language === "ar";
   const dispatch = useAppDispatch();
@@ -34,76 +35,139 @@ export const CourseCard = ({ course }: CourseCardProps) => {
   };
 
   return (
-    <div
+    <motion.div
+      whileHover={{ y: -12 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
       onClick={handleCardClick}
-      className="group bg-card border rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full cursor-pointer"
+      className="group relative flex flex-col h-full bg-card glass border-2 border-transparent hover:border-primary/20 rounded-[2.5rem] overflow-hidden transition-all duration-500 cursor-pointer"
     >
-      <div className="relative aspect-video overflow-hidden">
+      {/* Image Container */}
+      <div className="relative aspect-[16/10] overflow-hidden m-3 rounded-[2rem]">
         <img
           src={course.image}
           alt={course.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
           loading="lazy"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+        
+        {/* Level Badge */}
         <div
           className={cn(
-            "absolute top-4 px-3 py-1 bg-white/90 dark:bg-slate-900/90 backdrop-blur rounded-full text-xs font-bold text-primary",
+            "absolute top-4",
             isAr ? "right-4" : "left-4"
           )}
         >
-          {/* {course.category} */}
+          <Badge variant="primary" className="bg-primary/50 text-white border-white/20 backdrop-blur-md px-4 py-1.5 font-bold uppercase tracking-wider text-[10px]">
+            {course.level || (isAr ? "احترافي" : "Professional")}
+          </Badge>
+        </div>
+
+        {/* Wishlist Button */}
+        <button 
+          onClick={(e) => { e.stopPropagation(); }}
+          className={cn(
+            "absolute top-4 w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-md transition-colors border border-white/10",
+            isAr ? "left-4" : "right-4"
+          )}
+        >
+          <Heart className="w-5 h-5" />
+        </button>
+
+        {/* Play Icon on Hover */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="w-16 h-16 rounded-full bg-primary/90 text-white flex items-center justify-center backdrop-blur-sm transform scale-50 group-hover:scale-100 transition-transform duration-500">
+            <PlayCircle className="w-8 h-8" />
+          </div>
         </div>
       </div>
-      <div className="p-6 flex flex-col flex-1">
-        <h3 className="text-xl font-bold line-clamp-2 group-hover:text-primary transition-colors mb-4">
-          {course.title}
-        </h3>
-        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
-          <div className="w-6 h-6 rounded-full bg-secondary flex items-center justify-center">
-            <Users className="w-3 h-3" />
+
+      <div className="p-8 pt-4 flex flex-col flex-1 space-y-5">
+        {/* Rating and Students */}
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1.5 bg-orange-500/10 text-orange-600 px-3 py-1 rounded-xl text-xs font-black">
+            <Star className="w-3.5 h-3.5 fill-current" />
+            {course.rating}
           </div>
-          <span>{course.instructor}</span>
+          <div className="flex items-center gap-1.5 text-muted-foreground font-bold text-xs">
+            <Users className="w-4 h-4 text-primary/60" />
+            {course.students} {t("course.students")}
+          </div>
         </div>
 
-        <div className="mt-auto space-y-4">
-          <div className="flex items-center justify-between pt-4 border-t">
-            <div className="flex items-center gap-1 text-orange-500">
-              <Star className="w-4 h-4 fill-current" />
-              <span className="text-sm font-bold">{course.rating}</span>
-              <span className="text-xs text-muted-foreground">
-                ({course.students})
-              </span>
+        {/* Title */}
+        <h3 className="text-2xl font-black leading-tight line-clamp-2 group-hover:text-primary transition-colors duration-300">
+          {course.title}
+        </h3>
+
+        {/* Instructor and Duration Info */}
+        <div className="grid grid-cols-2 gap-4 py-5 border-y border-border/50">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-secondary/50 flex items-center justify-center text-primary">
+              <BookOpen className="w-4.5 h-4.5" />
             </div>
-            <div className="text-lg font-black text-primary">
-              {course.price}
+            <div className="flex flex-col">
+              <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">{t("course.instructor")}</span>
+              <span className="text-xs font-bold truncate max-w-[80px]">{course.instructor}</span>
             </div>
           </div>
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-secondary/50 flex items-center justify-center text-primary">
+              <Clock className="w-4.5 h-4.5" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">{t("course.duration")}</span>
+              <span className="text-xs font-bold">{course.duration || "12h 30m"}</span>
+            </div>
+          </div>
+        </div>
 
+        {/* Price and Add to Cart */}
+        <div className="mt-auto pt-4 flex items-center justify-between gap-6">
+          <div className="flex flex-col">
+            <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground leading-none mb-1.5">{t("course.investment")}</span>
+            <span className="text-2xl font-black text-foreground">
+              {course.price}
+            </span>
+          </div>
+          
           <Button
-            className={cn(
-              "w-full rounded-xl gap-2 h-11 font-bold transition-all",
-              isInCart
-                ? "bg-green-500 hover:bg-green-600"
-                : "shadow-lg shadow-primary/20"
-            )}
             onClick={handleAddToCart}
-            disabled={isInCart}
-          >
-            {isInCart ? (
-              <>
-                <Check className="w-4 h-4" />
-                {t("cart.in_cart")}
-              </>
-            ) : (
-              <>
-                <ShoppingCart className="w-4 h-4" />
-                {t("cart.add_to_cart")}
-              </>
+            variants={isInCart ? "outline" : "default"}
+            className={cn(
+              "h-12 px-6 rounded-2xl font-black transition-all duration-500",
+              isInCart ? "bg-emerald-500/10 text-emerald-600 border-emerald-500/20" : "flex-1"
             )}
+          >
+            <AnimatePresence mode="wait">
+              {isInCart ? (
+                <motion.div
+                  key="check"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 0 }}
+                  className="flex items-center gap-2"
+                >
+                  <Check className="w-5 h-5" />
+                  <span className="text-sm">{t("course.in_cart")}</span>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="cart"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 0 }}
+                  className="flex items-center gap-2"
+                >
+                  <ShoppingCart className="w-5 h-5" />
+                  <span className="text-sm">{t("course.add_to_cart")}</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </Button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

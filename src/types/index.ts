@@ -49,6 +49,7 @@ export interface Lesson {
 }
 
 export interface CurriculumSection {
+  duration: string;
   title: string;
   lessons: Lesson[];
 }
@@ -88,7 +89,8 @@ export interface Instructor {
   coursesCount: number;
   students?: string;
   location: string;
-  joinedDate: string;
+  joinedDate:string;
+  specialty: string;
   bio: string;
   skills: string[];
   social: {

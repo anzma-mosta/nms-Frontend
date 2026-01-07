@@ -2,169 +2,174 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
-  GraduationCap,
   Users,
   TrendingUp,
   Award,
+  Rocket,
+  Globe,
 } from "lucide-react";
 import { Button } from "../../atoms/Button";
-import { Reveal } from "../../atoms/Reveal";
 import { ROUTES } from "../../../constants/routes";
 import { cn } from "../../../utils/cn";
+import { motion } from "framer-motion";
 
 export const InstructorCTA = () => {
   const { i18n } = useTranslation();
   const isAr = i18n.language === "ar";
 
-  const stats = [
+  const features = [
     {
-      icon: <Users className="w-6 h-6" />,
-      label: isAr ? "أكثر من 1000 معلم" : "1000+ Instructors",
+      icon: <Users className="w-5 h-5" />,
+      title: isAr ? "مجتمع واسع" : "Large Community",
+      desc: isAr ? "صل إلى آلاف الطلاب المهتمين" : "Reach thousands of students",
       color: "text-blue-500",
       bg: "bg-blue-500/10",
     },
     {
-      icon: <TrendingUp className="w-6 h-6" />,
-      label: isAr ? "نمو مهني مستمر" : "Career Growth",
-      color: "text-green-500",
-      bg: "bg-green-500/10",
+      icon: <TrendingUp className="w-5 h-5" />,
+      title: isAr ? "دخل مرن" : "Flexible Income",
+      desc: isAr ? "حدد أسعارك وحقق أرباحاً متزايدة" : "Set your prices & earn more",
+      color: "text-emerald-500",
+      bg: "bg-emerald-500/10",
     },
     {
-      icon: <Award className="w-6 h-6" />,
-      label: isAr ? "شهادات معتمدة" : "Certified Platform",
+      icon: <Award className="w-5 h-5" />,
+      title: isAr ? "أدوات احترافية" : "Professional Tools",
+      desc: isAr ? "نظام إدارة تعليم متطور وسهل" : "Advanced & easy LMS tools",
       color: "text-purple-500",
       bg: "bg-purple-500/10",
+    },
+    {
+      icon: <Globe className="w-5 h-5" />,
+      title: isAr ? "تأثير عالمي" : "Global Impact",
+      desc: isAr ? "شارك معرفتك مع طلاب من كل مكان" : "Share knowledge worldwide",
+      color: "text-orange-500",
+      bg: "bg-orange-500/10",
     },
   ];
 
   return (
-    <section className="py-24 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -mr-64 -mt-64" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-3xl -ml-64 -mb-64" />
-
+    <section className="py-32 relative overflow-hidden bg-background">
+      {/* Background Decor */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.05)_0%,transparent_70%)] pointer-events-none" />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
           className={cn(
-            "grid grid-cols-1 lg:grid-cols-2 gap-16 items-center bg-card border border-border rounded-[3rem] p-8 lg:p-16 shadow-2xl shadow-primary/5",
+            "relative grid grid-cols-1 lg:grid-cols-2 gap-16 items-center glass border-2 border-primary/10 rounded-[4rem] p-10 lg:p-20 overflow-hidden shadow-2xl shadow-primary/5",
             isAr ? "text-right" : "text-left"
           )}
         >
-          <div className="space-y-8">
-            <Reveal>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm">
-                <GraduationCap className="w-4 h-4" />
-                <span>{isAr ? "فرص التدريس" : "Teaching Opportunities"}</span>
-              </div>
-            </Reveal>
+          {/* Decorative Corner Glow */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px] -mr-32 -mt-32" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 rounded-full blur-[100px] -ml-32 -mb-32" />
 
-            <Reveal delay={0.1}>
-              <h2 className="text-3xl lg:text-5xl font-black leading-tight">
-                {isAr ? "هل أنت مستعد لمشاركة" : "Ready to share your"}
+          <div className="space-y-10 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm"
+            >
+              <Rocket className="w-4 h-4" />
+              <span>{isAr ? "ابدأ مسيرتك التدريسية" : "Launch Your Teaching Career"}</span>
+            </motion.div>
+
+            <div className="space-y-6">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="text-4xl lg:text-6xl font-black leading-tight tracking-tight"
+              >
+                {isAr ? "حول خبرتك إلى" : "Turn your expertise into"}
                 <span className="text-primary block">
-                  {isAr ? "خبرتك مع العالم؟" : "expertise with the world?"}
+                  {isAr ? "تأثير حقيقي ودخل مستدام" : "real impact & income"}
                 </span>
-              </h2>
-            </Reveal>
+              </motion.h2>
 
-            <Reveal delay={0.2}>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="text-xl text-muted-foreground leading-relaxed max-w-xl"
+              >
                 {isAr
-                  ? "انضم إلى مجتمعنا المتنامي من الخبراء والمعلمين. نحن نوفر لك الأدوات والجمهور لنشر معرفتك وتحقيق دخل إضافي."
-                  : "Join our growing community of experts and instructors. We provide the tools and audience to spread your knowledge and earn extra income."}
-              </p>
-            </Reveal>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {stats.map((stat, index) => (
-                <Reveal key={index} delay={0.3 + index * 0.1}>
-                  <div className="flex items-center gap-4 p-4 rounded-2xl bg-secondary/50 border border-border/50">
-                    <div className={cn("p-3 rounded-xl", stat.bg, stat.color)}>
-                      {stat.icon}
-                    </div>
-                    <span className="font-bold text-sm">{stat.label}</span>
-                  </div>
-                </Reveal>
-              ))}
+                  ? "انضم إلى نخبة المعلمين في الوطن العربي. نحن نوفر لك كل ما تحتاجه للنجاح، من أدوات البث المباشر إلى إدارة الدورات والمدفوعات."
+                  : "Join the elite instructors in the MENA region. We provide everything you need to succeed, from live streaming tools to course management and payments."}
+              </motion.p>
             </div>
 
-            <Reveal delay={0.6}>
-              <div className="flex flex-wrap gap-4 pt-4">
-                <Link to={ROUTES.BECOME_INSTRUCTOR}>
-                  <Button
-                    size="lg"
-                    className="rounded-full px-10 h-14 text-lg font-bold gap-2 group"
-                  >
-                    <span>
-                      {isAr ? "سجل كمعلم الآن" : "Register as Instructor"}
-                    </span>
-                    <ArrowRight
-                      className={cn(
-                        "w-5 h-5 transition-transform group-hover:translate-x-1",
-                        isAr && "rotate-180 group-hover:-translate-x-1"
-                      )}
-                    />
-                  </Button>
-                </Link>
-                <Link to={ROUTES.CONTACT}>
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="rounded-full px-10 h-14 text-lg font-bold"
-                  >
-                    {isAr ? "تعرف على المزيد" : "Learn More"}
-                  </Button>
-                </Link>
-              </div>
-            </Reveal>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="flex flex-wrap gap-6 pt-4"
+            >
+              <Link to={ROUTES.BECOME_INSTRUCTOR}>
+                <Button
+                  size="lg"
+                  className="rounded-2xl px-12 h-16 text-xl font-black gap-3 group relative overflow-hidden"
+                >
+                  <span className="relative z-10 flex items-center gap-3">
+                    {isAr ? "انضم إلينا الآن" : "Join Us Now"}
+                    <ArrowRight className={cn(
+                      "w-6 h-6 transition-transform group-hover:translate-x-1",
+                      isAr && "rotate-180 group-hover:-translate-x-1"
+                    )} />
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </Button>
+              </Link>
+              <Link to={ROUTES.CONTACT}>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="rounded-2xl px-12 h-16 text-xl font-black glass border-2"
+                >
+                  {isAr ? "تعرف على المزيد" : "Learn More"}
+                </Button>
+              </Link>
+            </motion.div>
           </div>
 
-          <Reveal delay={0.4}>
-            <div className="relative">
-              {/* Decorative Frame */}
-              <div className="absolute -inset-4 border-2 border-primary/20 rounded-[2.5rem] -rotate-3 z-0" />
-              <div className="absolute -inset-4 border-2 border-blue-500/20 rounded-[2.5rem] rotate-2 z-0" />
-
-              <div className="relative z-10 rounded-[2rem] overflow-hidden shadow-2xl">
-                <img
-                  src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80"
-                  alt="Instructor teaching"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-                {/* Floating Card */}
-                <div
-                  className={cn(
-                    "absolute bottom-6 bg-card/90 backdrop-blur-md p-6 rounded-2xl border border-border shadow-xl",
-                    isAr ? "left-6 right-auto" : "right-6 left-auto"
-                  )}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="flex -space-x-3 rtl:space-x-reverse">
-                      {[1, 2, 3].map((i) => (
-                        <img
-                          key={i}
-                          src={`https://i.pravatar.cc/150?u=${i}`}
-                          alt="Instructor"
-                          className="w-10 h-10 rounded-full border-2 border-card"
-                        />
-                      ))}
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold">
-                        {isAr ? "انضم إلينا" : "Join them"}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        {isAr ? "أكثر من 500 خبير" : "500+ experts"}
-                      </p>
-                    </div>
-                  </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10">
+            {features.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 + index * 0.1 }}
+                className="group p-8 rounded-[2.5rem] bg-background/50 border border-border/50 hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5"
+              >
+                <div className={cn(
+                  "w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6",
+                  item.bg,
+                  item.color
+                )}>
+                  {item.icon}
                 </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
+                <h3 className="text-xl font-black mb-2 group-hover:text-primary transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-muted-foreground font-semibold leading-relaxed">
+                  {item.desc}
+                </p>
+              </motion.div>
+            ))}
+
+            {/* Floating Elements for visual interest */}
+            <div className="absolute -top-10 -right-10 w-24 h-24 bg-primary/20 rounded-full blur-2xl animate-pulse" />
+            <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-secondary/20 rounded-full blur-2xl animate-pulse delay-700" />
+          </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -15,9 +15,9 @@ import {
   Info,
   Phone,
   ShoppingBag,
-  Bell,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import { ROUTES } from "../../constants/routes";
 import { cn } from "../../utils/cn";
 import { Button } from "../atoms/Button";
@@ -50,21 +50,21 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       dir={i18n.language === "ar" ? "rtl" : "ltr"}
     >
       {/* Navigation Bar */}
-      <nav className="sticky top-0 z-50 w-full bg-card/80 backdrop-blur-md border-b">
+      <nav className="sticky top-0 z-50 w-full glass border-b border-border/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
+          <div className="flex justify-between h-20 items-center">
             {/* Logo & Desktop Nav */}
-            <div className="flex items-center gap-8">
-              <Link to="/" className="flex items-center gap-2">
-                <div className="bg-primary p-1.5 rounded-lg text-primary-foreground">
-                  <GraduationCap className="w-6 h-6" />
+            <div className="flex items-center gap-12">
+              <Link to="/" className="flex items-center gap-3 group">
+                <div className="bg-primary p-2 rounded-2xl text-primary-foreground shadow-lg shadow-primary/30 group-hover:scale-110 transition-transform">
+                  <GraduationCap className="w-7 h-7" />
                 </div>
-                <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-l from-primary to-blue-600">
+                <span className="text-2xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-l from-primary to-blue-600">
                   NMS Academy
                 </span>
               </Link>
 
-              <div className="hidden lg:flex items-center gap-1">
+              <div className="hidden lg:flex items-center gap-2">
                 {navigation.map((item) => {
                   const isActive = location.pathname === item.href;
                   return (
@@ -72,13 +72,19 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
                       key={item.name}
                       to={item.href}
                       className={cn(
-                        "px-4 py-2 text-sm font-medium rounded-full transition-all hover:bg-secondary",
+                        "px-5 py-2.5 text-sm font-bold rounded-full transition-all relative group",
                         isActive
                           ? "text-primary bg-primary/5"
-                          : "text-muted-foreground"
+                          : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
                       )}
                     >
                       {item.name}
+                      {isActive && (
+                        <motion.div
+                          layoutId="nav-active"
+                          className="absolute inset-0 bg-primary/5 rounded-full -z-10"
+                        />
+                      )}
                     </Link>
                   );
                 })}
@@ -86,63 +92,55 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
             </div>
 
             {/* Search & Actions */}
-            <div className="hidden md:flex flex-1 max-w-md mx-8">
-              <div className="relative w-full">
+            <div className="hidden md:flex flex-1 max-w-sm mx-8">
+              <div className="relative w-full group">
                 <Search
                   className={cn(
-                    "absolute top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground",
-                    i18n.language === "ar" ? "right-3" : "left-3"
+                    "absolute top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground group-focus-within:text-primary transition-colors",
+                    i18n.language === "ar" ? "right-4" : "left-4"
                   )}
                 />
                 <input
                   type="text"
                   placeholder={t("common.search")}
                   className={cn(
-                    "w-full bg-secondary/50 border-none rounded-full py-2 text-sm focus:ring-2 focus:ring-primary transition-all",
-                    i18n.language === "ar" ? "pr-10 pl-4" : "pl-10 pr-4"
+                    "w-full bg-secondary/50 border-2 border-transparent rounded-2xl py-2.5 text-sm outline-none transition-all focus:bg-background focus:border-primary focus:shadow-lg focus:shadow-primary/5",
+                    i18n.language === "ar" ? "pr-11 pl-4" : "pl-11 pr-4"
                   )}
                 />
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <Link
-                to={ROUTES.CART}
-                className="relative p-2 hover:bg-secondary rounded-full transition-all group"
-              >
-                <ShoppingBag className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                {items.length > 0 && (
-                  <span className="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center animate-in zoom-in duration-300">
-                    {items.length}
-                  </span>
-                )}
-              </Link>
-              <LanguageToggle />
-              <ThemeToggle />
-              <div className="hidden sm:flex items-center gap-2">
-                {/*  for notifications */}
-                <Button variant="ghost" size="sm" className="relative">
-                  <Bell className="w-5 h-5 text-muted-foreground" />
-                  <span
-                    className={cn(
-                      "absolute top-2 w-2 h-2 bg-red-500 rounded-full border-2 border-card",
-                      i18n.language === "ar" ? "left-2" : "right-2"
-                    )}
-                  ></span>
-                </Button>
-                <div className="w-px h-6 bg-border mx-1"></div>
-                <Link to={ROUTES.LOGIN}>
-                  <Button variant="ghost" size="sm" className="gap-2">
-                    <User className="w-4 h-4" />
-                    <span>{t("common.login")}</span>
-                  </Button>
-                </Link>
-                <Button size="sm">{t("common.start_learning")}</Button>
+              <div className="hidden sm:flex items-center gap-2 border-r pr-3 dark:border-gray-800">
+                <LanguageToggle />
+                <ThemeToggle />
               </div>
 
-              {/* Mobile menu button */}
-              <button
-                className="lg:hidden p-2 rounded-lg hover:bg-secondary"
+              <Link to={ROUTES.CART} className="relative group">
+                <Button variant="ghost" size="icon" className="rounded-2xl">
+                  <ShoppingBag className="w-5 h-5" />
+                  {items.length > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-background animate-in zoom-in">
+                      {items.length}
+                    </span>
+                  )}
+                </Button>
+              </Link>
+
+              <div className="hidden sm:block">
+                <Link to={ROUTES.LOGIN}>
+                  <Button variant="ghost" size="md" className="gap-2">
+                    <User className="w-4 h-4" />
+                    {t("common.login")}
+                  </Button>
+                </Link>
+              </div>
+
+              <Button
+                variant="ghost"
+                size="icon"
+                className="lg:hidden rounded-2xl"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 {isMobileMenuOpen ? (
@@ -150,38 +148,44 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
                 ) : (
                   <Menu className="w-6 h-6" />
                 )}
-              </button>
+              </Button>
             </div>
           </div>
         </div>
 
         {/* Mobile Menu */}
-        <div
-          className={cn(
-            "lg:hidden absolute top-16 inset-x-0 bg-card border-b transition-all duration-300 origin-top overflow-hidden",
-            isMobileMenuOpen ? "max-h-[100vh] py-4" : "max-h-0"
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden absolute top-20 inset-x-0 bg-card border-b overflow-hidden"
+            >
+              <div className="px-4 py-6 space-y-2">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className="flex items-center gap-4 px-4 py-4 text-base font-bold rounded-2xl hover:bg-secondary transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <div className="p-2 bg-primary/10 rounded-xl text-primary">
+                      <item.icon className="w-5 h-5" />
+                    </div>
+                    {item.name}
+                  </Link>
+                ))}
+                <div className="pt-6 border-t mt-6 space-y-3">
+                  <Button variant="outline" className="w-full rounded-2xl h-12 font-bold">
+                    {t("common.login")}
+                  </Button>
+                  <Button className="w-full rounded-2xl h-12 font-bold">{t("common.start_learning")}</Button>
+                </div>
+              </div>
+            </motion.div>
           )}
-        >
-          <div className="px-4 space-y-1">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className="flex items-center gap-3 px-4 py-3 text-base font-medium rounded-xl hover:bg-secondary transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <item.icon className="w-5 h-5 text-primary" />
-                {item.name}
-              </Link>
-            ))}
-            <div className="pt-4 border-t mt-4 space-y-2">
-              <Button variant="outline" className="w-full">
-                {t("common.login")}
-              </Button>
-              <Button className="w-full">{t("common.start_learning")}</Button>
-            </div>
-          </div>
-        </div>
+        </AnimatePresence>
       </nav>
 
       {/* Main Content */}

@@ -46,6 +46,7 @@ export const getMockInstructors = (lang: string): Instructor[] => {
       id: key,
       name: instructor.name || "Instructor",
       role: instructor.role || "Expert",
+      specialty: instructor.specialty || "all",
       rating: instructor.rating || 4.7,
       reviewsCount: instructor.reviewsCount || 120,
       studentsCount: instructor.studentsCount || 5000,
