@@ -1,40 +1,13 @@
 import { useTranslation } from "react-i18next";
 import { Star, Award } from "lucide-react";
 import { cn } from "../../../utils/cn";
+import { getMockInstructors } from "../../../data/mockData";
+import { useMemo } from "react";
 
 export const TopInstructors = () => {
   const { t, i18n } = useTranslation();
 
-  const instructors = [
-    {
-      name: t("home.instructors.i1.name"),
-      role: t("home.instructors.i1.role"),
-      rating: 4.9,
-      students: "15k+",
-      image: "https://i.pravatar.cc/150?u=11",
-    },
-    {
-      name: t("home.instructors.i2.name"),
-      role: t("home.instructors.i2.role"),
-      rating: 4.8,
-      students: "12k+",
-      image: "https://i.pravatar.cc/150?u=12",
-    },
-    {
-      name: t("home.instructors.i3.name"),
-      role: t("home.instructors.i3.role"),
-      rating: 4.9,
-      students: "8k+",
-      image: "https://i.pravatar.cc/150?u=13",
-    },
-    {
-      name: t("home.instructors.i4.name"),
-      role: t("home.instructors.i4.role"),
-      rating: 4.7,
-      students: "10k+",
-      image: "https://i.pravatar.cc/150?u=14",
-    },
-  ];
+  const instructors = useMemo(() => getMockInstructors(i18n.language).slice(0, 4), [i18n.language]);
 
   return (
     <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

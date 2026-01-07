@@ -1,14 +1,15 @@
 import i18n from "../i18n";
+import { Course, Instructor } from "../types";
 
-export const getMockCourses = (lang: string) => {
+export const getMockCourses = (lang: string): Course[] => {
   const coursesData = i18n.t("courses.list", { lng: lang, returnObjects: true }) as any;
   
   return Object.keys(coursesData).map((key, index) => {
     const course = coursesData[key];
     return {
-      id: index + 1,
+      id: (index + 1).toString(),
       ...course,
-      rating: index === 0 ? 4.9 : 4.9,
+      rating: 4.9,
       reviews: index === 0 ? 1240 : 850,
       students: index === 0 ? 5430 : 4200,
       progress: index === 0 ? 35 : 0,
@@ -17,11 +18,12 @@ export const getMockCourses = (lang: string) => {
       image: index === 0 
         ? "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80"
         : "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?w=1200&q=80",
+      category: course.category || "Development",
     };
   });
 };
 
-export const getMockInstructors = (lang: string) => {
+export const getMockInstructors = (lang: string): Partial<Instructor>[] => {
   const instructorsData = i18n.t("instructor.list", { lng: lang, returnObjects: true }) as any;
   
   const images = [
@@ -38,8 +40,8 @@ export const getMockInstructors = (lang: string) => {
       name: instructor.name,
       role: instructor.role,
       rating: instructor.rating || 4.7,
-      students: (instructor.studentsCount || 5000).toLocaleString() + "+",
-      courses: instructor.coursesCount || 5,
+      studentsCount: instructor.studentsCount || 5000,
+      coursesCount: instructor.coursesCount || 5,
       image: images[index] || images[0],
       bio: instructor.bio,
     };

@@ -555,5 +555,101 @@
       "community_title": "Community",
       "community_desc": "We believe in the power of collaboration and collective learning in building a promising generation."
     }
+  },
+  "become_instructor": {
+    "title": "Become an Instructor",
+    "hero": {
+      "title": "Share your knowledge with",
+      "title_highlight": "the next generation",
+      "description": "Join a community of elite instructors and help build a distinguished Arabic educational community.",
+      "cta": "Start Teaching Today"
+    },
+    "benefits": {
+      "title": "Why Join Us?",
+      "description": "We provide everything you need to succeed in your teaching career",
+      "list": {
+        "audience": {
+          "title": "Global Audience",
+          "desc": "Reach thousands of students eager to learn from around the world."
+        },
+        "income": {
+          "title": "Extra Income",
+          "desc": "Earn significant income by sharing your expertise and knowledge."
+        },
+        "tools": {
+          "title": "Advanced Tools",
+          "desc": "Use our modern tools to create and manage your courses with ease."
+        }
+      }
+    },
+    "stats": {
+      "students": "Students",
+      "courses": "Courses",
+      "countries": "Countries",
+      "rating": "Rating"
+    },
+    "form": {
+      "title": "Apply Now",
+      "description": "Fill out the form below and we will review your application within 48 hours.",
+      "full_name": "Full Name",
+      "full_name_placeholder": "Enter your full name",
+      "email": "Email Address",
+      "email_placeholder": "example@mail.com",
+      "specialty": "Educational Specialty",
+      "specialty_placeholder": "e.g., Web Development, Design, Marketing",
+      "experience": "About Your Experience",
+      "experience_placeholder": "Tell us a bit about your professional and educational experience...",
+      "submit": "Submit Application",
+      "sending": "Sending Application...",
+      "success_title": "Application Sent Successfully!",
+      "success_message": "Thank you for your interest in joining us. Our team will review your application and contact you soon.",
+      "validation": {
+        "name_min": "Full Name must be at least 3 characters",
+        "email_invalid": "Invalid email address",
+        "specialty_required": "Please specify your specialty",
+        "experience_min": "Please provide a brief summary of your experience"
+      }
+    },
+    "cta": {
+      "title": "Ready to share your expertise?",
+      "description": "Join hundreds of instructors who are achieving their goals with us every day.",
+      "register": "Register as Instructor",
+      "contact": "Contact Us"
+    }
+  },
+  "services": {
+    "title": "Our Educational Services",
+    "description": "We provide integrated educational solutions designed to fit your needs and help you develop.",
+    "list": {
+      "recorded": {
+        "title": "Recorded Courses",
+        "desc": "Unlimited access to a huge library of high-quality recorded courses."
+      },
+      "live": {
+        "title": "Live Classes",
+        "desc": "Live interaction with top instructors and experts in weekly classes."
+      },
+      "certified": {
+        "title": "Certified Certificates",
+        "desc": "Get certified completion certificates to boost your professional profile."
+      },
+      "paths": {
+        "title": "Learning Paths",
+        "desc": "Carefully designed paths to take you from beginner to professional."
+      }
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "sections": {
+      "collection": {
+        "title": "1. Information Collection",
+        "content": "We collect information you provide directly to us when registering on the platform, including name, email, payment details, and other information you choose to provide."
+      },
+      "usage": {
+        "title": "2. Use of Information",
+        "content": "We use the information we collect to provide and improve services, communicate with you about your account, send updates, and ensure platform security."
+      }
+    }
   }
 }

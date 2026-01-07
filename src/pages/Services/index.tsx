@@ -4,37 +4,28 @@ import { Reveal } from "../../components/atoms/Reveal";
 import { BookOpen, Video, Users, Trophy, Target, Zap } from "lucide-react";
 
 const Services = () => {
-  const { t, i18n } = useTranslation();
-  const isAr = i18n.language === "ar";
+  const { t } = useTranslation();
 
   const services = [
     {
       icon: <Video className="w-8 h-8" />,
-      title: isAr ? "دورات مسجلة" : "Recorded Courses",
-      description: isAr 
-        ? "وصول غير محدود إلى مكتبة ضخمة من الدورات المسجلة بجودة عالية." 
-        : "Unlimited access to a huge library of high-quality recorded courses.",
+      title: t("services.list.recorded.title"),
+      description: t("services.list.recorded.desc"),
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: isAr ? "حصص مباشرة" : "Live Classes",
-      description: isAr 
-        ? "تفاعل مباشر مع أفضل المعلمين والخبراء في حصص أسبوعية." 
-        : "Live interaction with top instructors and experts in weekly classes.",
+      title: t("services.list.live.title"),
+      description: t("services.list.live.desc"),
     },
     {
       icon: <Trophy className="w-8 h-8" />,
-      title: isAr ? "شهادات معتمدة" : "Certified Certificates",
-      description: isAr 
-        ? "احصل على شهادات إتمام معتمدة لتعزيز ملفك الشخصي المهني." 
-        : "Get certified completion certificates to boost your professional profile.",
+      title: t("services.list.certified.title"),
+      description: t("services.list.certified.desc"),
     },
     {
       icon: <Target className="w-8 h-8" />,
-      title: isAr ? "مسارات تعليمية" : "Learning Paths",
-      description: isAr 
-        ? "مسارات مدروسة بعناية لتنتقل بك من مستوى المبتدئ إلى الاحتراف." 
-        : "Carefully designed paths to take you from beginner to professional.",
+      title: t("services.list.paths.title"),
+      description: t("services.list.paths.desc"),
     },
   ];
 
@@ -44,11 +35,9 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <Reveal>
-              <h1 className="text-4xl font-black mb-6">{isAr ? "خدماتنا التعليمية" : "Our Educational Services"}</h1>
+              <h1 className="text-4xl font-black mb-6">{t("services.title")}</h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                {isAr 
-                  ? "نقدم حلولاً تعليمية متكاملة مصممة لتناسب احتياجاتك وتساعدك على التطور." 
-                  : "We provide integrated educational solutions designed to fit your needs and help you develop."}
+                {t("services.description")}
               </p>
             </Reveal>
           </div>

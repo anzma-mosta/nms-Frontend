@@ -3,33 +3,28 @@ import { useTranslation } from "react-i18next";
 import { Reveal } from "../../components/atoms/Reveal";
 
 const Privacy = () => {
-  const { t, i18n } = useTranslation();
-  const isAr = i18n.language === "ar";
+  const { t } = useTranslation();
 
   return (
     <MainLayout>
       <div className="container mx-auto px-4 py-24 max-w-4xl">
         <Reveal>
-          <h1 className="text-4xl font-bold mb-8">{isAr ? "سياسة الخصوصية" : "Privacy Policy"}</h1>
+          <h1 className="text-4xl font-bold mb-8">{t("privacy.title")}</h1>
         </Reveal>
         <div className="prose prose-lg dark:prose-invert max-w-none space-y-8">
           <Reveal delay={0.1}>
             <section>
-              <h2 className="text-2xl font-bold mb-4">{isAr ? "1. جمع المعلومات" : "1. Information Collection"}</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("privacy.sections.collection.title")}</h2>
               <p className="text-muted-foreground leading-relaxed">
-                {isAr 
-                  ? "نقوم بجمع المعلومات التي تقدمها لنا مباشرة عند التسجيل في المنصة..." 
-                  : "We collect information you provide directly to us when registering on the platform..."}
+                {t("privacy.sections.collection.content")}
               </p>
             </section>
           </Reveal>
           <Reveal delay={0.2}>
             <section>
-              <h2 className="text-2xl font-bold mb-4">{isAr ? "2. استخدام المعلومات" : "2. Use of Information"}</h2>
+              <h2 className="text-2xl font-bold mb-4">{t("privacy.sections.usage.title")}</h2>
               <p className="text-muted-foreground leading-relaxed">
-                {isAr 
-                  ? "نستخدم المعلومات التي نجمعها لتوفير الخدمات وتحسينها والتواصل معك..." 
-                  : "We use the information we collect to provide, improve services, and communicate with you..."}
+                {t("privacy.sections.usage.content")}
               </p>
             </section>
           </Reveal>

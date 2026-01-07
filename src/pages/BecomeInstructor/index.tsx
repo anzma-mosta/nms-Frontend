@@ -9,19 +9,16 @@ import * as z from "zod";
 import { useAlert } from "../../providers/AlertProvider";
 import { cn } from "../../utils/cn";
 
-const instructorSchema = z.object({
-  fullName: z.string().min(3, { message: "الاسم الكامل يجب أن يكون 3 أحرف على الأقل" }),
-  email: z.string().email({ message: "البريد الإلكتروني غير صالح" }),
-  specialty: z.string().min(2, { message: "يرجى تحديد التخصص" }),
-  experience: z.string().min(10, { message: "يرجى تقديم نبذة مختصرة عن خبرتك" }),
-});
-
-type InstructorFormValues = z.infer<typeof instructorSchema>;
-
 const BecomeInstructor = () => {
   const { t, i18n } = useTranslation();
-  const isAr = i18n.language === "ar";
   const { showAlert } = useAlert();
+
+  const instructorSchema = z.object({
+    fullName: z.string().min(3, { message: t("become_instructor.form.validation.name_min") }),
+    email: z.string().email({ message: t("become_instructor.form.validation.email_invalid") }),
+    specialty: z.string().min(2, { message: t("become_instructor.form.validation.specialty_required") }),
+    experience: z.string().min(10, { message: t("become_instructor.form.validation.experience_min") }),
+  });
 
   const {
     register,
@@ -38,10 +35,8 @@ const BecomeInstructor = () => {
     console.log("Form Data:", data);
     
     showAlert({
-      title: isAr ? "تم إرسال طلبك بنجاح!" : "Application Sent Successfully!",
-      message: isAr 
-        ? "شكراً لاهتمامك بالانضمام إلينا. سيقوم فريقنا بمراجعة طلبك والتواصل معك قريباً." 
-        : "Thank you for your interest in joining us. Our team will review your application and contact you soon.",
+      title: t("become_instructor.form.success_title"),
+      message: t("become_instructor.form.success_message"),
       type: "success",
     });
     
@@ -51,18 +46,18 @@ const BecomeInstructor = () => {
   const benefits = [
     {
       icon: <Users className="w-6 h-6" />,
-      title: isAr ? "جمهور واسع" : "Global Audience",
-      description: isAr ? "صل إلى آلاف الطلاب المتحمسين للتعلم من مختلف أنحاء العالم." : "Reach thousands of students eager to learn from around the world.",
+      title: t("become_instructor.benefits.list.audience.title"),
+      description: t("become_instructor.benefits.list.audience.desc"),
     },
     {
       icon: <Star className="w-6 h-6" />,
-      title: isAr ? "دخل إضافي" : "Extra Income",
-      description: isAr ? "حقق دخلاً مجزياً من خلال مشاركة خبراتك ومعارفك مع الآخرين." : "Earn significant income by sharing your expertise and knowledge.",
+      title: t("become_instructor.benefits.list.income.title"),
+      description: t("become_instructor.benefits.list.income.desc"),
     },
     {
       icon: <BookOpen className="w-6 h-6" />,
-      title: isAr ? "أدوات متطورة" : "Advanced Tools",
-      description: isAr ? "استخدم أدواتنا الحديثة لإنشاء وإدارة دوراتك التدريبية بكل سهولة." : "Use our modern tools to create and manage your courses with ease.",
+      title: t("become_instructor.benefits.list.tools.title"),
+      description: t("become_instructor.benefits.list.tools.desc"),
     },
   ];
 
@@ -74,23 +69,21 @@ const BecomeInstructor = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <Reveal>
-                <div className={isAr ? "text-right" : "text-left"}>
+                <div className={i18n.language === "ar" ? "text-right" : "text-left"}>
                   <h1 className="text-4xl lg:text-6xl font-black mb-6 text-foreground leading-tight">
-                    {isAr ? "شارك خبرتك مع" : "Share your knowledge with"}
-                    <span className="text-primary block">{isAr ? "جيل المستقبل" : "the next generation"}</span>
+                    {t("become_instructor.hero.title")}{" "}
+                    <span className="text-primary block">{t("become_instructor.hero.title_highlight")}</span>
                   </h1>
                   <p className="text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">
-                    {isAr 
-                      ? "انضم إلى نخبة من المعلمين والخبراء وساهم في بناء مجتمع تعليمي عربي متميز." 
-                      : "Join a community of elite instructors and help build a distinguished Arabic educational community."}
+                    {t("become_instructor.hero.description")}
                   </p>
                   <Button 
                     size="lg" 
                     className="rounded-full px-8 h-12 text-lg font-bold"
                     onClick={() => document.getElementById('apply-form')?.scrollIntoView({ behavior: 'smooth' })}
                   >
-                    {isAr ? "ابدأ التدريس اليوم" : "Start Teaching Today"}
-                    <ArrowLeft className={`mr-2 w-5 h-5 ${!isAr && "rotate-180"}`} />
+                    {t("become_instructor.hero.cta")}
+                    <ArrowLeft className={`mr-2 w-5 h-5 ${i18n.language !== "ar" && "rotate-180"}`} />
                   </Button>
                 </div>
               </Reveal>
@@ -113,8 +106,8 @@ const BecomeInstructor = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <Reveal>
-                <h2 className="text-3xl font-bold mb-4">{isAr ? "لماذا تنضم إلينا؟" : "Why Join Us?"}</h2>
-                <p className="text-muted-foreground">{isAr ? "نحن نوفر لك كل ما تحتاجه للنجاح في مسيرتك التعليمية" : "We provide everything you need to succeed in your teaching career"}</p>
+                <h2 className="text-3xl font-bold mb-4">{t("become_instructor.benefits.title")}</h2>
+                <p className="text-muted-foreground">{t("become_instructor.benefits.description")}</p>
               </Reveal>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -138,10 +131,10 @@ const BecomeInstructor = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
               {[
-                { label: isAr ? "طالب" : "Students", value: "50K+" },
-                { label: isAr ? "دورة" : "Courses", value: "1K+" },
-                { label: isAr ? "دولة" : "Countries", value: "25+" },
-                { label: isAr ? "تقييم" : "Rating", value: "4.9/5" },
+                { label: t("become_instructor.stats.students"), value: "50K+" },
+                { label: t("become_instructor.stats.courses"), value: "1K+" },
+                { label: t("become_instructor.stats.countries"), value: "25+" },
+                { label: t("become_instructor.stats.rating"), value: "4.9/5" },
               ].map((stat, index) => (
                 <Reveal key={index} delay={index * 0.1}>
                   <div>
@@ -160,12 +153,10 @@ const BecomeInstructor = () => {
             <div className="text-center mb-16">
               <Reveal>
                 <h2 className="text-3xl lg:text-4xl font-black mb-4">
-                  {isAr ? "قدم طلبك الآن" : "Apply Now"}
+                  {t("become_instructor.form.title")}
                 </h2>
                 <p className="text-muted-foreground">
-                  {isAr 
-                    ? "املأ النموذج أدناه وسنقوم بمراجعة طلبك خلال 48 ساعة." 
-                    : "Fill out the form below and we will review your application within 48 hours."}
+                  {t("become_instructor.form.description")}
                 </p>
               </Reveal>
             </div>
@@ -180,11 +171,11 @@ const BecomeInstructor = () => {
                     <div className="space-y-2">
                       <label className="text-sm font-bold flex items-center gap-2">
                         <User className="w-4 h-4 text-primary" />
-                        {isAr ? "الاسم الكامل" : "Full Name"}
+                        {t("become_instructor.form.full_name")}
                       </label>
                       <input
                         {...register("fullName")}
-                        placeholder={isAr ? "أدخل اسمك الكامل" : "Enter your full name"}
+                        placeholder={t("become_instructor.form.full_name_placeholder")}
                         className={cn(
                           "w-full bg-secondary/50 border-none rounded-2xl px-5 py-4 focus:ring-2 focus:ring-primary outline-none transition-all",
                           errors.fullName && "ring-2 ring-red-500"
@@ -199,12 +190,12 @@ const BecomeInstructor = () => {
                     <div className="space-y-2">
                       <label className="text-sm font-bold flex items-center gap-2">
                         <Mail className="w-4 h-4 text-primary" />
-                        {isAr ? "البريد الإلكتروني" : "Email Address"}
+                        {t("become_instructor.form.email")}
                       </label>
                       <input
                         {...register("email")}
                         type="email"
-                        placeholder="example@mail.com"
+                        placeholder={t("become_instructor.form.email_placeholder")}
                         className={cn(
                           "w-full bg-secondary/50 border-none rounded-2xl px-5 py-4 focus:ring-2 focus:ring-primary outline-none transition-all",
                           errors.email && "ring-2 ring-red-500"
@@ -220,11 +211,11 @@ const BecomeInstructor = () => {
                   <div className="space-y-2">
                     <label className="text-sm font-bold flex items-center gap-2">
                       <Briefcase className="w-4 h-4 text-primary" />
-                      {isAr ? "التخصص التعليمي" : "Educational Specialty"}
+                      {t("become_instructor.form.specialty")}
                     </label>
                     <input
                       {...register("specialty")}
-                      placeholder={isAr ? "مثلاً: تطوير الويب، التصميم، التسويق" : "e.g., Web Development, Design, Marketing"}
+                      placeholder={t("become_instructor.form.specialty_placeholder")}
                       className={cn(
                         "w-full bg-secondary/50 border-none rounded-2xl px-5 py-4 focus:ring-2 focus:ring-primary outline-none transition-all",
                         errors.specialty && "ring-2 ring-red-500"
@@ -239,12 +230,12 @@ const BecomeInstructor = () => {
                   <div className="space-y-2">
                     <label className="text-sm font-bold flex items-center gap-2">
                       <FileText className="w-4 h-4 text-primary" />
-                      {isAr ? "نبذة عن خبرتك" : "About Your Experience"}
+                      {t("become_instructor.form.experience")}
                     </label>
                     <textarea
                       {...register("experience")}
                       rows={4}
-                      placeholder={isAr ? "حدثنا قليلاً عن خبرتك المهنية والتعليمية..." : "Tell us a bit about your professional and educational experience..."}
+                      placeholder={t("become_instructor.form.experience_placeholder")}
                       className={cn(
                         "w-full bg-secondary/50 border-none rounded-2xl px-5 py-4 focus:ring-2 focus:ring-primary outline-none transition-all resize-none",
                         errors.experience && "ring-2 ring-red-500"
@@ -262,10 +253,10 @@ const BecomeInstructor = () => {
                   >
                     <span>
                       {isSubmitting 
-                        ? (isAr ? "جاري إرسال الطلب..." : "Sending Application...") 
-                        : (isAr ? "إرسال طلب الانضمام" : "Submit Application")}
+                        ? t("become_instructor.form.sending") 
+                        : t("become_instructor.form.submit")}
                     </span>
-                    {!isSubmitting && <Send className={cn("w-5 h-5", isAr && "rotate-180")} />}
+                    {!isSubmitting && <Send className={cn("w-5 h-5", i18n.language === "ar" && "rotate-180")} />}
                   </Button>
                 </form>
               </div>
@@ -279,11 +270,9 @@ const BecomeInstructor = () => {
             <Reveal>
               <div className="bg-primary/10 rounded-[2rem] p-12 border border-primary/20">
                 <GraduationCap className="w-16 h-16 text-primary mx-auto mb-6" />
-                <h2 className="text-3xl font-bold mb-6">{isAr ? "جاهز لمشاركة خبرتك؟" : "Ready to share your expertise?"}</h2>
+                <h2 className="text-3xl font-bold mb-6">{t("become_instructor.cta.title")}</h2>
                 <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-                  {isAr 
-                    ? "انضم إلى مئات المعلمين الذين يحققون أهدافهم معنا كل يوم." 
-                    : "Join hundreds of instructors who are achieving their goals with us every day."}
+                  {t("become_instructor.cta.description")}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button 
@@ -291,10 +280,10 @@ const BecomeInstructor = () => {
                     className="rounded-full px-10 h-14 text-lg font-bold"
                     onClick={() => document.getElementById('apply-form')?.scrollIntoView({ behavior: 'smooth' })}
                   >
-                    {isAr ? "سجل الآن كمعلم" : "Register as Instructor"}
+                    {t("become_instructor.cta.register")}
                   </Button>
                   <Button size="lg" variant="outline" className="rounded-full px-10 h-14 text-lg font-bold">
-                    {isAr ? "تواصل معنا" : "Contact Us"}
+                    {t("become_instructor.cta.contact")}
                   </Button>
                 </div>
               </div>

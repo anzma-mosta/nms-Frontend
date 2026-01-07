@@ -27,6 +27,7 @@ import { Reveal } from "../../components/atoms/Reveal";
 import { ROUTES } from "../../constants/routes";
 import CourseCard from "../../components/molecules/CourseCard";
 import { cn } from "../../utils/cn";
+import type { Education } from "../../types";
 
 const InstructorDetails = () => {
   const { id = "inst1" } = useParams();
@@ -226,7 +227,7 @@ const InstructorDetails = () => {
                   {t("instructor.technical_skills")}
                 </h3>
                 <div className="flex flex-wrap gap-4">
-                  {instructor.skills.map((skill, i) => (
+                  {instructor.skills.map((skill: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | Iterable<React.ReactNode> | null | undefined, i: React.Key | null | undefined) => (
                     <div key={i} className="group relative">
                       <div className="absolute inset-0 bg-primary rounded-2xl blur-md opacity-0 group-hover:opacity-20 transition-opacity"></div>
                       <span className="relative bg-muted/50 text-foreground px-6 py-3 rounded-2xl font-bold border border-border group-hover:border-primary group-hover:bg-primary/5 transition-all flex items-center gap-3">
@@ -303,7 +304,7 @@ const InstructorDetails = () => {
                     {t("instructor.experience")}
                   </h2>
                   <div className="space-y-8 relative before:absolute before:right-3 before:top-2 before:bottom-2 before:w-0.5 before:bg-border">
-                    {instructor.experience.map((exp, i) => (
+                    {instructor.experience.map((exp: Experience, i: number) => (
                       <div key={i} className="relative pr-10">
                         <div className="absolute right-0 top-1.5 w-6 h-6 bg-background border-4 border-primary rounded-full z-10"></div>
                         <p className="text-sm font-bold text-primary mb-1">
@@ -330,7 +331,7 @@ const InstructorDetails = () => {
                     {t("instructor.education")}
                   </h2>
                   <div className="space-y-8">
-                    {instructor.education.map((edu, i) => (
+                    {instructor.education.map((edu: Education, i: number) => (
                       <div key={i} className="flex gap-4">
                         <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center shrink-0">
                           <Award className="w-6 h-6 text-primary" />
@@ -374,15 +375,14 @@ const InstructorDetails = () => {
                   </Link>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {instructor.courses.map((course) => (
+                  {instructor.courses.map((course: Course) => (
                     <CourseCard
                       key={course.id}
                       course={{
                         ...course,
-                        students: parseInt(
-                          course.students.replace(/,/g, ""),
-                          10
-                        ),
+                        students: typeof course.students === 'string' 
+                          ? parseInt(course.students.replace(/,/g, ""), 10)
+                          : course.students,
                       }}
                     />
                   ))}
@@ -430,7 +430,7 @@ const InstructorDetails = () => {
                   {t("instructor.student_feedback")}
                 </h3>
                 <div className="space-y-8">
-                  {instructor.testimonials.map((test) => (
+                  {instructor.testimonials.map((test: Testimonial) => (
                     <div key={test.id} className="relative">
                       <Quote className="absolute -top-2 -right-2 w-10 h-10 text-primary/5 -z-10" />
                       <p className="text-muted-foreground italic mb-6 leading-relaxed">
@@ -439,7 +439,7 @@ const InstructorDetails = () => {
                       <div className="flex items-center gap-4">
                         <img
                           src={test.avatar}
-                          alt={test.name}
+                          alt={typeof test.name === "string" ? test.name : undefined}
                           className="w-12 h-12 rounded-full object-cover"
                         />
                         <div>

@@ -6,59 +6,19 @@ import { Button } from "../../components/atoms/Button";
 import { Reveal } from "../../components/atoms/Reveal";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
+import { getMockInstructors } from "../../data/mockData";
 
 const Instructors = () => {
   const { t, i18n } = useTranslation();
   const isAr = i18n.language === "ar";
   const [searchQuery, setSearchQuery] = useState("");
 
-  const instructors = [
-    {
-      id: "inst1",
-      name: t("instructor.list.inst1.name"),
-      role: t("instructor.list.inst1.role"),
-      rating: 4.9,
-      students: "15,000+",
-      courses: 12,
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
-      bio: t("instructor.list.inst1.bio"),
-    },
-    {
-      id: "inst2",
-      name: t("instructor.list.inst2.name"),
-      role: t("instructor.list.inst2.role"),
-      rating: 4.8,
-      students: "8,500+",
-      courses: 8,
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80",
-      bio: t("instructor.list.inst2.bio"),
-    },
-    {
-      id: "inst3",
-      name: t("instructor.list.inst3.name"),
-      role: t("instructor.list.inst3.role"),
-      rating: 4.7,
-      students: "12,000+",
-      courses: 15,
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
-      bio: t("instructor.list.inst3.bio"),
-    },
-    {
-      id: "inst4",
-      name: t("instructor.list.inst4.name"),
-      role: t("instructor.list.inst4.role"),
-      rating: 4.9,
-      students: "6,000+",
-      courses: 6,
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
-      bio: t("instructor.list.inst4.bio"),
-    },
-  ];
+  const instructors = useMemo(() => getMockInstructors(i18n.language), [i18n.language]);
 
   const filteredInstructors = useMemo(() => {
     return instructors.filter(inst => 
-      inst.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      inst.role.toLowerCase().includes(searchQuery.toLowerCase())
+      (inst.name || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (inst.role || "").toLowerCase().includes(searchQuery.toLowerCase())
     );
   }, [searchQuery, instructors]);
 
@@ -112,7 +72,7 @@ const Instructors = () => {
                 
                 <div className="flex items-center justify-center gap-4 mb-6 py-4 border-y border-border/50">
                   <div className="text-center">
-                    <p className="font-bold text-lg">{instructor.courses}</p>
+                    <p className="font-bold text-lg">{instructor.coursesCount || 0}</p>
                     <p className="text-[10px] text-muted-foreground uppercase tracking-widest">{t("instructor.course")}</p>
                   </div>
                   <div className="w-px h-8 bg-border/50"></div>
@@ -122,7 +82,7 @@ const Instructors = () => {
                   </div>
                   <div className="w-px h-8 bg-border/50"></div>
                   <div className="text-center">
-                    <p className="font-bold text-lg">{instructor.students}</p>
+                    <p className="font-bold text-lg">{(instructor.studentsCount || 0).toLocaleString()}+</p>
                     <p className="text-[10px] text-muted-foreground uppercase tracking-widest">{t("instructor.student")}</p>
                   </div>
                 </div>
