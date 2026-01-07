@@ -29,6 +29,7 @@ const Checkout = () => {
   const dispatch = useAppDispatch();
   const { items } = useAppSelector((state) => state.cart);
   const [selectedMethod, setSelectedMethod] = useState<"card" | "wallet" | "transfer">("card");
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const subtotal = items.reduce((acc, item) => {
     const price = typeof item.price === "string" ? 
@@ -49,23 +50,34 @@ const Checkout = () => {
     },
   });
 
-  if (items.length === 0) {
+  if (items.length === 0 && !isProcessing) {
     return <Navigate to={ROUTES.CART} />;
   }
 
   const onSubmit = async (data: CheckoutFormValues) => {
+    setIsProcessing(true);
     // Simulate payment processing
     await new Promise((resolve) => setTimeout(resolve, 2000));
     console.log("Payment Data:", data);
+    
+    const orderDetails = {
+      id: `ORD-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`,
+      date: new Date().toLocaleDateString(isAr ? 'ar-EG' : 'en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      }),
+      total: `$${subtotal.toFixed(2)}`,
+      method: t(`checkout.payment_methods.${data.paymentMethod}`),
+      items: items.map(item => ({
+        id: item.id,
+        title: item.title,
+        price: typeof item.price === 'number' ? `$${item.price.toFixed(2)}` : item.price
+      }))
+    };
+
     dispatch(clearCart());
-    navigate(ROUTES.ORDER_SUCCESS);
-    //  apply sweet alert to show success message
-    swal({
-      title: "Success!",
-      text: "Your order has been placed successfully!",
-      icon: "success",
-      button: "OK",
-    });
+    navigate(`${ROUTES.PAYMENT_STATUS}?status=success`, { state: { orderDetails } });
   };
 
   return (
@@ -268,7 +280,4 @@ const Checkout = () => {
 };
 
 export default Checkout;
-function swal(_arg0: { title: string; text: string; icon: string; button: string; }) {
-  throw new Error("Function not implemented.");
-}
 

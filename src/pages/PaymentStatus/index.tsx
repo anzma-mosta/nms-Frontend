@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { 
   CheckCircle2, 
@@ -16,19 +16,21 @@ import { MainLayout } from "../../components/templates/MainLayout";
 import { Button } from "../../components/atoms/Button";
 import { Reveal } from "../../components/atoms/Reveal";
 import { ROUTES } from "../../constants/routes";
+import type { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
 
 const PaymentStatus = () => {
   const { t, i18n } = useTranslation();
   const isAr = i18n.language === "ar";
   const [searchParams] = useSearchParams();
+  const location = useLocation();
   const status = searchParams.get("status") || "success"; // success or error
 
   const isSuccess = status === "success";
 
-  // Mock order data
-  const orderData = {
+  // Get order data from location state or use mock data as fallback
+  const orderData = location.state?.orderDetails || {
     id: "ORD-2024-8842",
-    date: "January 6, 2024",
+    date: isAr ? "6 يناير، 2024" : "January 6, 2024",
     total: isAr ? "499 ر.س" : "$135.00",
     method: isAr ? "بطاقة مدى البنكية" : "Mada Debit Card",
     items: [
@@ -114,7 +116,7 @@ const PaymentStatus = () => {
                     </div>
 
                     <div className="space-y-4 mb-10">
-                      {orderData.items.map((item) => (
+                      {orderData.items.map((item: { id: Key | null | undefined; title: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | Iterable<ReactNode> | null | undefined; price: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | Iterable<ReactNode> | null | undefined; }) => (
                         <div key={item.id} className="flex items-center justify-between p-4 bg-muted/30 rounded-2xl border border-border/50">
                           <div className="flex items-center gap-4">
                             <div className="w-12 h-12 bg-background rounded-xl flex items-center justify-center border border-border">
@@ -140,7 +142,7 @@ const PaymentStatus = () => {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 {isSuccess ? (
                   <>
-                    <Link to={`${ROUTES.COURSE_DETAILS.replace(":id", "1")}`} className="w-full sm:w-auto">
+                    <Link to={`${ROUTES.COURSE_DETAILS.replace(":id", orderData.items[0]?.id || "1")}`} className="w-full sm:w-auto">
                       <Button className="w-full h-14 px-10 rounded-2xl text-lg font-bold gap-3 group">
                         {t("order_success.start_watching")}
                         {isAr ? <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" /> : <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />}
