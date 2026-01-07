@@ -6,7 +6,10 @@
     "logout": "Logout",
     "all_rights_reserved": "All rights reserved.",
     "details": "Details",
-    "courses": "Courses"
+    "courses": "Courses",
+    "site_name": "NMS - National Management System",
+    "site_description": "Empowering education through technology. Join the #1 learning platform in the Arab world.",
+    "site_keywords": "education, learning, courses, management, online learning, arab world"
   },
   "nav": {
     "home": "Home",
@@ -480,15 +483,27 @@
             "id": "m1",
             "title": "Strong Foundations (HTML5 & CSS3)",
             "lessons": [
-              { "id": "l1", "title": "Introduction to Modern Web", "duration": "25:00" },
-              { "id": "l2", "title": "Building Professional Structures", "duration": "45:00" }
+              {
+                "id": "l1",
+                "title": "Introduction to Modern Web",
+                "duration": "25:00"
+              },
+              {
+                "id": "l2",
+                "title": "Building Professional Structures",
+                "duration": "45:00"
+              }
             ]
           },
           {
             "id": "m2",
             "title": "Frontend Programming (JavaScript Mastery)",
             "lessons": [
-              { "id": "l3", "title": "JavaScript Fundamentals", "duration": "120:00" }
+              {
+                "id": "l3",
+                "title": "JavaScript Fundamentals",
+                "duration": "120:00"
+              }
             ]
           }
         ]
@@ -504,9 +519,7 @@
           "Master modern Figma tools",
           "Understand user psychology principles"
         ],
-        "requirements": [
-          "No prior requirements"
-        ],
+        "requirements": ["No prior requirements"],
         "curriculum": [
           {
             "id": "m1",

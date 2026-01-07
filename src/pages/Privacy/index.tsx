@@ -14,7 +14,9 @@ const Privacy = () => {
         <div className="prose prose-lg dark:prose-invert max-w-none space-y-8">
           <Reveal delay={0.1}>
             <section>
-              <h2 className="text-2xl font-bold mb-4">{t("privacy.sections.collection.title")}</h2>
+              <h2 className="text-2xl font-bold mb-4">
+                {t("privacy.sections.collection.title")}
+              </h2>
               <p className="text-muted-foreground leading-relaxed">
                 {t("privacy.sections.collection.content")}
               </p>
@@ -22,7 +24,9 @@ const Privacy = () => {
           </Reveal>
           <Reveal delay={0.2}>
             <section>
-              <h2 className="text-2xl font-bold mb-4">{t("privacy.sections.usage.title")}</h2>
+              <h2 className="text-2xl font-bold mb-4">
+                {t("privacy.sections.usage.title")}
+              </h2>
               <p className="text-muted-foreground leading-relaxed">
                 {t("privacy.sections.usage.content")}
               </p>

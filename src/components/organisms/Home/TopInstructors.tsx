@@ -7,7 +7,10 @@ import { useMemo } from "react";
 export const TopInstructors = () => {
   const { t, i18n } = useTranslation();
 
-  const instructors = useMemo(() => getMockInstructors(i18n.language).slice(0, 4), [i18n.language]);
+  const instructors = useMemo(
+    () => getMockInstructors(i18n.language).slice(0, 4),
+    [i18n.language]
+  );
 
   return (
     <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,6 +33,7 @@ export const TopInstructors = () => {
                   src={ins.image}
                   alt={ins.name}
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </div>
               <div className="absolute -bottom-2 -right-2 bg-primary text-white p-2 rounded-full shadow-lg">

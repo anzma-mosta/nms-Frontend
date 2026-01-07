@@ -26,27 +26,50 @@ import { ROUTES } from "../../constants/routes";
 import { CourseCard } from "../../components/molecules/CourseCard";
 import type { Education, Experience, Course, Testimonial } from "../../types";
 
+interface InstructorData {
+  name: string;
+  role: string;
+  rating?: number;
+  reviewsCount?: number;
+  studentsCount?: number;
+  coursesCount?: number;
+  location: string;
+  joinedYear?: string;
+  bio: string;
+  skills?: string[];
+  experience?: Experience[];
+  education?: Education[];
+  testimonials?: Testimonial[];
+  courses?: Course[];
+}
+
 const InstructorDetails = () => {
   const { id = "inst1" } = useParams();
   const { t, i18n } = useTranslation();
   const isAr = i18n.language === "ar";
 
   // Get translated data for the specific instructor
-  const instructorData = t(`instructor.list.${id}`, { returnObjects: true }) as any;
+  const instructorData = t(`instructor.list.${id}`, {
+    returnObjects: true,
+  }) as unknown as InstructorData;
 
   // Mock data for instructor
   const instructor = {
     id,
     name: instructorData.name,
     role: instructorData.role,
-    image:"https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&q=80" ,
-    coverImage: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&q=80",
+    coverImage:
+      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1600&q=80",
     rating: instructorData.rating || 4.9,
     reviewsCount: instructorData.reviewsCount || 4500,
     studentsCount: instructorData.studentsCount || 15000,
     coursesCount: instructorData.coursesCount || 12,
     location: instructorData.location,
-    joinedDate: t("instructor.joined", { year: instructorData.joinedYear || "2020" }),
+    joinedDate: t("instructor.joined", {
+      year: instructorData.joinedYear || "2020",
+    }),
     bio: instructorData.bio,
     skills: instructorData.skills || [],
     social: {
@@ -57,23 +80,29 @@ const InstructorDetails = () => {
     },
     experience: instructorData.experience || [],
     education: instructorData.education || [],
-    testimonials: (instructorData.testimonials || []).map((test: any, index: number) => ({
-      ...test,
-      id: index + 1,
-      avatar: index === 0 
-        ? "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80"
-        : "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80"
-    })),
-    courses: (instructorData.courses || []).map((course: any, index: number) => ({
-      ...course,
-      id: (index + 1).toString(),
-      instructor: instructorData.name,
-      rating: 4.8 + (index * 0.1),
-      students: index === 0 ? "1,200" : "850",
-      image: index === 0
-        ? "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80"
-        : "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80"
-    })),
+    testimonials: (instructorData.testimonials || []).map(
+      (test: Testimonial, index: number) => ({
+        ...test,
+        id: index + 1,
+        avatar:
+          index === 0
+            ? "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80"
+            : "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80",
+      })
+    ),
+    courses: (instructorData.courses || []).map(
+      (course: Course, index: number) => ({
+        ...course,
+        id: (index + 1).toString(),
+        instructor: instructorData.name,
+        rating: 4.8 + index * 0.1,
+        students: index === 0 ? "1,200" : "850",
+        image:
+          index === 0
+            ? "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80"
+            : "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
+      })
+    ),
   };
 
   return (
@@ -377,9 +406,10 @@ const InstructorDetails = () => {
                       key={course.id}
                       course={{
                         ...course,
-                        students: typeof course.students === 'string' 
-                          ? parseInt(course.students.replace(/,/g, ""), 10)
-                          : course.students,
+                        students:
+                          typeof course.students === "string"
+                            ? parseInt(course.students.replace(/,/g, ""), 10)
+                            : course.students,
                       }}
                     />
                   ))}
@@ -436,7 +466,11 @@ const InstructorDetails = () => {
                       <div className="flex items-center gap-4">
                         <img
                           src={test.avatar}
-                          alt={typeof test.name === "string" ? test.name : undefined}
+                          alt={
+                            typeof test.name === "string"
+                              ? test.name
+                              : undefined
+                          }
                           className="w-12 h-12 rounded-full object-cover"
                         />
                         <div>

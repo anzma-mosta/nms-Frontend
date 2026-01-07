@@ -34,7 +34,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
   };
 
   return (
-    <div 
+    <div
       onClick={handleCardClick}
       className="group bg-card border rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full cursor-pointer"
     >
@@ -43,6 +43,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
           src={course.image}
           alt={course.title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          loading="lazy"
         />
         <div
           className={cn(
@@ -63,7 +64,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
           </div>
           <span>{course.instructor}</span>
         </div>
-        
+
         <div className="mt-auto space-y-4">
           <div className="flex items-center justify-between pt-4 border-t">
             <div className="flex items-center gap-1 text-orange-500">
@@ -73,13 +74,17 @@ export const CourseCard = ({ course }: CourseCardProps) => {
                 ({course.students})
               </span>
             </div>
-            <div className="text-lg font-black text-primary">{course.price}</div>
+            <div className="text-lg font-black text-primary">
+              {course.price}
+            </div>
           </div>
-          
-          <Button 
+
+          <Button
             className={cn(
               "w-full rounded-xl gap-2 h-11 font-bold transition-all",
-              isInCart ? "bg-green-500 hover:bg-green-600" : "shadow-lg shadow-primary/20"
+              isInCart
+                ? "bg-green-500 hover:bg-green-600"
+                : "shadow-lg shadow-primary/20"
             )}
             onClick={handleAddToCart}
             disabled={isInCart}

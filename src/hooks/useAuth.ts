@@ -1,5 +1,6 @@
 import { useAppSelector, useAppDispatch } from "../store";
 import { logout, setCredentials } from "../store/slices/authSlice";
+import { type User } from "../types";
 
 export const useAuth = () => {
   const dispatch = useAppDispatch();
@@ -7,7 +8,7 @@ export const useAuth = () => {
     (state) => state.auth
   );
 
-  const login = (user: any, token: string) => {
+  const login = (user: User, token: string) => {
     dispatch(setCredentials({ user, token }));
   };
 

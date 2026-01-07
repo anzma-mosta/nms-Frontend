@@ -75,6 +75,7 @@ export const Hero = () => {
                     <img
                       src={`https://i.pravatar.cc/150?u=${i}`}
                       alt="student"
+                      loading="lazy"
                     />
                   </div>
                 ))}
@@ -98,8 +99,10 @@ export const Hero = () => {
             >
               <img
                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80"
-                alt="Learning"
-                className="rounded-2xl"
+                alt="Students learning"
+                className="rounded-2xl w-full h-auto"
+                fetchPriority="high"
+                loading="eager"
               />
               <div
                 className={cn(

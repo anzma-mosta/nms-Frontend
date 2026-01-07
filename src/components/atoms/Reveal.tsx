@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-  import { motion, useInView, useAnimation } from "framer-motion";
+import { motion, useInView, useAnimation } from "framer-motion";
 
 interface Props {
   children: React.ReactNode;
@@ -8,11 +8,11 @@ interface Props {
   direction?: "up" | "down" | "left" | "right";
 }
 
-export const Reveal = ({ 
-  children, 
-  width = "fit-content", 
+export const Reveal = ({
+  children,
+  width = "fit-content",
   delay = 0.25,
-  direction = "up"
+  direction = "up",
 }: Props) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });

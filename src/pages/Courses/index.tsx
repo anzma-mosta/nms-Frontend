@@ -4,17 +4,22 @@ import { CourseCard } from "../../components/molecules/CourseCard";
 import { Search, Filter } from "lucide-react";
 import { Input } from "../../components/atoms/Input";
 import { Button } from "../../components/atoms/Button";
+import { SEO } from "../../components/atoms/SEO";
 
 import { getMockCourses } from "../../data/mockData";
 import { useMemo } from "react";
 
 const Courses = () => {
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation();
 
   const courses = useMemo(() => getMockCourses(i18n.language), [i18n.language]);
 
   return (
     <MainLayout>
+      <SEO
+        title={t("courses.title")}
+        description={t("courses.description")}
+      />
       <div className="bg-primary/5 py-12">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold mb-4">{t("courses.title")}</h1>
@@ -56,9 +61,10 @@ const Courses = () => {
                 title: course.title,
                 instructor: course.instructor,
                 rating: course.rating,
-                students: typeof course.students === "string" 
-                  ? parseInt(course.students.replace(/,/g, ""), 10) || 0 
-                  : course.students,
+                students:
+                  typeof course.students === "string"
+                    ? parseInt(course.students.replace(/,/g, ""), 10) || 0
+                    : course.students,
                 price: course.price,
                 image: course.image,
                 category: course.category || "Uncategorized",

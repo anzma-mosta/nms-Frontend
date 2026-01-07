@@ -1,30 +1,38 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import App from "../App";
-import Home from "../pages/Home";
-import LoginPage from "../pages/Login";
-import Courses from "../pages/Courses";
-import Instructors from "../pages/Instructors";
-import About from "../pages/About";
-import Contact from "../pages/Contact";
-import Dashboard from "../pages/Dashboard";
-import Terms from "../pages/Terms";
-import Privacy from "../pages/Privacy";
-import Services from "../pages/Services";
-import BecomeInstructor from "../pages/BecomeInstructor";
-import Cart from "../pages/Cart";
-import Checkout from "../pages/Checkout";
-import OrderSuccess from "../pages/OrderSuccess";
-import CourseDetails from "../pages/CourseDetails";
-import Lesson from "../pages/Lesson";
-import InstructorDetails from "../pages/InstructorDetails";
-import NotFound from "../pages/NotFound";
+import { LoadingScreen } from "../components/atoms/LoadingScreen";
 import { ROUTES } from "../constants/routes";
-import PaymentStatus from "../pages/PaymentStatus";
+
+// Lazy load page components
+const Home = lazy(() => import("../pages/Home"));
+const LoginPage = lazy(() => import("../pages/Login"));
+const Courses = lazy(() => import("../pages/Courses"));
+const Instructors = lazy(() => import("../pages/Instructors"));
+const About = lazy(() => import("../pages/About"));
+const Contact = lazy(() => import("../pages/Contact"));
+const Dashboard = lazy(() => import("../pages/Dashboard"));
+const Terms = lazy(() => import("../pages/Terms"));
+const Privacy = lazy(() => import("../pages/Privacy"));
+const Services = lazy(() => import("../pages/Services"));
+const BecomeInstructor = lazy(() => import("../pages/BecomeInstructor"));
+const Cart = lazy(() => import("../pages/Cart"));
+const Checkout = lazy(() => import("../pages/Checkout"));
+const OrderSuccess = lazy(() => import("../pages/OrderSuccess"));
+const CourseDetails = lazy(() => import("../pages/CourseDetails"));
+const Lesson = lazy(() => import("../pages/Lesson"));
+const InstructorDetails = lazy(() => import("../pages/InstructorDetails"));
+const NotFound = lazy(() => import("../pages/NotFound"));
+const PaymentStatus = lazy(() => import("../pages/PaymentStatus"));
 
 const router = createBrowserRouter([
   {
     path: ROUTES.HOME,
-    element: <App />,
+    element: (
+      <Suspense fallback={<LoadingScreen />}>
+        <App />
+      </Suspense>
+    ),
     children: [
       {
         index: true,

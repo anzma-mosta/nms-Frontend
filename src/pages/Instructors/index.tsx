@@ -13,12 +13,16 @@ const Instructors = () => {
   const isAr = i18n.language === "ar";
   const [searchQuery, setSearchQuery] = useState("");
 
-  const instructors = useMemo(() => getMockInstructors(i18n.language), [i18n.language]);
+  const instructors = useMemo(
+    () => getMockInstructors(i18n.language),
+    [i18n.language]
+  );
 
   const filteredInstructors = useMemo(() => {
-    return instructors.filter(inst => 
-      (inst.name || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (inst.role || "").toLowerCase().includes(searchQuery.toLowerCase())
+    return instructors.filter(
+      (inst) =>
+        (inst.name || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (inst.role || "").toLowerCase().includes(searchQuery.toLowerCase())
     );
   }, [searchQuery, instructors]);
 
@@ -29,15 +33,17 @@ const Instructors = () => {
         <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <Reveal direction="up">
-            <h1 className="text-4xl md:text-6xl font-black mb-6">{t("nav.instructors")}</h1>
+            <h1 className="text-4xl md:text-6xl font-black mb-6">
+              {t("nav.instructors")}
+            </h1>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-12 leading-relaxed">
               {t("instructor.hero_desc")}
             </p>
-            
+
             <div className="max-w-2xl mx-auto relative group">
               <Search className="absolute right-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors" />
-              <input 
-                type="text" 
+              <input
+                type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t("instructor.search_placeholder")}
@@ -64,26 +70,38 @@ const Instructors = () => {
                     className="relative w-full h-full object-cover rounded-full border-4 border-background shadow-xl"
                   />
                 </div>
-                
-                <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors">{instructor.name}</h3>
+
+                <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors">
+                  {instructor.name}
+                </h3>
                 <p className="text-primary font-medium text-sm mb-4">
                   {instructor.role}
                 </p>
-                
+
                 <div className="flex items-center justify-center gap-4 mb-6 py-4 border-y border-border/50">
                   <div className="text-center">
-                    <p className="font-bold text-lg">{instructor.coursesCount || 0}</p>
-                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest">{t("instructor.course")}</p>
+                    <p className="font-bold text-lg">
+                      {instructor.coursesCount || 0}
+                    </p>
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest">
+                      {t("instructor.course")}
+                    </p>
                   </div>
                   <div className="w-px h-8 bg-border/50"></div>
                   <div className="text-center">
                     <p className="font-bold text-lg">{instructor.rating}</p>
-                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest">{t("instructor.rating")}</p>
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest">
+                      {t("instructor.rating")}
+                    </p>
                   </div>
                   <div className="w-px h-8 bg-border/50"></div>
                   <div className="text-center">
-                    <p className="font-bold text-lg">{(instructor.studentsCount || 0).toLocaleString()}+</p>
-                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest">{t("instructor.student")}</p>
+                    <p className="font-bold text-lg">
+                      {(instructor.studentsCount || 0).toLocaleString()}+
+                    </p>
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-widest">
+                      {t("instructor.student")}
+                    </p>
                   </div>
                 </div>
 
@@ -91,10 +109,19 @@ const Instructors = () => {
                   {instructor.bio}
                 </p>
 
-                <Link to={`${ROUTES.INSTRUCTOR_DETAILS.replace(":id", instructor.id || "")}`}>
-                  <Button variant="outline" className="w-full rounded-xl gap-2 group/btn">
+                <Link
+                  to={`${ROUTES.INSTRUCTOR_DETAILS.replace(":id", instructor.id || "")}`}
+                >
+                  <Button
+                    variant="outline"
+                    className="w-full rounded-xl gap-2 group/btn"
+                  >
                     {t("common.details")}
-                    {isAr ? <ArrowLeft className="w-4 h-4 group-hover/btn:-translate-x-1 transition-transform" /> : <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />}
+                    {isAr ? (
+                      <ArrowLeft className="w-4 h-4 group-hover/btn:-translate-x-1 transition-transform" />
+                    ) : (
+                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    )}
                   </Button>
                 </Link>
               </div>
@@ -107,8 +134,12 @@ const Instructors = () => {
             <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
               <Search className="w-10 h-10 text-muted-foreground" />
             </div>
-            <h3 className="text-2xl font-bold mb-2">{t("instructor.no_results_title")}</h3>
-            <p className="text-muted-foreground">{t("instructor.no_results_desc")}</p>
+            <h3 className="text-2xl font-bold mb-2">
+              {t("instructor.no_results_title")}
+            </h3>
+            <p className="text-muted-foreground">
+              {t("instructor.no_results_desc")}
+            </p>
           </div>
         )}
       </div>

@@ -49,7 +49,7 @@ class ApiService {
 
   public async post<T>(
     url: string,
-    data?: any,
+    data?: unknown,
     config?: AxiosRequestConfig
   ): Promise<T> {
     const response = await this.instance.post<T>(url, data, config);
@@ -58,7 +58,7 @@ class ApiService {
 
   public async put<T>(
     url: string,
-    data?: any,
+    data?: unknown,
     config?: AxiosRequestConfig
   ): Promise<T> {
     const response = await this.instance.put<T>(url, data, config);

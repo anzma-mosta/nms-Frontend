@@ -1,7 +1,13 @@
 import { MainLayout } from "../../components/templates/MainLayout";
 import { useTranslation } from "react-i18next";
 import { Button } from "../../components/atoms/Button";
-import { CheckCircle, ArrowRight, ArrowLeft, PlayCircle, FileText } from "lucide-react";
+import {
+  CheckCircle,
+  ArrowRight,
+  ArrowLeft,
+  PlayCircle,
+  FileText,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
 import { Reveal } from "../../components/atoms/Reveal";
@@ -37,17 +43,27 @@ const OrderSuccess = () => {
                 <div className="bg-primary/10 p-3 rounded-2xl">
                   <PlayCircle className="w-6 h-6 text-primary" />
                 </div>
-                <div className={cn("flex-1", isAr ? "text-right" : "text-left")}>
-                  <p className="text-xs text-muted-foreground">{t("order_success.next_step")}</p>
-                  <p className="font-bold">{t("order_success.start_watching")}</p>
+                <div
+                  className={cn("flex-1", isAr ? "text-right" : "text-left")}
+                >
+                  <p className="text-xs text-muted-foreground">
+                    {t("order_success.next_step")}
+                  </p>
+                  <p className="font-bold">
+                    {t("order_success.start_watching")}
+                  </p>
                 </div>
               </div>
               <div className="bg-card border border-border p-6 rounded-3xl flex items-center gap-4">
                 <div className="bg-primary/10 p-3 rounded-2xl">
                   <FileText className="w-6 h-6 text-primary" />
                 </div>
-                <div className={cn("flex-1", isAr ? "text-right" : "text-left")}>
-                  <p className="text-xs text-muted-foreground">{t("order_success.invoice")}</p>
+                <div
+                  className={cn("flex-1", isAr ? "text-right" : "text-left")}
+                >
+                  <p className="text-xs text-muted-foreground">
+                    {t("order_success.invoice")}
+                  </p>
                   <p className="font-bold">{t("order_success.download_pdf")}</p>
                 </div>
               </div>
@@ -57,13 +73,24 @@ const OrderSuccess = () => {
           <Reveal delay={0.6}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to={ROUTES.DASHBOARD}>
-                <Button size="lg" className="w-full sm:w-auto rounded-full px-10 h-14 text-lg font-bold gap-2">
+                <Button
+                  size="lg"
+                  className="w-full sm:w-auto rounded-full px-10 h-14 text-lg font-bold gap-2"
+                >
                   {t("order_success.go_dashboard")}
-                  {isAr ? <ArrowLeft className="w-5 h-5" /> : <ArrowRight className="w-5 h-5" />}
+                  {isAr ? (
+                    <ArrowLeft className="w-5 h-5" />
+                  ) : (
+                    <ArrowRight className="w-5 h-5" />
+                  )}
                 </Button>
               </Link>
               <Link to={ROUTES.HOME}>
-                <Button size="lg" variant="outline" className="w-full sm:w-auto rounded-full px-10 h-14 text-lg font-bold">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="w-full sm:w-auto rounded-full px-10 h-14 text-lg font-bold"
+                >
                   {t("order_success.back_home")}
                 </Button>
               </Link>

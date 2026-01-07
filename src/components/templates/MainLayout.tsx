@@ -106,7 +106,10 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
             </div>
 
             <div className="flex items-center gap-3">
-              <Link to={ROUTES.CART} className="relative p-2 hover:bg-secondary rounded-full transition-all group">
+              <Link
+                to={ROUTES.CART}
+                className="relative p-2 hover:bg-secondary rounded-full transition-all group"
+              >
                 <ShoppingBag className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                 {items.length > 0 && (
                   <span className="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center animate-in zoom-in duration-300">

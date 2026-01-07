@@ -35,7 +35,9 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <Reveal>
-              <h1 className="text-4xl font-black mb-6">{t("services.title")}</h1>
+              <h1 className="text-4xl font-black mb-6">
+                {t("services.title")}
+              </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 {t("services.description")}
               </p>
@@ -50,7 +52,9 @@ const Services = () => {
                     {service.icon}
                   </div>
                   <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                  <p className="text-muted-foreground text-lg leading-relaxed">{service.description}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed">
+                    {service.description}
+                  </p>
                 </div>
               </Reveal>
             ))}

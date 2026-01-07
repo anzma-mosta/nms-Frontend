@@ -10,10 +10,12 @@ import { InstructorCTA } from "../../components/organisms/Home/InstructorCTA";
 import { FAQs } from "../../components/organisms/Home/FAQs";
 import { FinalCTA } from "../../components/organisms/Home/FinalCTA";
 import { ContactUs } from "../../components/organisms/Home/ContactUs";
+import { SEO } from "../../components/atoms/SEO";
 
 const Home = () => {
   return (
     <MainLayout>
+      <SEO />
       <Hero />
       <AboutUs />
       <TopInstructors />
