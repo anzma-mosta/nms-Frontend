@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Video, Calendar, User, Clock, ArrowRight, Users, PlayCircle } from "lucide-react";
+import { Calendar, User, Clock, ArrowRight, Users, PlayCircle } from "lucide-react";
 import { Button } from "../../atoms/Button";
 import { cn } from "../../../utils/cn";
 import { motion } from "framer-motion";

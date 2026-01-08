@@ -85,7 +85,7 @@ export const FinalCTA = () => {
               transition={{ delay: 0.5 }}
               className="flex flex-wrap justify-center gap-6 pt-4"
             >
-              <Link to={ROUTES.REGISTER}>
+              <Link to={ROUTES.LOGIN}>
                 <Button
                   size="lg"
                   className="h-18 px-12 rounded-2xl bg-white text-primary hover:bg-white/90 text-xl font-black gap-3 shadow-xl hover:shadow-2xl transition-all duration-500 group"

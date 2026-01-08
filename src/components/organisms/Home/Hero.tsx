@@ -1,13 +1,5 @@
 import { useTranslation, Trans } from "react-i18next";
-import {
-  Star,
-  ArrowLeft,
-  PlayCircle,
-  CheckCircle2,
-  Trophy,
-  Sparkles,
-  ArrowRight,
-} from "lucide-react";
+import { Star, PlayCircle, CheckCircle2, Trophy, Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "../../atoms/Button";
 import { cn } from "../../../utils/cn";
 import { motion } from "framer-motion";

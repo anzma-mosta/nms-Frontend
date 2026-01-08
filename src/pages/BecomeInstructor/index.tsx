@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { SEO } from "../../components/atoms/SEO";
 import { Button } from "../../components/atoms/Button";
 import {
-  GraduationCap,
   BookOpen,
   Users,
   Star,
@@ -15,8 +14,6 @@ import {
   Briefcase,
   FileText,
   Sparkles,
-  ShieldCheck,
-  Zap,
   CheckCircle2,
   Globe,
 } from "lucide-react";
@@ -26,7 +23,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useAlert } from "../../providers/AlertContext";
 import { cn } from "../../utils/cn";
-import { motion } from "framer-motion";
 
 const BecomeInstructor = () => {
   const { t, i18n } = useTranslation();

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Reveal } from "../../components/atoms/Reveal";
 import { Button } from "../../components/atoms/Button";
 import { useAlert } from "../../providers/AlertContext";
-import { Target, Eye, Users, Award, Shield, Zap, BellRing, ChevronRight, Heart, Sparkles, Rocket } from "lucide-react";
+import { Target, Eye, Users, Award, Shield, Zap, BellRing, Sparkles, Rocket } from "lucide-react";
 import { SEO } from "../../components/atoms/SEO";
 import { motion } from "framer-motion";
 import { cn } from "../../utils/cn";

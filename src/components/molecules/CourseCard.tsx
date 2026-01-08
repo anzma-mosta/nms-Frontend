@@ -1,4 +1,4 @@
-import { Star, Users, ShoppingCart, Check, Clock, BookOpen, ArrowRight, PlayCircle, Heart } from "lucide-react";
+import { Star, Users, ShoppingCart, Check, Clock, BookOpen, PlayCircle, Heart } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { cn } from "../../utils/cn";
@@ -26,7 +26,17 @@ export const CourseCard = ({ course }: CourseCardProps) => {
     e.preventDefault();
     e.stopPropagation();
     if (!isInCart) {
-      dispatch(addToCart(course));
+      dispatch(
+        addToCart({
+          id: course.id,
+          title: course.title,
+          instructor: course.instructor,
+          price: course.price,
+          image: course.image,
+          level: course.level ?? (isAr ? "احترافي" : "Professional"),
+          oldPrice: course.oldPrice,
+        })
+      );
     }
   };
 
@@ -133,7 +143,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
           
           <Button
             onClick={handleAddToCart}
-            variants={isInCart ? "outline" : "default"}
+            variant={isInCart ? "outline" : "primary"}
             className={cn(
               "h-12 px-6 rounded-2xl font-black transition-all duration-500",
               isInCart ? "bg-emerald-500/10 text-emerald-600 border-emerald-500/20" : "flex-1"

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { cn } from "../../../utils/cn";
 
 export const Stats = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const stats = [
     { 
