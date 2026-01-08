@@ -11,7 +11,13 @@ export const FeaturedCourses = () => {
   const { t, i18n } = useTranslation();
 
   const featuredCourses = useMemo(
-    () => getMockCourses(i18n.language).slice(0, 3),
+    () =>
+      getMockCourses(i18n.language)
+        .slice(0, 3)
+        .map((course) => ({
+          ...course,
+          students: Number(course.students),
+        })),
     [i18n.language]
   );
 

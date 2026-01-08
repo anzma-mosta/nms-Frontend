@@ -13,7 +13,7 @@ interface FAQItem {
 }
 
 export default function FAQPage() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const isAr = i18n.language === "ar";
   const [activeId, setActiveId] = useState<number | null>(0);
 

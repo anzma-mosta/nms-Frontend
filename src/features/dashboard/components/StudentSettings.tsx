@@ -1,6 +1,5 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
-import { Settings, Bell, Shield, Eye, Languages, Palette, Trash2, ChevronRight } from "lucide-react";
+import { Bell, Shield, Languages, Palette, Trash2, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { LanguageToggle } from "../../../components/atoms/LanguageToggle";
 import { ThemeToggle } from "../../../components/atoms/ThemeToggle";

@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "../../../components/atoms/Button";
 import { useTranslation } from "react-i18next";
-import { Mail, Lock, User, Eye, EyeOff, ArrowRight, UserCheck, GraduationCap, Users } from "lucide-react";
+import { Mail, Lock, User, Eye, EyeOff, ArrowRight, GraduationCap, Users } from "lucide-react";
 import { useState } from "react";
 import { cn } from "../../../utils/cn";
 import { motion } from "framer-motion";

@@ -1,7 +1,13 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
-import { User, Mail, Phone, MapPin, Camera, Save, Lock } from "lucide-react";
-import { motion } from "framer-motion";
+import {
+  User,
+  Mail,
+  Phone,
+  MapPin,
+  Camera,
+  Save,
+  Lock,
+} from "lucide-react";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../../store";
 import { Button } from "../../../components/atoms/Button";

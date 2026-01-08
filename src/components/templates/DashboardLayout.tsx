@@ -26,7 +26,6 @@ import {
   X,
   Users as UsersIcon,
   DollarSign,
-  PlusCircle,
   Layout as LayoutIcon,
   CreditCard,
   Home,

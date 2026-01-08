@@ -1,4 +1,3 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
 import { GraduationCap, Trophy, Clock, BrainCircuit, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";

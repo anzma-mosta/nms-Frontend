@@ -1,4 +1,3 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
 import { BookOpen, PlayCircle, Clock, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";

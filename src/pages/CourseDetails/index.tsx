@@ -19,21 +19,18 @@ import { RelatedCourses } from "../../components/organisms/CourseDetails/Related
 const CourseDetails = () => {
   const { id } = useParams();
   const { i18n, t } = useTranslation();
-  const isEnrolled = false; // This would typically come from an auth/enrollment context
+  const isEnrolled = false;
 
-  // Mock Database of Courses
   const coursesDB = useMemo(
     () => getMockCourses(i18n.language),
     [i18n.language]
   );
 
-  // Find the current course
   const course = useMemo((): Course => {
     return (coursesDB.find((c) => c.id.toString() === id) ||
       coursesDB[0]) as Course;
   }, [id, coursesDB]);
 
-  // Get related courses
   const relatedCourses = useMemo(() => {
     return coursesDB.filter((c) => c.id.toString() !== id).slice(0, 3);
   }, [coursesDB, id]);
@@ -52,19 +49,16 @@ const CourseDetails = () => {
         heroScale={heroScale}
       />
 
-      {/* Main Content & Sticky Sidebar */}
       <section className="container mx-auto px-4 -mt-32 relative z-30 pb-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Left Content Column */}
           <div className="lg:col-span-8 space-y-20">
             <CourseStats course={course} t={t} />
             <LearningOutcomes course={course} />
-            <Curriculum course={course} id={id} isEnrolled={isEnrolled} />
+            <Curriculum course={course} id={id || ""} isEnrolled={isEnrolled} />
             <InstructorInfo course={course} />
             <CourseFAQ />
           </div>
 
-          {/* Right Sidebar - Sticky Purchase Card */}
           <div className="lg:col-span-4">
             <CourseSidebar course={course} />
           </div>

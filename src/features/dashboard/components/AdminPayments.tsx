@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { DollarSign, Search, Filter, MoreHorizontal, Download, ArrowUpRight, ArrowDownRight, CreditCard, Wallet, Banknote, TrendingUp } from "lucide-react";
+import { Search, Filter, MoreHorizontal, Download, ArrowUpRight, CreditCard, Wallet, Banknote, TrendingUp } from "lucide-react";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Card } from "../../../components/atoms/Card";
 import { Button } from "../../../components/atoms/Button";
@@ -174,7 +174,7 @@ export const AdminPayments = () => {
                   <p className="font-black text-sm">{tx.user}</p>
                   <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">{tx.id}</p>
                 </div>
-                <Badge variant={tx.status === "completed" ? "success" : tx.status === "pending" ? "warning" : "destructive"} className="rounded-lg font-bold text-[10px]">
+                <Badge variant={tx.status === "completed" ? "success" : tx.status === "pending" ? "warning" : "error"} className="rounded-lg font-bold text-[10px]">
                   {isAr ? (tx.status === "completed" ? "مكتمل" : tx.status === "pending" ? "معلق" : "فشل") : tx.status}
                 </Badge>
               </div>
@@ -225,7 +225,7 @@ export const AdminPayments = () => {
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <Badge variant={tx.status === "completed" ? "success" : tx.status === "pending" ? "warning" : "destructive"} className="rounded-lg font-bold">
+                    <Badge variant={tx.status === "completed" ? "success" : tx.status === "pending" ? "warning" : "error"} className="rounded-lg font-bold">
                       {isAr ? (tx.status === "completed" ? "مكتمل" : tx.status === "pending" ? "معلق" : "فشل") : tx.status}
                     </Badge>
                   </td>

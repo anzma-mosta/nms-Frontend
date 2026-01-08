@@ -59,6 +59,7 @@ export interface Course {
   id: string;
   title: string;
   instructor: string;
+  instructorImage?: string;
   rating: number;
   students: number;
   price: string;
@@ -68,6 +69,7 @@ export interface Course {
   description?: string;
   learningPoints?: string[];
   duration?: string;
+  lessonsCount?: number;
   isPurchased?: boolean;
   progress?: number;
   curriculum?: CurriculumSection[];

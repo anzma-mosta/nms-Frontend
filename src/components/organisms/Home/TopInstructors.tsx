@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Star, Award, ArrowRight, Users, GraduationCap } from "lucide-react";
+import { Star, Award, ArrowRight, GraduationCap } from "lucide-react";
 import { cn } from "../../../utils/cn";
 import { getMockInstructors } from "../../../data/mockData";
 import { useMemo } from "react";
@@ -97,52 +97,50 @@ export const TopInstructors = () => {
                     </div>
 
                     {/* Badge */}
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      transition={{ delay: i * 0.1 + 0.3, type: "spring" }}
-                      className="absolute -bottom-2 right-4 bg-primary text-white p-2.5 rounded-2xl shadow-xl shadow-primary/20"
-                    >
-                      <Award className="w-5 h-5" />
-                    </motion.div>
+                    <div className="absolute -bottom-2 right-1/2 translate-x-1/2 px-4 py-1 rounded-full bg-secondary text-secondary-foreground text-xs font-black shadow-lg">
+                      {ins.specialty.toUpperCase()}
+                    </div>
                   </div>
 
                   <div className="space-y-4">
                     <div>
-                      <h3 className="text-xl font-bold group-hover:text-primary transition-colors duration-300">
+                      <h3 className="text-2xl font-black group-hover:text-primary transition-colors">
                         {ins.name}
                       </h3>
-                      <p className="text-sm text-muted-foreground font-medium mt-1">
+                      <p className="text-sm font-bold text-muted-foreground uppercase tracking-wider">
                         {ins.role}
                       </p>
                     </div>
 
-                    <div className="pt-6 border-t border-border/50 flex items-center justify-center gap-6">
-                      <div className="flex flex-col items-center gap-1">
-                        <div className="flex items-center gap-1.5 text-orange-500">
-                          <Star className="w-4 h-4 fill-current" />
-                          <span className="font-bold text-foreground">
-                            {ins.rating}
-                          </span>
+                    <div className="flex items-center justify-center gap-6 pt-4 border-t border-primary/5">
+                      <div className="text-center">
+                        <div className="flex items-center gap-1 text-yellow-500 font-black">
+                          <Star className="w-4 h-4 fill-yellow-500" />
+                          <span>{ins.rating}</span>
                         </div>
-                        <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">
-                          Rating
-                        </span>
+                        <p className="text-[10px] font-bold text-muted-foreground uppercase">
+                          {t("home.rating")}
+                        </p>
                       </div>
-
-                      <div className="w-px h-8 bg-border/50" />
-
-                      <div className="flex flex-col items-center gap-1">
-                        <div className="flex items-center gap-1.5 text-primary">
-                          <Users className="w-4 h-4" />
-                          <span className="font-bold text-foreground">
-                            {ins.students}
-                          </span>
+                      <div className="w-px h-8 bg-primary/5" />
+                      <div className="text-center">
+                        <div className="text-foreground font-black">
+                          {ins.studentsCount}
                         </div>
-                        <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">
-                          Students
-                        </span>
+                        <p className="text-[10px] font-bold text-muted-foreground uppercase">
+                          {t("home.students")}
+                        </p>
                       </div>
+                    </div>
+
+                    <div className="pt-6">
+                      <Button
+                        variant="ghost"
+                        className="w-full rounded-2xl group/btn hover:bg-primary hover:text-primary-foreground font-bold"
+                      >
+                        {t("home.view_profile") || "View Profile"}
+                        <Award className="ml-2 w-4 h-4 transition-transform group-hover/btn:scale-125" />
+                      </Button>
                     </div>
                   </div>
                 </div>

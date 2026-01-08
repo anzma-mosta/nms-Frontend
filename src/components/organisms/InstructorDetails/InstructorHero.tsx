@@ -114,7 +114,7 @@ export const InstructorHero = ({ instructor }: InstructorHeroProps) => {
           </div>
 
           {/* Right Side: Profile Info */}
-          <div className="flex-1 text-center lg:text-right">
+          <div className="flex-1 text-center  lg:text-right">
             <Reveal direction="down" delay={0.2}>
               <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8">
                 <span className="px-6 py-2 rounded-2xl bg-primary/10 text-primary border border-primary/20 text-sm font-black uppercase tracking-widest backdrop-blur-md">
@@ -132,13 +132,13 @@ export const InstructorHero = ({ instructor }: InstructorHeroProps) => {
             </Reveal>
 
             <Reveal delay={0.3}>
-              <h1 className="text-6xl md:text-8xl font-black mb-8 leading-[1.1] tracking-tight bg-gradient-to-r from-foreground via-foreground to-primary bg-clip-text">
+              <h1 className="text-6xl md:text-8xl font-black mb-8 leading-[1.1] tracking-tight bg-linear-to-r from-foreground via-foreground to-primary bg-clip-text">
                 {instructor.name}
               </h1>
             </Reveal>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12  items-center justify-between">
               {[
                 {
                   label: t("instructor.total_students"),
@@ -166,7 +166,7 @@ export const InstructorHero = ({ instructor }: InstructorHeroProps) => {
                 },
               ].map((stat, idx) => (
                 <Reveal key={idx} delay={0.4 + idx * 0.1}>
-                  <div className="group relative bg-card/30 glass border border-white/10 rounded-[2.5rem] p-6 hover:bg-primary/5 transition-all duration-500">
+                  <div className="group relative bg-card/30  glass border border-white/10 rounded-[2.5rem] p-6 hover:bg-primary/5 transition-all duration-500">
                     <div
                       className={cn(
                         "mb-3 p-3 rounded-2xl bg-white/5 w-fit mx-auto lg:mx-0 lg:mr-0 group-hover:scale-110 transition-transform",

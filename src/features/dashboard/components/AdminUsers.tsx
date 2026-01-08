@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Users, Search, Filter, MoreHorizontal, UserPlus, Mail, Shield, Trash2, Edit2 } from "lucide-react";
+import { Search, Filter, MoreHorizontal, UserPlus, Mail, Trash2, Edit2 } from "lucide-react";
 import { Card } from "../../../components/atoms/Card";
 import { Button } from "../../../components/atoms/Button";
 import { Badge } from "../../../components/atoms/Badge";

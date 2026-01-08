@@ -1,17 +1,16 @@
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
-  ArrowRight,
   Users,
   TrendingUp,
   Award,
   Rocket,
   Globe,
 } from "lucide-react";
-import { Button } from "../../atoms/Button";
-import { ROUTES } from "../../../constants/routes";
 import { cn } from "../../../utils/cn";
-import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../../constants/routes";
+import { Button } from "../../atoms/Button";
 
 export const InstructorCTA = () => {
   const { i18n } = useTranslation();
@@ -99,87 +98,123 @@ export const InstructorCTA = () => {
                   {isAr ? "تأثير حقيقي ودخل مستدام" : "real impact & income"}
                 </span>
               </motion.h2>
-
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="text-xl text-muted-foreground leading-relaxed max-w-xl"
+                className="text-xl text-muted-foreground leading-relaxed max-w-lg"
               >
                 {isAr
-                  ? "انضم إلى نخبة المعلمين في الوطن العربي. نحن نوفر لك كل ما تحتاجه للنجاح، من أدوات البث المباشر إلى إدارة الدورات والمدفوعات."
-                  : "Join the elite instructors in the MENA region. We provide everything you need to succeed, from live streaming tools to course management and payments."}
+                  ? "انضم إلى نخبة المعلمين في الأكاديمية وساهم في بناء جيل جديد من المبدعين."
+                  : "Join our elite instructors and help shape the next generation of creators."}
               </motion.p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {features.map((feature, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: isAr ? 20 : -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 + i * 0.1 }}
+                  className="flex items-start gap-4"
+                >
+                  <div className={cn("p-3 rounded-2xl shrink-0", feature.bg)}>
+                    <div className={feature.color}>{feature.icon}</div>
+                  </div>
+                  <div className="space-y-1">
+                    <h4 className="font-bold text-foreground">
+                      {feature.title}
+                    </h4>
+                    <p className="text-sm text-muted-foreground">
+                      {feature.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-wrap gap-6 pt-4"
+              transition={{ delay: 0.7 }}
+              className="pt-6"
             >
               <Link to={ROUTES.BECOME_INSTRUCTOR}>
-                <Button
-                  size="lg"
-                  className="rounded-2xl px-12 h-16 text-xl font-black gap-3 group relative overflow-hidden"
-                >
-                  <span className="relative z-10 flex items-center gap-3">
-                    {isAr ? "انضم إلينا الآن" : "Join Us Now"}
-                    <ArrowRight
-                      className={cn(
-                        "w-6 h-6 transition-transform group-hover:translate-x-1",
-                        isAr && "rotate-180 group-hover:-translate-x-1"
-                      )}
-                    />
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                </Button>
-              </Link>
-              <Link to={ROUTES.CONTACT}>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="rounded-2xl px-12 h-16 text-xl font-black glass border-2"
-                >
-                  {isAr ? "تعرف على المزيد" : "Learn More"}
+                <Button size="lg" className="rounded-2xl h-14 px-10 font-bold">
+                  {isAr ? "سجل كمعلم الآن" : "Register as Instructor"}
                 </Button>
               </Link>
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10">
-            {features.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 + index * 0.1 }}
-                className="group p-8 rounded-[2.5rem] bg-background/50 border border-border/50 hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5"
-              >
-                <div
-                  className={cn(
-                    "w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6",
-                    item.bg,
-                    item.color
-                  )}
-                >
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-black mb-2 group-hover:text-primary transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-muted-foreground font-semibold leading-relaxed">
-                  {item.desc}
-                </p>
-              </motion.div>
-            ))}
+          {/* Right Image/Graphic Side */}
+          <div className="relative hidden lg:block">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative aspect-square"
+            >
+              {/* Complex decorative elements */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-[3rem] rotate-3" />
+              <div className="absolute inset-0 bg-background border-2 border-primary/10 rounded-[3rem] -rotate-3 overflow-hidden shadow-inner">
+                <img
+                  src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80"
+                  alt="Instructor"
+                  className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
+                />
+              </div>
 
-            {/* Floating Elements for visual interest */}
-            <div className="absolute -top-10 -right-10 w-24 h-24 bg-primary/20 rounded-full blur-2xl animate-pulse" />
-            <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-secondary/20 rounded-full blur-2xl animate-pulse delay-700" />
+              {/* Floating Stats Card */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-6 -right-6 glass p-6 rounded-3xl border shadow-xl z-20"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center">
+                    <TrendingUp className="text-emerald-500 w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-2xl font-black text-foreground">
+                      +120%
+                    </div>
+                    <div className="text-xs text-muted-foreground font-bold">
+                      {isAr ? "نمو الدخل السنوي" : "Annual Income Growth"}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1,
+                }}
+                className="absolute -bottom-6 -left-6 glass p-6 rounded-3xl border shadow-xl z-20"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
+                    <Users className="text-blue-500 w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-2xl font-black text-foreground">
+                      25K+
+                    </div>
+                    <div className="text-xs text-muted-foreground font-bold">
+                      {isAr ? "طالب نشط" : "Active Students"}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
         </motion.div>
       </div>

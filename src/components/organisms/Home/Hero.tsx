@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 import { Button } from "../../atoms/Button";
 import { cn } from "../../../utils/cn";
-import { motion } from "framer-motion";
 
 export const Hero = () => {
   const { t, i18n } = useTranslation();

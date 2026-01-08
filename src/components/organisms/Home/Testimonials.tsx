@@ -97,29 +97,27 @@ export const Testimonials = () => {
 
                 <Quote
                   className={cn(
-                    "absolute top-10 w-12 h-12 text-primary/10 transition-transform duration-500 group-hover:scale-110",
-                    isAr ? "left-10" : "right-10"
+                    "w-10 h-10 text-primary/20 mb-6",
+                    isAr ? "ml-auto" : "mr-auto"
                   )}
                 />
 
-                <p className="text-lg text-muted-foreground mb-10 font-medium leading-relaxed italic flex-grow">
+                <p className="text-lg text-foreground/80 leading-relaxed italic mb-8 flex-grow">
                   "{test.text}"
                 </p>
 
-                <div className="flex items-center gap-5 pt-6 border-t border-border/50">
+                <div className="flex items-center gap-4 pt-6 border-t border-primary/5">
                   <div className="relative">
-                    <div className="absolute inset-0 bg-primary/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute inset-0 bg-primary/20 rounded-full blur-md" />
                     <img
                       src={test.image}
                       alt={test.author}
-                      className="relative w-14 h-14 rounded-2xl object-cover border-2 border-primary/10"
+                      className="relative w-14 h-14 rounded-full object-cover border-2 border-background"
                     />
                   </div>
                   <div>
-                    <h4 className="font-black text-lg group-hover:text-primary transition-colors">
-                      {test.author}
-                    </h4>
-                    <p className="text-sm text-muted-foreground font-bold">
+                    <h4 className="font-black text-foreground">{test.author}</h4>
+                    <p className="text-sm text-muted-foreground font-bold uppercase tracking-wider">
                       {test.role}
                     </p>
                   </div>
