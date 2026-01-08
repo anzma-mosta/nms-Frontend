@@ -66,8 +66,8 @@ export const PopularCategories = () => {
   ];
 
   return (
-    <section className="py-24 bg-secondary/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-32 bg-background relative overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className={cn(
             "mb-12",

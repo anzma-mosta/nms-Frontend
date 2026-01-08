@@ -1,5 +1,12 @@
 import { useTranslation } from "react-i18next";
-import { Calendar, User, Clock, ArrowRight, Users, PlayCircle } from "lucide-react";
+import {
+  Calendar,
+  User,
+  Clock,
+  ArrowRight,
+  Users,
+  PlayCircle,
+} from "lucide-react";
 import { Button } from "../../atoms/Button";
 import { cn } from "../../../utils/cn";
 import { motion } from "framer-motion";
@@ -58,7 +65,7 @@ export const Classes = () => {
     <section className="py-32 relative overflow-hidden bg-secondary/5">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(16,185,129,0.05)_0%,transparent_50%)] pointer-events-none" />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
           <motion.div
@@ -92,13 +99,20 @@ export const Classes = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            <Button variant="outline" size="lg" className="rounded-full group glass">
+            <Button
+              variant="outline"
+              size="lg"
+              className="rounded-full group glass"
+            >
               <Calendar className="w-4 h-4" />
               {t("home.classes.view_schedule")}
-              <ArrowRight className={cn(
-                "w-4 h-4 transition-transform group-hover:translate-x-1",
-                i18n.language === "ar" && "rotate-180 group-hover:-translate-x-1"
-              )} />
+              <ArrowRight
+                className={cn(
+                  "w-4 h-4 transition-transform group-hover:translate-x-1",
+                  i18n.language === "ar" &&
+                    "rotate-180 group-hover:-translate-x-1"
+                )}
+              />
             </Button>
           </motion.div>
         </div>
@@ -120,13 +134,19 @@ export const Classes = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
-                  
+
                   <div className="absolute top-6 left-6 flex gap-2">
-                    <Badge variant="glass" className="bg-red-500/90 text-white border-none px-4 py-1.5 backdrop-blur-md">
+                    <Badge
+                      variant="glass"
+                      className="bg-red-500/90 text-white border-none px-4 py-1.5 backdrop-blur-md"
+                    >
                       <span className="w-2 h-2 bg-white rounded-full animate-pulse mr-2 inline-block" />
                       LIVE
                     </Badge>
-                    <Badge variant="glass" className="bg-white/10 text-white border-white/20 backdrop-blur-md">
+                    <Badge
+                      variant="glass"
+                      className="bg-white/10 text-white border-white/20 backdrop-blur-md"
+                    >
                       {live.category}
                     </Badge>
                   </div>
@@ -149,8 +169,12 @@ export const Classes = () => {
                         <User className="w-5 h-5" />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">Instructor</span>
-                        <span className="text-sm font-semibold truncate max-w-[100px]">{live.instructor}</span>
+                        <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">
+                          Instructor
+                        </span>
+                        <span className="text-sm font-semibold truncate max-w-[100px]">
+                          {live.instructor}
+                        </span>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
@@ -158,8 +182,12 @@ export const Classes = () => {
                         <Users className="w-5 h-5" />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">Students</span>
-                        <span className="text-sm font-semibold">{live.students}</span>
+                        <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">
+                          Students
+                        </span>
+                        <span className="text-sm font-semibold">
+                          {live.students}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -181,10 +209,13 @@ export const Classes = () => {
                   <Button className="w-full rounded-2xl group/btn overflow-hidden relative h-12">
                     <span className="relative z-10 flex items-center gap-2">
                       {t("home.classes.join_now") || "Join Live Class"}
-                      <ArrowRight className={cn(
-                        "w-4 h-4 transition-transform group-hover/btn:translate-x-1",
-                        i18n.language === "ar" && "rotate-180 group-hover/btn:-translate-x-1"
-                      )} />
+                      <ArrowRight
+                        className={cn(
+                          "w-4 h-4 transition-transform group-hover/btn:translate-x-1",
+                          i18n.language === "ar" &&
+                            "rotate-180 group-hover/btn:-translate-x-1"
+                        )}
+                      />
                     </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-primary to-emerald-600 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500" />
                   </Button>

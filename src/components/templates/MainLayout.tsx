@@ -1,6 +1,7 @@
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useState, memo } from "react";
 import { ThemeToggle } from "../atoms/ThemeToggle";
 import { LanguageToggle } from "../atoms/LanguageToggle";
+import { Notifications } from "../organisms/Notifications";
 import { Footer } from "../organisms/Footer";
 import { useTranslation } from "react-i18next";
 import {
@@ -17,7 +18,7 @@ import {
   ShoppingBag,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ROUTES } from "../../constants/routes";
 import { cn } from "../../utils/cn";
 import { Button } from "../atoms/Button";
@@ -27,11 +28,15 @@ interface MainLayoutProps {
   children: ReactNode;
 }
 
-export const MainLayout = ({ children }: MainLayoutProps) => {
+const MemoizedFooter = memo(Footer);
+
+export const MainLayout = memo(({ children }: MainLayoutProps) => {
   const { t, i18n } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { user, isAuthenticated } = useAppSelector((state) => state.auth);
   const { items } = useAppSelector((state) => state.cart);
+  const shouldReduceMotion = useReducedMotion();
 
   const navigation = [
     { name: t("nav.home"), href: ROUTES.HOME, icon: LayoutIcon },
@@ -39,6 +44,13 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
     { name: t("nav.instructors"), href: ROUTES.INSTRUCTORS, icon: Users },
     { name: t("nav.about"), href: ROUTES.ABOUT, icon: Info },
     { name: t("nav.contact"), href: ROUTES.CONTACT, icon: Phone },
+  ];
+
+  const bottomNavItems = [
+    { name: t("nav.home"), href: ROUTES.HOME, icon: LayoutIcon },
+    { name: t("nav.courses"), href: ROUTES.COURSES, icon: BookOpen },
+    { name: t("nav.dashboard"), href: ROUTES.DASHBOARD, icon: User },
+    { name: t("nav.cart"), href: ROUTES.CART, icon: ShoppingBag },
   ];
 
   return (
@@ -51,7 +63,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
     >
       {/* Navigation Bar */}
       <nav className="sticky top-0 z-50 w-full glass border-b border-border/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
             {/* Logo & Desktop Nav */}
             <div className="flex items-center gap-12">
@@ -60,7 +72,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
                   <GraduationCap className="w-7 h-7" />
                 </div>
                 <span className="text-2xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-l from-primary to-blue-600">
-                  NMS Academy
+                  WAKP Academy
                 </span>
               </Link>
 
@@ -79,7 +91,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
                       )}
                     >
                       {item.name}
-                      {isActive && (
+                      {isActive && !shouldReduceMotion && (
                         <motion.div
                           layoutId="nav-active"
                           className="absolute inset-0 bg-primary/5 rounded-full -z-10"
@@ -91,8 +103,8 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
               </div>
             </div>
 
-            {/* Search & Actions */}
-            <div className="hidden md:flex flex-1 max-w-sm mx-8">
+            {/* Search - Hidden for now */}
+            <div className="hidden md:flex flex-1 max-w-sm mx-8 invisible">
               <div className="relative w-full group">
                 <Search
                   className={cn(
@@ -112,7 +124,8 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="hidden sm:flex items-center gap-2 border-r pr-3 dark:border-gray-800">
+              <div className="hidden sm:flex items-center gap-2 border-r pr-3 dark:border-gray-800 rtl:border-r-0 rtl:border-l rtl:pr-0 rtl:pl-3">
+                <Notifications />
                 <LanguageToggle />
                 <ThemeToggle />
               </div>
@@ -129,12 +142,26 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
               </Link>
 
               <div className="hidden sm:block">
-                <Link to={ROUTES.LOGIN}>
-                  <Button variant="ghost" size="md" className="gap-2">
-                    <User className="w-4 h-4" />
-                    {t("common.login")}
-                  </Button>
-                </Link>
+                {isAuthenticated ? (
+                  <Link to={ROUTES.DASHBOARD} className="flex items-center gap-3 group px-2 py-1 rounded-2xl hover:bg-secondary/50 transition-colors">
+                    <div className="text-right">
+                      <p className="text-xs font-black text-foreground leading-none">{user?.name}</p>
+                      <p className="text-[10px] font-bold text-primary uppercase tracking-widest mt-1">
+                        {t(`auth.${user?.role}`)}
+                      </p>
+                    </div>
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-black border-2 border-primary/20 overflow-hidden group-hover:border-primary/40 transition-colors">
+                      {user?.name?.[0] || "U"}
+                    </div>
+                  </Link>
+                ) : (
+                  <Link to={ROUTES.LOGIN}>
+                    <Button variant="ghost" size="md" className="gap-2">
+                      <User className="w-4 h-4" />
+                      {t("common.login")}
+                    </Button>
+                  </Link>
+                )}
               </div>
 
               <Button
@@ -157,9 +184,9 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
+              initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}
+              animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, height: "auto" }}
+              exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}
               className="lg:hidden absolute top-20 inset-x-0 bg-card border-b overflow-hidden"
             >
               <div className="px-4 py-6 space-y-2">
@@ -177,10 +204,15 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
                   </Link>
                 ))}
                 <div className="pt-6 border-t mt-6 space-y-3">
-                  <Button variant="outline" className="w-full rounded-2xl h-12 font-bold">
+                  <Button
+                    variant="outline"
+                    className="w-full rounded-2xl h-12 font-bold"
+                  >
                     {t("common.login")}
                   </Button>
-                  <Button className="w-full rounded-2xl h-12 font-bold">{t("common.start_learning")}</Button>
+                  <Button className="w-full rounded-2xl h-12 font-bold">
+                    {t("common.start_learning")}
+                  </Button>
                 </div>
               </div>
             </motion.div>
@@ -191,9 +223,43 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       {/* Main Content */}
       <main className="flex-1 w-full">{children}</main>
 
-      <Footer />
+      {/* Bottom Mobile Navigation */}
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-t border-border/40 px-6 py-3 pb-safe-area-inset-bottom">
+        <div className="flex items-center justify-between">
+          {bottomNavItems.map((item) => {
+            const isActive = location.pathname === item.href;
+            return (
+              <Link
+                key={item.name}
+                to={item.href}
+                className={cn(
+                  "flex flex-col items-center gap-1 group relative",
+                  isActive ? "text-primary" : "text-muted-foreground"
+                )}
+              >
+                <div className={cn(
+                  "p-1.5 rounded-xl transition-all duration-300",
+                  isActive ? "bg-primary/10" : "group-hover:bg-secondary"
+                )}>
+                  <item.icon className="w-5 h-5" />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-tighter">
+                  {item.name}
+                </span>
+                {item.href === ROUTES.CART && items.length > 0 && (
+                  <span className="absolute top-0 right-1/2 translate-x-3 -translate-y-1 bg-primary text-primary-foreground text-[8px] font-bold w-4 h-4 rounded-full flex items-center justify-center border-2 border-background">
+                    {items.length}
+                  </span>
+                )}
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+
+      <MemoizedFooter />
     </div>
   );
-};
+});
 
 export default MainLayout;

@@ -20,21 +20,27 @@ const LoginPage = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left Side: Content */}
-            <div className={cn("hidden lg:block space-y-10", isAr ? "text-right" : "text-left")}>
+            <div
+              className={cn(
+                "hidden lg:block space-y-10",
+                isAr ? "text-right" : "text-left"
+              )}
+            >
               <Reveal>
                 <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-black uppercase tracking-widest backdrop-blur-md mb-6">
                   <Sparkles className="w-4 h-4" />
                   {isAr ? "مرحباً بك مجدداً" : "Welcome Back"}
                 </div>
                 <h1 className="text-6xl font-black text-white leading-tight">
-                  {isAr ? "سجل دخولك إلى" : "Login to Your"}<br />
+                  {isAr ? "سجل دخولك إلى" : "Login to Your"}
+                  <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">
-                    NMS Academy
+                    WAKP Academy
                   </span>
                 </h1>
                 <p className="text-xl text-slate-400 font-medium leading-relaxed max-w-lg mt-8">
-                  {isAr 
-                    ? "تابع رحلتك التعليمية واستكمل مهاراتك مع أفضل الخبراء والمدربين في الوطن العربي." 
+                  {isAr
+                    ? "تابع رحلتك التعليمية واستكمل مهاراتك مع أفضل الخبراء والمدربين في الوطن العربي."
                     : "Continue your learning journey and complete your skills with the best experts and instructors in the Arab world."}
                 </p>
               </Reveal>
@@ -44,13 +50,17 @@ const LoginPage = () => {
                   {
                     icon: ShieldCheck,
                     title: isAr ? "بياناتك في أمان" : "Your Data is Secure",
-                    desc: isAr ? "نستخدم أحدث تقنيات التشفير لحماية خصوصيتك" : "We use the latest encryption technologies to protect your privacy"
+                    desc: isAr
+                      ? "نستخدم أحدث تقنيات التشفير لحماية خصوصيتك"
+                      : "We use the latest encryption technologies to protect your privacy",
                   },
                   {
                     icon: Sparkles,
                     title: isAr ? "تجربة مخصصة" : "Personalized Experience",
-                    desc: isAr ? "احصل على اقتراحات تعليمية تناسب اهتماماتك" : "Get educational suggestions that fit your interests"
-                  }
+                    desc: isAr
+                      ? "احصل على اقتراحات تعليمية تناسب اهتماماتك"
+                      : "Get educational suggestions that fit your interests",
+                  },
                 ].map((item, idx) => (
                   <Reveal key={idx} delay={0.2 + idx * 0.1}>
                     <div className="flex items-start gap-6 group">
@@ -58,8 +68,12 @@ const LoginPage = () => {
                         <item.icon className="w-7 h-7" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-black text-white mb-1">{item.title}</h3>
-                        <p className="text-slate-500 font-medium">{item.desc}</p>
+                        <h3 className="text-xl font-black text-white mb-1">
+                          {item.title}
+                        </h3>
+                        <p className="text-slate-500 font-medium">
+                          {item.desc}
+                        </p>
                       </div>
                     </div>
                   </Reveal>
@@ -77,7 +91,9 @@ const LoginPage = () => {
                       {isAr ? "تسجيل الدخول" : "Sign In"}
                     </h2>
                     <p className="text-muted-foreground font-medium">
-                      {isAr ? "أدخل بياناتك للوصول إلى حسابك" : "Enter your details to access your account"}
+                      {isAr
+                        ? "أدخل بياناتك للوصول إلى حسابك"
+                        : "Enter your details to access your account"}
                     </p>
                   </div>
                   <LoginForm />

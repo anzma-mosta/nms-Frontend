@@ -44,7 +44,10 @@ export const FAQs = () => {
             className="text-4xl lg:text-6xl font-black tracking-tight"
           >
             {isAr ? "لديك" : "Have"}
-            <span className="text-primary"> {isAr ? "استفسارات؟" : "Questions?"}</span>
+            <span className="text-primary">
+              {" "}
+              {isAr ? "استفسارات؟" : "Questions?"}
+            </span>
           </motion.h2>
 
           <motion.p
@@ -68,8 +71,8 @@ export const FAQs = () => {
               transition={{ delay: i * 0.1 }}
               className={cn(
                 "group glass border-2 rounded-[2.5rem] overflow-hidden transition-all duration-500",
-                openIndex === i 
-                  ? "border-primary/30 shadow-2xl shadow-primary/5 bg-card" 
+                openIndex === i
+                  ? "border-primary/30 shadow-2xl shadow-primary/5 bg-card"
                   : "border-transparent hover:border-primary/10 bg-card/40"
               )}
             >
@@ -80,12 +83,14 @@ export const FAQs = () => {
                   !isAr && "flex-row-reverse"
                 )}
               >
-                <div className={cn(
-                  "w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 shrink-0",
-                  openIndex === i 
-                    ? "bg-primary text-white scale-110 shadow-lg shadow-primary/20" 
-                    : "bg-secondary/50 text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary"
-                )}>
+                <div
+                  className={cn(
+                    "w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 shrink-0",
+                    openIndex === i
+                      ? "bg-primary text-white scale-110 shadow-lg shadow-primary/20"
+                      : "bg-secondary/50 text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary"
+                  )}
+                >
                   <ChevronDown
                     className={cn(
                       "w-6 h-6 transition-transform duration-500",
@@ -96,7 +101,9 @@ export const FAQs = () => {
                 <span
                   className={cn(
                     "font-black text-xl lg:text-2xl text-foreground transition-colors flex-grow",
-                    openIndex === i ? "text-primary" : "group-hover:text-primary",
+                    openIndex === i
+                      ? "text-primary"
+                      : "group-hover:text-primary",
                     isAr ? "text-right" : "text-left"
                   )}
                 >
@@ -109,7 +116,10 @@ export const FAQs = () => {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+                    transition={{
+                      duration: 0.4,
+                      ease: [0.04, 0.62, 0.23, 0.98],
+                    }}
                   >
                     <div className="px-8 pb-10">
                       <div className="h-px w-full bg-gradient-to-r from-transparent via-border to-transparent mb-8" />
@@ -145,7 +155,9 @@ export const FAQs = () => {
                 {isAr ? "ما زال لديك أسئلة؟" : "Still have questions?"}
               </p>
               <p className="text-sm text-muted-foreground">
-                {isAr ? "تواصل معنا مباشرة وسنكون سعداء بمساعدتك" : "Contact us directly and we'll be happy to help"}
+                {isAr
+                  ? "تواصل معنا مباشرة وسنكون سعداء بمساعدتك"
+                  : "Contact us directly and we'll be happy to help"}
               </p>
             </div>
           </div>

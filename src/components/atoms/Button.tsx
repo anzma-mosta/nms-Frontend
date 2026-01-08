@@ -10,7 +10,8 @@ interface ButtonProps extends Omit<HTMLMotionProps<"button">, "ref"> {
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "md", ...props }, ref) => {
     const variants = {
-      primary: "bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:bg-primary/90",
+      primary:
+        "bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:bg-primary/90",
       secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
       outline:
         "border-2 border-input bg-background hover:bg-accent hover:text-accent-foreground hover:border-accent",
@@ -28,10 +29,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <motion.button
         ref={ref}
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ scale: 1.02, cursor: "pointer" }}
         whileTap={{ scale: 0.98 }}
         className={cn(
-          "inline-flex items-center justify-center font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50 active:scale-95",
+          "inline-flex items-center justify-center font-semibold transition-all  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50 active:scale-95",
           variants[variant],
           sizes[size],
           className

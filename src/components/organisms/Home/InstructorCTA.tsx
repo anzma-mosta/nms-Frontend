@@ -21,14 +21,18 @@ export const InstructorCTA = () => {
     {
       icon: <Users className="w-5 h-5" />,
       title: isAr ? "مجتمع واسع" : "Large Community",
-      desc: isAr ? "صل إلى آلاف الطلاب المهتمين" : "Reach thousands of students",
+      desc: isAr
+        ? "صل إلى آلاف الطلاب المهتمين"
+        : "Reach thousands of students",
       color: "text-blue-500",
       bg: "bg-blue-500/10",
     },
     {
       icon: <TrendingUp className="w-5 h-5" />,
       title: isAr ? "دخل مرن" : "Flexible Income",
-      desc: isAr ? "حدد أسعارك وحقق أرباحاً متزايدة" : "Set your prices & earn more",
+      desc: isAr
+        ? "حدد أسعارك وحقق أرباحاً متزايدة"
+        : "Set your prices & earn more",
       color: "text-emerald-500",
       bg: "bg-emerald-500/10",
     },
@@ -42,7 +46,9 @@ export const InstructorCTA = () => {
     {
       icon: <Globe className="w-5 h-5" />,
       title: isAr ? "تأثير عالمي" : "Global Impact",
-      desc: isAr ? "شارك معرفتك مع طلاب من كل مكان" : "Share knowledge worldwide",
+      desc: isAr
+        ? "شارك معرفتك مع طلاب من كل مكان"
+        : "Share knowledge worldwide",
       color: "text-orange-500",
       bg: "bg-orange-500/10",
     },
@@ -52,7 +58,7 @@ export const InstructorCTA = () => {
     <section className="py-32 relative overflow-hidden bg-background">
       {/* Background Decor */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.05)_0%,transparent_70%)] pointer-events-none" />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -75,7 +81,9 @@ export const InstructorCTA = () => {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm"
             >
               <Rocket className="w-4 h-4" />
-              <span>{isAr ? "ابدأ مسيرتك التدريسية" : "Launch Your Teaching Career"}</span>
+              <span>
+                {isAr ? "ابدأ مسيرتك التدريسية" : "Launch Your Teaching Career"}
+              </span>
             </motion.div>
 
             <div className="space-y-6">
@@ -119,10 +127,12 @@ export const InstructorCTA = () => {
                 >
                   <span className="relative z-10 flex items-center gap-3">
                     {isAr ? "انضم إلينا الآن" : "Join Us Now"}
-                    <ArrowRight className={cn(
-                      "w-6 h-6 transition-transform group-hover:translate-x-1",
-                      isAr && "rotate-180 group-hover:-translate-x-1"
-                    )} />
+                    <ArrowRight
+                      className={cn(
+                        "w-6 h-6 transition-transform group-hover:translate-x-1",
+                        isAr && "rotate-180 group-hover:-translate-x-1"
+                      )}
+                    />
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-primary to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </Button>
@@ -149,11 +159,13 @@ export const InstructorCTA = () => {
                 transition={{ delay: 0.4 + index * 0.1 }}
                 className="group p-8 rounded-[2.5rem] bg-background/50 border border-border/50 hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5"
               >
-                <div className={cn(
-                  "w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6",
-                  item.bg,
-                  item.color
-                )}>
+                <div
+                  className={cn(
+                    "w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6",
+                    item.bg,
+                    item.color
+                  )}
+                >
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-black mb-2 group-hover:text-primary transition-colors">

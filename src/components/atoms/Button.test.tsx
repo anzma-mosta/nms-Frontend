@@ -14,7 +14,7 @@ describe("Button Component", () => {
   it("renders with different variants", () => {
     render(<Button variant="outline">Outline Button</Button>);
     const button = screen.getByRole("button", { name: /outline button/i });
-    expect(button).toHaveClass("border");
+    expect(button).toHaveClass("border-2");
   });
 
   it("calls onClick when clicked", () => {

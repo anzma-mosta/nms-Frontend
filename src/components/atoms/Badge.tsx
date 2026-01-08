@@ -22,8 +22,10 @@ export const Badge = ({
   const variants = {
     primary: "bg-primary/10 text-primary border-primary/20",
     secondary: "bg-secondary text-secondary-foreground border-border",
-    success: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
-    warning: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
+    success:
+      "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
+    warning:
+      "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
     error: "bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20",
     outline: "bg-transparent text-foreground border-border",
     glass: "glass text-foreground border-white/20",

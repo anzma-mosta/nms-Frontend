@@ -15,12 +15,17 @@ export const Subscriptions = () => {
       price: i18n.language === "ar" ? "99" : "29",
       currency: i18n.language === "ar" ? "ج.م" : "$",
       period: t("home.subs.monthly"),
-      description: i18n.language === "ar" ? "مثالي للمبتدئين لبدء رحلتهم التعليمية" : "Perfect for beginners starting their journey",
+      description:
+        i18n.language === "ar"
+          ? "مثالي للمبتدئين لبدء رحلتهم التعليمية"
+          : "Perfect for beginners starting their journey",
       features: [
         t("home.subs.feat_courses"),
         t("home.subs.feat_certs"),
         t("home.subs.feat_support_no"),
-        i18n.language === "ar" ? "الوصول لـ 5 دورات شهرياً" : "Access to 5 courses/month",
+        i18n.language === "ar"
+          ? "الوصول لـ 5 دورات شهرياً"
+          : "Access to 5 courses/month",
       ],
       recommended: false,
       color: "blue",
@@ -31,13 +36,18 @@ export const Subscriptions = () => {
       price: i18n.language === "ar" ? "199" : "59",
       currency: i18n.language === "ar" ? "ج.م" : "$",
       period: t("home.subs.monthly"),
-      description: i18n.language === "ar" ? "الخيار الأفضل للطلاب الطموحين والمحترفين" : "Best for ambitious students and professionals",
+      description:
+        i18n.language === "ar"
+          ? "الخيار الأفضل للطلاب الطموحين والمحترفين"
+          : "Best for ambitious students and professionals",
       features: [
         t("home.subs.feat_courses_all"),
         t("home.subs.feat_certs_all"),
         t("home.subs.feat_live_classes"),
         t("home.subs.feat_support_yes"),
-        i18n.language === "ar" ? "أولوية الوصول للميزات الجديدة" : "Priority access to new features",
+        i18n.language === "ar"
+          ? "أولوية الوصول للميزات الجديدة"
+          : "Priority access to new features",
       ],
       recommended: true,
       color: "emerald",
@@ -48,13 +58,18 @@ export const Subscriptions = () => {
       price: i18n.language === "ar" ? "1599" : "499",
       currency: i18n.language === "ar" ? "ج.م" : "$",
       period: t("home.subs.yearly"),
-      description: i18n.language === "ar" ? "توفير هائل مع وصول غير محدود لكل شيء" : "Massive savings with unlimited everything",
+      description:
+        i18n.language === "ar"
+          ? "توفير هائل مع وصول غير محدود لكل شيء"
+          : "Massive savings with unlimited everything",
       features: [
         t("home.subs.feat_courses_all"),
         t("home.subs.feat_live_all"),
         t("home.subs.feat_offline"),
         t("home.subs.feat_mentor"),
-        i18n.language === "ar" ? "جلسات توجيه خاصة شهرياً" : "Private mentoring monthly",
+        i18n.language === "ar"
+          ? "جلسات توجيه خاصة شهرياً"
+          : "Private mentoring monthly",
       ],
       recommended: false,
       color: "purple",
@@ -140,7 +155,9 @@ export const Subscriptions = () => {
                     {plan.description}
                   </p>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-5xl font-black tracking-tighter">{plan.price}</span>
+                    <span className="text-5xl font-black tracking-tighter">
+                      {plan.price}
+                    </span>
                     <div className="flex flex-col">
                       <span className="text-lg font-bold text-muted-foreground leading-none">
                         {plan.currency}
@@ -154,7 +171,9 @@ export const Subscriptions = () => {
 
                 <div className="space-y-6 mb-12 flex-grow relative z-10">
                   <p className="text-xs font-black uppercase tracking-[0.2em] text-primary/60">
-                    {i18n.language === "ar" ? "ماذا ستحصل عليه:" : "What's Included:"}
+                    {i18n.language === "ar"
+                      ? "ماذا ستحصل عليه:"
+                      : "What's Included:"}
                   </p>
                   <ul className="space-y-5">
                     {plan.features.map((feat, j) => (
@@ -165,7 +184,9 @@ export const Subscriptions = () => {
                         <div className="bg-primary/10 p-1.5 rounded-xl text-primary shrink-0 mt-0.5">
                           <Check className="w-3.5 h-3.5" />
                         </div>
-                        <span className="text-foreground/80 leading-snug">{feat}</span>
+                        <span className="text-foreground/80 leading-snug">
+                          {feat}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -181,10 +202,13 @@ export const Subscriptions = () => {
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     {t("home.subs.get_started") || "Choose Plan"}
-                    <ArrowRight className={cn(
-                      "w-5 h-5 transition-transform group-hover:translate-x-1",
-                      i18n.language === "ar" && "rotate-180 group-hover:-translate-x-1"
-                    )} />
+                    <ArrowRight
+                      className={cn(
+                        "w-5 h-5 transition-transform group-hover:translate-x-1",
+                        i18n.language === "ar" &&
+                          "rotate-180 group-hover:-translate-x-1"
+                      )}
+                    />
                   </span>
                   {plan.recommended && (
                     <div className="absolute inset-0 bg-gradient-to-r from-primary to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -193,7 +217,9 @@ export const Subscriptions = () => {
 
                 {!plan.recommended && (
                   <p className="text-center mt-6 text-xs font-bold text-muted-foreground uppercase tracking-widest">
-                    {i18n.language === "ar" ? "بدون التزامات خفية" : "No Hidden Fees"}
+                    {i18n.language === "ar"
+                      ? "بدون التزامات خفية"
+                      : "No Hidden Fees"}
                   </p>
                 )}
               </Card>
@@ -209,11 +235,17 @@ export const Subscriptions = () => {
           className="mt-20 flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500"
         >
           {/* Mock partner logos or trust indicators */}
-          <div className="text-sm font-black uppercase tracking-[0.3em]">{i18n.language === "ar" ? "موثوق من:" : "Trusted By:"}</div>
+          <div className="text-sm font-black uppercase tracking-[0.3em]">
+            {i18n.language === "ar" ? "موثوق من:" : "Trusted By:"}
+          </div>
           <div className="text-xl font-black tracking-tighter">EDU-GLOBAL</div>
-          <div className="text-xl font-black tracking-tighter">ACADEMY-PLUS</div>
+          <div className="text-xl font-black tracking-tighter">
+            ACADEMY-PLUS
+          </div>
           <div className="text-xl font-black tracking-tighter">LEARN-TECH</div>
-          <div className="text-xl font-black tracking-tighter">FUTURE-SKILLS</div>
+          <div className="text-xl font-black tracking-tighter">
+            FUTURE-SKILLS
+          </div>
         </motion.div>
       </div>
     </section>

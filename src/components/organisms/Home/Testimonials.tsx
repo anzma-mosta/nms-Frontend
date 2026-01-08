@@ -57,7 +57,10 @@ export const Testimonials = () => {
             className="text-4xl lg:text-6xl font-black tracking-tight"
           >
             {isAr ? "ماذا يقول" : "What Our"}
-            <span className="text-primary"> {isAr ? "طلابنا عنا؟" : "Students Say"}</span>
+            <span className="text-primary">
+              {" "}
+              {isAr ? "طلابنا عنا؟" : "Students Say"}
+            </span>
           </motion.h2>
 
           <motion.p
@@ -85,14 +88,19 @@ export const Testimonials = () => {
               <div className="h-full glass p-10 rounded-[3rem] border-2 border-transparent hover:border-primary/20 transition-all duration-500 shadow-xl shadow-primary/5 flex flex-col">
                 <div className="flex gap-1 mb-6">
                   {[...Array(test.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    <Star
+                      key={i}
+                      className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                    />
                   ))}
                 </div>
 
-                <Quote className={cn(
-                  "absolute top-10 w-12 h-12 text-primary/10 transition-transform duration-500 group-hover:scale-110",
-                  isAr ? "left-10" : "right-10"
-                )} />
+                <Quote
+                  className={cn(
+                    "absolute top-10 w-12 h-12 text-primary/10 transition-transform duration-500 group-hover:scale-110",
+                    isAr ? "left-10" : "right-10"
+                  )}
+                />
 
                 <p className="text-lg text-muted-foreground mb-10 font-medium leading-relaxed italic flex-grow">
                   "{test.text}"

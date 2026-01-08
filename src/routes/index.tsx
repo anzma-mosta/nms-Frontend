@@ -3,10 +3,13 @@ import { lazy, Suspense } from "react";
 import App from "../App";
 import { LoadingScreen } from "../components/atoms/LoadingScreen";
 import { ROUTES } from "../constants/routes";
+import { ProtectedRoute, PublicRoute } from "../components/atoms/AuthRoutes";
 
 // Lazy load page components
+// ... (existing lazy imports)
 const Home = lazy(() => import("../pages/Home"));
 const LoginPage = lazy(() => import("../pages/Login"));
+const RegisterPage = lazy(() => import("../pages/Register"));
 const Courses = lazy(() => import("../pages/Courses"));
 const Instructors = lazy(() => import("../pages/Instructors"));
 const About = lazy(() => import("../pages/About"));
@@ -15,6 +18,7 @@ const Dashboard = lazy(() => import("../pages/Dashboard"));
 const Terms = lazy(() => import("../pages/Terms"));
 const Privacy = lazy(() => import("../pages/Privacy"));
 const Services = lazy(() => import("../pages/Services"));
+const FAQ = lazy(() => import("../pages/FAQ"));
 const BecomeInstructor = lazy(() => import("../pages/BecomeInstructor"));
 const Cart = lazy(() => import("../pages/Cart"));
 const Checkout = lazy(() => import("../pages/Checkout"));
@@ -40,7 +44,19 @@ const router = createBrowserRouter([
       },
       {
         path: ROUTES.LOGIN,
-        element: <LoginPage />,
+        element: (
+          <PublicRoute>
+            <LoginPage />
+          </PublicRoute>
+        ),
+      },
+      {
+        path: ROUTES.REGISTER,
+        element: (
+          <PublicRoute>
+            <RegisterPage />
+          </PublicRoute>
+        ),
       },
       {
         path: ROUTES.COURSES,
@@ -59,8 +75,12 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: ROUTES.DASHBOARD,
-        element: <Dashboard />,
+        path: ROUTES.DASHBOARD + "/*",
+        element: (
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        ),
       },
       {
         path: ROUTES.TERMS,
@@ -73,6 +93,10 @@ const router = createBrowserRouter([
       {
         path: ROUTES.SERVICES,
         element: <Services />,
+      },
+      {
+        path: ROUTES.FAQ,
+        element: <FAQ />,
       },
       {
         path: ROUTES.BECOME_INSTRUCTOR,
@@ -100,7 +124,11 @@ const router = createBrowserRouter([
       },
       {
         path: ROUTES.LESSON,
-        element: <Lesson />,
+        element: (
+          <ProtectedRoute>
+            <Lesson />
+          </ProtectedRoute>
+        ),
       },
       {
         path: ROUTES.INSTRUCTOR_DETAILS,

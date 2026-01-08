@@ -10,7 +10,7 @@ import {
   MessageSquare,
   Sparkles,
   Headphones,
-  User
+  User,
 } from "lucide-react";
 import { Button } from "../../atoms/Button";
 import { cn } from "../../../utils/cn";
@@ -51,10 +51,10 @@ export const ContactUs = () => {
     {
       icon: <Mail className="w-7 h-7" />,
       label: t("home.contact.email"),
-      value: "support@nmsacademy.com",
+      value: "support@wakpacademy.com",
       color: "text-blue-500",
       bg: "bg-blue-500/10",
-      desc: isAr ? "تواصل معنا عبر البريد الإلكتروني" : "Contact us via email"
+      desc: isAr ? "تواصل معنا عبر البريد الإلكتروني" : "Contact us via email",
     },
     {
       icon: <Phone className="w-7 h-7" />,
@@ -62,7 +62,9 @@ export const ContactUs = () => {
       value: "+20 123 456 7890",
       color: "text-emerald-500",
       bg: "bg-emerald-500/10",
-      desc: isAr ? "متاحون للرد على استفساراتكم" : "Available for your inquiries"
+      desc: isAr
+        ? "متاحون للرد على استفساراتكم"
+        : "Available for your inquiries",
     },
     {
       icon: <Headphones className="w-7 h-7" />,
@@ -70,7 +72,7 @@ export const ContactUs = () => {
       value: isAr ? "دعم مباشر 24/7" : "24/7 Live Support",
       color: "text-purple-500",
       bg: "bg-purple-500/10",
-      desc: isAr ? "نحن هنا لمساعدتك دائماً" : "We are here to help always"
+      desc: isAr ? "نحن هنا لمساعدتك دائماً" : "We are here to help always",
     },
   ];
 
@@ -111,8 +113,8 @@ export const ContactUs = () => {
                 transition={{ delay: 0.2 }}
                 className="text-xl text-muted-foreground font-medium leading-relaxed max-w-xl"
               >
-                {isAr 
-                  ? "سواء كان لديك سؤال أو اقتراح، فريقنا جاهز للرد عليك في أسرع وقت ممكن. رضاكم هو غايتنا." 
+                {isAr
+                  ? "سواء كان لديك سؤال أو اقتراح، فريقنا جاهز للرد عليك في أسرع وقت ممكن. رضاكم هو غايتنا."
                   : "Whether you have a question or a suggestion, our team is ready to respond as soon as possible. Your satisfaction is our goal."}
               </motion.p>
             </div>
@@ -127,19 +129,27 @@ export const ContactUs = () => {
                   transition={{ delay: 0.3 + index * 0.1 }}
                   className="group flex items-center gap-6 p-8 rounded-[2.5rem] bg-card glass border-2 border-transparent hover:border-primary/20 transition-all duration-500 shadow-xl hover:shadow-2xl"
                 >
-                  <div className={cn(
-                    "w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-black/5",
-                    info.bg,
-                    info.color
-                  )}>
+                  <div
+                    className={cn(
+                      "w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg shadow-black/5",
+                      info.bg,
+                      info.color
+                    )}
+                  >
                     {info.icon}
                   </div>
-                  <div className={cn("flex-1", isAr ? "text-right" : "text-left")}>
+                  <div
+                    className={cn("flex-1", isAr ? "text-right" : "text-left")}
+                  >
                     <h4 className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em] mb-1">
                       {info.label}
                     </h4>
-                    <p className="text-xl font-black text-foreground mb-1">{info.value}</p>
-                    <p className="text-sm text-muted-foreground font-medium">{info.desc}</p>
+                    <p className="text-xl font-black text-foreground mb-1">
+                      {info.value}
+                    </p>
+                    <p className="text-sm text-muted-foreground font-medium">
+                      {info.desc}
+                    </p>
                   </div>
                 </motion.div>
               ))}
@@ -151,7 +161,10 @@ export const ContactUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6 }}
-              className={cn("flex items-center gap-4 pt-6", isAr ? "justify-start" : "justify-start")}
+              className={cn(
+                "flex items-center gap-4 pt-6",
+                isAr ? "justify-start" : "justify-start"
+              )}
             >
               {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
                 <motion.a
@@ -176,57 +189,94 @@ export const ContactUs = () => {
               className="relative group"
             >
               <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-blue-500/20 rounded-[4rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              
+
               <div className="relative bg-card glass border-2 border-primary/10 rounded-[4rem] p-10 lg:p-16 shadow-2xl shadow-black/5 overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32" />
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -ml-32 -mb-32" />
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 relative z-10">
+                <form
+                  onSubmit={handleSubmit(onSubmit)}
+                  className="space-y-8 relative z-10"
+                >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="space-y-3">
-                      <label className={cn("block text-sm font-black text-foreground/70 tracking-widest uppercase px-2", isAr ? "text-right" : "text-left")}>
+                      <label
+                        className={cn(
+                          "block text-sm font-black text-foreground/70 tracking-widest uppercase px-2",
+                          isAr ? "text-right" : "text-left"
+                        )}
+                      >
                         {isAr ? "الاسم بالكامل" : "Full Name"}
                       </label>
                       <div className="relative group/input">
-                        <div className={cn("absolute top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within/input:text-primary transition-colors", isAr ? "right-6" : "left-6")}>
+                        <div
+                          className={cn(
+                            "absolute top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within/input:text-primary transition-colors",
+                            isAr ? "right-6" : "left-6"
+                          )}
+                        >
                           <User className="w-5 h-5" />
                         </div>
                         <input
                           {...register("name")}
                           className={cn(
                             "w-full h-16  bg-secondary/50 border-2 border- border-r-5 focus:border-primary/30 focus:bg-background transition-all outline-none font-bold text-lg",
-                            isAr ? "pr-14 pl-6 text-right" : "pl-14 pr-6 text-left",
+                            isAr
+                              ? "pr-14 pl-6 text-right"
+                              : "pl-14 pr-6 text-left",
                             errors.name && "border-destructive/50"
                           )}
                           placeholder={isAr ? "أدخل اسمك" : "Your Name"}
                         />
                       </div>
                       {errors.name && (
-                        <p className={cn("text-xs font-bold text-destructive px-2", isAr ? "text-right" : "text-left")}>
+                        <p
+                          className={cn(
+                            "text-xs font-bold text-destructive px-2",
+                            isAr ? "text-right" : "text-left"
+                          )}
+                        >
                           {errors.name.message}
                         </p>
                       )}
                     </div>
                     <div className="space-y-3">
-                      <label className={cn("block text-sm font-black text-foreground/70 tracking-widest uppercase px-2", isAr ? "text-right" : "text-left")}>
+                      <label
+                        className={cn(
+                          "block text-sm font-black text-foreground/70 tracking-widest uppercase px-2",
+                          isAr ? "text-right" : "text-left"
+                        )}
+                      >
                         {isAr ? "البريد الإلكتروني" : "Email Address"}
                       </label>
                       <div className="relative group/input">
-                        <div className={cn("absolute top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within/input:text-primary transition-colors", isAr ? "right-6" : "left-6")}>
+                        <div
+                          className={cn(
+                            "absolute top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within/input:text-primary transition-colors",
+                            isAr ? "right-6" : "left-6"
+                          )}
+                        >
                           <Mail className="w-5 h-5" />
                         </div>
                         <input
                           {...register("email")}
                           className={cn(
                             "w-full h-16 bg-secondary/50 border-2 border-transparent focus:border-primary/30 focus:bg-background transition-all outline-none font-bold text-lg",
-                            isAr ? "pr-14 pl-6 text-right" : "pl-14 pr-6 text-left",
+                            isAr
+                              ? "pr-14 pl-6 text-right"
+                              : "pl-14 pr-6 text-left",
                             errors.email && "border-destructive/50"
                           )}
                           placeholder="example@mail.com"
                         />
                       </div>
                       {errors.email && (
-                        <p className={cn("text-xs font-bold text-destructive px-2", isAr ? "text-right" : "text-left")}>
+                        <p
+                          className={cn(
+                            "text-xs font-bold text-destructive px-2",
+                            isAr ? "text-right" : "text-left"
+                          )}
+                        >
                           {errors.email.message}
                         </p>
                       )}
@@ -234,32 +284,56 @@ export const ContactUs = () => {
                   </div>
 
                   <div className="space-y-3">
-                    <label className={cn("block text-sm font-black text-foreground/70 tracking-widest uppercase px-2", isAr ? "text-right" : "text-left")}>
+                    <label
+                      className={cn(
+                        "block text-sm font-black text-foreground/70 tracking-widest uppercase px-2",
+                        isAr ? "text-right" : "text-left"
+                      )}
+                    >
                       {isAr ? "الموضوع" : "Subject"}
                     </label>
                     <div className="relative group/input">
-                      <div className={cn("absolute top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within/input:text-primary transition-colors", isAr ? "right-6" : "left-6")}>
+                      <div
+                        className={cn(
+                          "absolute top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within/input:text-primary transition-colors",
+                          isAr ? "right-6" : "left-6"
+                        )}
+                      >
                         <MessageSquare className="w-5 h-5" />
                       </div>
                       <input
                         {...register("subject")}
                         className={cn(
                           "w-full h-16 bg-secondary/50 border-2 border-transparent focus:border-primary/30 focus:bg-background transition-all outline-none font-bold text-lg",
-                          isAr ? "pr-14 pl-6 text-right" : "pl-14 pr-6 text-left",
+                          isAr
+                            ? "pr-14 pl-6 text-right"
+                            : "pl-14 pr-6 text-left",
                           errors.subject && "border-destructive/50"
                         )}
-                        placeholder={isAr ? "كيف يمكننا مساعدتك؟" : "How can we help?"}
+                        placeholder={
+                          isAr ? "كيف يمكننا مساعدتك؟" : "How can we help?"
+                        }
                       />
                     </div>
                     {errors.subject && (
-                      <p className={cn("text-xs font-bold text-destructive px-2", isAr ? "text-right" : "text-left")}>
+                      <p
+                        className={cn(
+                          "text-xs font-bold text-destructive px-2",
+                          isAr ? "text-right" : "text-left"
+                        )}
+                      >
                         {errors.subject.message}
                       </p>
                     )}
                   </div>
 
                   <div className="space-y-3">
-                    <label className={cn("block text-sm font-black text-foreground/70 tracking-widest uppercase px-2", isAr ? "text-right" : "text-left")}>
+                    <label
+                      className={cn(
+                        "block text-sm font-black text-foreground/70 tracking-widest uppercase px-2",
+                        isAr ? "text-right" : "text-left"
+                      )}
+                    >
                       {isAr ? "الرسالة" : "Message"}
                     </label>
                     <textarea
@@ -270,10 +344,19 @@ export const ContactUs = () => {
                         isAr ? "text-right" : "text-left",
                         errors.message && "border-destructive/50"
                       )}
-                      placeholder={isAr ? "اكتب رسالتك هنا..." : "Write your message here..."}
+                      placeholder={
+                        isAr
+                          ? "اكتب رسالتك هنا..."
+                          : "Write your message here..."
+                      }
                     />
                     {errors.message && (
-                      <p className={cn("text-xs font-bold text-destructive px-2", isAr ? "text-right" : "text-left")}>
+                      <p
+                        className={cn(
+                          "text-xs font-bold text-destructive px-2",
+                          isAr ? "text-right" : "text-left"
+                        )}
+                      >
                         {errors.message.message}
                       </p>
                     )}
@@ -290,7 +373,12 @@ export const ContactUs = () => {
                       ) : (
                         <>
                           {isAr ? "إرسال الرسالة" : "Send Message"}
-                          <Send className={cn("w-6 h-6 group-hover:translate-y-[-4px] group-hover:translate-x-[4px] transition-transform", isAr && "rotate-180")} />
+                          <Send
+                            className={cn(
+                              "w-6 h-6 group-hover:translate-y-[-4px] group-hover:translate-x-[4px] transition-transform",
+                              isAr && "rotate-180"
+                            )}
+                          />
                         </>
                       )}
                     </span>

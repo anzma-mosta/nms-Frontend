@@ -3,7 +3,17 @@ import { useTranslation } from "react-i18next";
 import { Reveal } from "../../components/atoms/Reveal";
 import { Button } from "../../components/atoms/Button";
 import { useAlert } from "../../providers/AlertContext";
-import { Target, Eye, Users, Award, Shield, Zap, BellRing, Sparkles, Rocket } from "lucide-react";
+import {
+  Target,
+  Eye,
+  Users,
+  Award,
+  Shield,
+  Zap,
+  BellRing,
+  Sparkles,
+  Rocket,
+} from "lucide-react";
 import { SEO } from "../../components/atoms/SEO";
 import { motion } from "framer-motion";
 import { cn } from "../../utils/cn";
@@ -40,10 +50,34 @@ const About = () => {
   };
 
   const stats = [
-    { label: t("about.stats.students"), value: "10K+", icon: Users, color: "text-blue-500", bg: "bg-blue-500/10" },
-    { label: t("about.stats.instructors"), value: "200+", icon: Award, color: "text-emerald-500", bg: "bg-emerald-500/10" },
-    { label: t("about.stats.courses"), value: "500+", icon: Zap, color: "text-orange-500", bg: "bg-orange-500/10" },
-    { label: t("about.stats.hours"), value: "20K+", icon: Sparkles, color: "text-purple-500", bg: "bg-purple-500/10" },
+    {
+      label: t("about.stats.students"),
+      value: "10K+",
+      icon: Users,
+      color: "text-blue-500",
+      bg: "bg-blue-500/10",
+    },
+    {
+      label: t("about.stats.instructors"),
+      value: "200+",
+      icon: Award,
+      color: "text-emerald-500",
+      bg: "bg-emerald-500/10",
+    },
+    {
+      label: t("about.stats.courses"),
+      value: "500+",
+      icon: Zap,
+      color: "text-orange-500",
+      bg: "bg-orange-500/10",
+    },
+    {
+      label: t("about.stats.hours"),
+      value: "20K+",
+      icon: Sparkles,
+      color: "text-purple-500",
+      bg: "bg-purple-500/10",
+    },
   ];
 
   const values = [
@@ -51,29 +85,26 @@ const About = () => {
       icon: <Shield className="w-8 h-8" />,
       title: t("about.values.quality_title"),
       description: t("about.values.quality_desc"),
-      color: "from-blue-500 to-cyan-500"
+      color: "from-blue-500 to-cyan-500",
     },
     {
       icon: <Zap className="w-8 h-8" />,
       title: t("about.values.innovation_title"),
       description: t("about.values.innovation_desc"),
-      color: "from-orange-500 to-amber-500"
+      color: "from-orange-500 to-amber-500",
     },
     {
       icon: <Users className="w-8 h-8" />,
       title: t("about.values.community_title"),
       description: t("about.values.community_desc"),
-      color: "from-emerald-500 to-teal-500"
+      color: "from-emerald-500 to-teal-500",
     },
   ];
 
   return (
     <MainLayout>
-      <SEO
-        title={t("about.title")}
-        description={t("about.description")}
-      />
-      
+      <SEO title={t("about.title")} description={t("about.description")} />
+
       {/* Premium Hero Section */}
       <section className="relative bg-[#0F172A] pt-32 pb-48 overflow-hidden">
         {/* Animated Background Elements */}
@@ -85,12 +116,15 @@ const About = () => {
           <Reveal>
             <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-black uppercase tracking-widest mb-8 backdrop-blur-md">
               <Sparkles className="w-4 h-4" />
-              {isAr ? "نحن نغير مستقبل التعلم" : "We are changing the future of learning"}
+              {isAr
+                ? "نحن نغير مستقبل التعلم"
+                : "We are changing the future of learning"}
             </div>
             <h1 className="text-5xl lg:text-8xl font-black mb-8 text-white leading-[1.1] tracking-tight">
-              {t("about.title")}<br />
+              {t("about.title")}
+              <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">
-                NMS Academy
+                WAKP Academy
               </span>
             </h1>
           </Reveal>
@@ -110,7 +144,7 @@ const About = () => {
               </Button>
               <Button
                 variant="outline"
-                className="rounded-2xl px-10 h-16 text-lg font-black gap-3 border-2 border-white/10 text-white hover:bg-white/5 backdrop-blur-md"
+                className="rounded-2xl px-10 h-16 text-lg font-black gap-3 border-2 border-white/10  hover:bg-white/5 backdrop-blur-md"
               >
                 <Rocket className="w-6 h-6" />
                 <span>{isAr ? "ابدأ رحلتك" : "Start Your Journey"}</span>
@@ -137,9 +171,9 @@ const About = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>
-                
+
                 {/* Floating Experience Card */}
-                <motion.div 
+                <motion.div
                   initial={{ y: 20, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
                   viewport={{ once: true }}
@@ -218,8 +252,8 @@ const About = () => {
                 {t("about.values.title")}
               </h2>
               <p className="text-xl text-muted-foreground font-medium">
-                {isAr 
-                  ? "المبادئ التي توجهنا في كل ما نقوم به لخدمة طلابنا" 
+                {isAr
+                  ? "المبادئ التي توجهنا في كل ما نقوم به لخدمة طلابنا"
                   : "The principles that guide us in everything we do to serve our students"}
               </p>
             </div>
@@ -229,10 +263,12 @@ const About = () => {
             {values.map((value, index) => (
               <Reveal key={index} delay={index * 0.1}>
                 <div className="relative group h-full">
-                  <div className={cn(
-                    "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 rounded-[3rem] transition-opacity duration-500",
-                    value.color
-                  )} />
+                  <div
+                    className={cn(
+                      "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 rounded-[3rem] transition-opacity duration-500",
+                      value.color
+                    )}
+                  />
                   <div className="p-12 rounded-[3rem] bg-card glass border-2 border-transparent hover:border-primary/20 text-center transition-all duration-500 h-full flex flex-col items-center shadow-xl hover:shadow-2xl">
                     <div className="w-20 h-20 rounded-[2rem] bg-secondary/50 text-primary flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg">
                       {value.icon}
@@ -258,11 +294,13 @@ const About = () => {
               {stats.map((stat, index) => (
                 <Reveal key={index} delay={index * 0.1}>
                   <div className="text-center group">
-                    <div className={cn(
-                      "w-20 h-20 mx-auto mb-8 rounded-[2rem] flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg",
-                      stat.bg,
-                      stat.color
-                    )}>
+                    <div
+                      className={cn(
+                        "w-20 h-20 mx-auto mb-8 rounded-[2rem] flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg",
+                        stat.bg,
+                        stat.color
+                      )}
+                    >
                       <stat.icon className="w-10 h-10" />
                     </div>
                     <div className="text-5xl md:text-6xl font-black mb-4 tracking-tighter">
@@ -285,25 +323,30 @@ const About = () => {
           <div className="relative rounded-[4rem] overflow-hidden bg-primary p-12 md:p-24 text-center text-white shadow-2xl shadow-primary/20 group">
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1600&q=80')] bg-cover bg-center opacity-20 group-hover:scale-105 transition-transform duration-1000" />
             <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-blue-600 opacity-90" />
-            
+
             <div className="relative z-10 max-w-4xl mx-auto space-y-10">
               <Reveal>
                 <h2 className="text-4xl md:text-7xl font-black leading-tight">
-                  {isAr ? "جاهز لبدء رحلتك التعليمية معنا؟" : "Ready to start your learning journey with us?"}
+                  {isAr
+                    ? "جاهز لبدء رحلتك التعليمية معنا؟"
+                    : "Ready to start your learning journey with us?"}
                 </h2>
                 <p className="text-xl md:text-2xl text-white/80 font-medium mt-6">
-                  {isAr 
-                    ? "انضم إلى آلاف الطلاب الذين حققوا أحلامهم من خلال دوراتنا الاحترافية" 
+                  {isAr
+                    ? "انضم إلى آلاف الطلاب الذين حققوا أحلامهم من خلال دوراتنا الاحترافية"
                     : "Join thousands of students who achieved their dreams through our professional courses"}
                 </p>
               </Reveal>
-              
+
               <Reveal delay={0.2}>
                 <div className="flex flex-wrap justify-center gap-6">
                   <Button className="bg-white text-primary hover:bg-slate-100 rounded-2xl px-12 h-20 text-xl font-black shadow-2xl transition-all hover:-translate-y-1">
                     {isAr ? "استكشف الدورات الآن" : "Explore Courses Now"}
                   </Button>
-                  <Button variant="outline" className="border-2 border-white/30 text-white hover:bg-white/10 rounded-2xl px-12 h-20 text-xl font-black backdrop-blur-md">
+                  <Button
+                    variant="outline"
+                    className="border-2 border-white/30  hover:bg-white/10 rounded-2xl px-12 h-20 text-xl font-black backdrop-blur-md"
+                  >
                     {isAr ? "تواصل معنا" : "Contact Us"}
                   </Button>
                 </div>

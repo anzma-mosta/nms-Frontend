@@ -54,7 +54,11 @@ export const FinalCTA = () => {
               className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30 font-bold text-sm"
             >
               <Sparkles className="w-4 h-4" />
-              <span>{isAr ? "ابدأ رحلة النجاح اليوم" : "Start Your Success Journey Today"}</span>
+              <span>
+                {isAr
+                  ? "ابدأ رحلة النجاح اليوم"
+                  : "Start Your Success Journey Today"}
+              </span>
             </motion.div>
 
             <div className="space-y-6">
@@ -115,15 +119,21 @@ export const FinalCTA = () => {
             >
               <div className="flex items-center gap-2 text-white">
                 <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                <span className="font-bold">+10k {isAr ? "طالب" : "Students"}</span>
+                <span className="font-bold">
+                  +10k {isAr ? "طالب" : "Students"}
+                </span>
               </div>
               <div className="flex items-center gap-2 text-white">
                 <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                <span className="font-bold">+500 {isAr ? "دورة" : "Courses"}</span>
+                <span className="font-bold">
+                  +500 {isAr ? "دورة" : "Courses"}
+                </span>
               </div>
               <div className="flex items-center gap-2 text-white">
                 <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                <span className="font-bold">+100 {isAr ? "معلم" : "Instructors"}</span>
+                <span className="font-bold">
+                  +100 {isAr ? "معلم" : "Instructors"}
+                </span>
               </div>
             </motion.div>
           </div>

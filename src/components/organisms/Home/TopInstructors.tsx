@@ -51,12 +51,19 @@ export const TopInstructors = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            <Button variant="outline" size="lg" className="rounded-full group glass">
+            <Button
+              variant="outline"
+              size="lg"
+              className="rounded-full group glass"
+            >
               {t("home.view_all_instructors") || "View All Instructors"}
-              <ArrowRight className={cn(
-                "w-4 h-4 transition-transform group-hover:translate-x-1",
-                i18n.language === "ar" && "rotate-180 group-hover:-translate-x-1"
-              )} />
+              <ArrowRight
+                className={cn(
+                  "w-4 h-4 transition-transform group-hover:translate-x-1",
+                  i18n.language === "ar" &&
+                    "rotate-180 group-hover:-translate-x-1"
+                )}
+              />
             </Button>
           </motion.div>
         </div>
@@ -73,7 +80,7 @@ export const TopInstructors = () => {
               <Card className="group relative p-8 text-center glass border-2 border-transparent hover:border-primary/20 transition-all duration-500 rounded-[2.5rem] overflow-hidden">
                 {/* Hover Background Glow */}
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
+
                 <div className="relative z-10">
                   <div className="relative mb-8 inline-block">
                     {/* Image Container with animated border */}
@@ -88,9 +95,9 @@ export const TopInstructors = () => {
                         />
                       </div>
                     </div>
-                    
+
                     {/* Badge */}
-                    <motion.div 
+                    <motion.div
                       initial={{ scale: 0 }}
                       whileInView={{ scale: 1 }}
                       transition={{ delay: i * 0.1 + 0.3, type: "spring" }}
@@ -114,19 +121,27 @@ export const TopInstructors = () => {
                       <div className="flex flex-col items-center gap-1">
                         <div className="flex items-center gap-1.5 text-orange-500">
                           <Star className="w-4 h-4 fill-current" />
-                          <span className="font-bold text-foreground">{ins.rating}</span>
+                          <span className="font-bold text-foreground">
+                            {ins.rating}
+                          </span>
                         </div>
-                        <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">Rating</span>
+                        <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">
+                          Rating
+                        </span>
                       </div>
-                      
+
                       <div className="w-px h-8 bg-border/50" />
 
                       <div className="flex flex-col items-center gap-1">
                         <div className="flex items-center gap-1.5 text-primary">
                           <Users className="w-4 h-4" />
-                          <span className="font-bold text-foreground">{ins.students}</span>
+                          <span className="font-bold text-foreground">
+                            {ins.students}
+                          </span>
                         </div>
-                        <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">Students</span>
+                        <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">
+                          Students
+                        </span>
                       </div>
                     </div>
                   </div>

@@ -4,23 +4,15 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()] as any,
+  plugins: [react(), tailwindcss()],
   build: {
     rollupOptions: {
       output: {
-        manualChunks(id: string) {
-          if (id.includes("node_modules")) {
-            if (id.includes("react") || id.includes("react-dom") || id.includes("react-router-dom")) {
-              return "vendor-react";
-            }
-            if (id.includes("framer-motion") || id.includes("lucide-react") || id.includes("clsx") || id.includes("tailwind-merge")) {
-              return "vendor-ui";
-            }
-            if (id.includes("i18next") || id.includes("axios") || id.includes("tanstack")) {
-              return "vendor-utils";
-            }
-            return "vendor";
-          }
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'query-vendor': ['@tanstack/react-query', 'axios'],
+          'ui-vendor': ['framer-motion', 'lucide-react', 'clsx', 'tailwind-merge'],
+          'i18n-vendor': ['i18next', 'react-i18next', 'i18next-browser-languagedetector'],
         },
       },
     },
@@ -31,8 +23,13 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.trace'],
+      },
+      format: {
+        comments: false,
       },
     },
+    reportCompressedSize: false,
   },
   test: {
     globals: true,

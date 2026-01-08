@@ -27,13 +27,16 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             className={cn(
               "w-full bg-secondary/30 border-2 border-transparent rounded-2xl px-4 py-3.5 text-sm outline-none transition-all placeholder:text-muted-foreground focus:bg-background focus:border-primary focus:shadow-lg focus:shadow-primary/5",
               icon && "pl-12",
-              error && "border-rose-500 focus:border-rose-500 focus:shadow-rose-500/5",
+              error &&
+                "border-rose-500 focus:border-rose-500 focus:shadow-rose-500/5",
               className
             )}
             {...props}
           />
         </div>
-        {error && <p className="text-rose-500 text-xs font-medium px-2">{error}</p>}
+        {error && (
+          <p className="text-rose-500 text-xs font-medium px-2">{error}</p>
+        )}
       </div>
     );
   }

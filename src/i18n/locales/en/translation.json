@@ -1,4 +1,102 @@
 {
+  "auth": {
+    "login_title": "Login",
+    "register_title": "Create New Account",
+    "full_name": "Full Name",
+    "email": "Email Address",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "role": "Account Type",
+    "student": "Student",
+    "parent": "Parent",
+    "instructor": "Instructor",
+    "admin": "Admin",
+    "select_role": "Select Account Type",
+    "google_login": "Login with Google",
+    "facebook_login": "Login with Facebook",
+    "already_have_account": "Already have an account?",
+    "dont_have_account": "Don't have an account?",
+    "login_now": "Login Now",
+    "register_now": "Register Now",
+    "forgot_password": "Forgot Password?",
+    "accept_terms": "I agree to the terms and conditions",
+    "or_register_with": "Or register with",
+    "or_login_with": "Or login with",
+    "enter_name": "Enter your name",
+    "enter_email": "Enter your email",
+    "enter_password": "Enter your password",
+    "errors": {
+      "name_required": "Full name is required",
+      "email_invalid": "Invalid email address",
+      "password_min": "Password must be at least 6 characters",
+      "password_mismatch": "Passwords do not match",
+      "role_required": "Please select an account type",
+      "terms_required": "You must agree to the terms"
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome, {{name}}",
+    "student_title": "Student Dashboard",
+    "parent_title": "Parent Dashboard",
+    "my_courses": "My Courses",
+    "children_progress": "Children Progress",
+    "recent_activities": "Recent Activities",
+    "back_to_website": "Back to Website",
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "courses": "My Courses",
+      "assignments": "Assignments",
+      "exams": "Exams",
+      "reports": "Reports",
+      "messages": "Messages",
+      "settings": "Settings",
+      "profile": "Profile",
+      "logout": "Logout"
+    },
+    "stats": {
+      "completed_courses": "Completed Courses",
+      "in_progress": "In Progress",
+      "total_hours": "Total Hours"
+    },
+    "completed": "Completed",
+    "lessons": "Lessons",
+    "overall_progress": "Overall Progress",
+    "minutes_ago": "minutes ago",
+    "activities": {
+      "completed_lesson": "{{name}} completed a new lesson in {{course}}"
+    },
+    "admin": {
+      "title": "Admin Dashboard",
+      "stats": {
+        "total_users": "Total Users",
+        "active_courses": "Active Courses",
+        "total_revenue": "Total Revenue",
+        "pending_instructors": "Pending Instructors"
+      },
+      "users": {
+        "title": "User Management",
+        "add_user": "Add User",
+        "edit_user": "Edit User",
+        "delete_user": "Delete User",
+        "role_filter": "Filter by Role"
+      },
+      "courses": {
+        "title": "Course Management",
+        "create_course": "Create New Course",
+        "edit_course": "Edit Course",
+        "delete_course": "Delete Course",
+        "status_active": "Active",
+        "status_draft": "Draft"
+      },
+      "payments": {
+        "title": "Payment Management",
+        "transaction_id": "Transaction ID",
+        "amount": "Amount",
+        "status": "Status",
+        "date": "Date"
+      }
+    }
+  },
   "common": {
     "search": "Search...",
     "login": "Login",
@@ -9,7 +107,7 @@
     "courses": "Courses",
     "previous": "Previous",
     "next": "Next",
-    "site_name": "NMS - National Management System",
+    "site_name": "WAKP - edu",
     "site_description": "Empowering education through technology. Join the #1 learning platform in the Arab world.",
     "site_keywords": "education, learning, courses, management, online learning, arab world"
   },
@@ -70,6 +168,7 @@
       "marketing": "Marketing",
       "photography": "Photography",
       "music": "Music",
+      "social": "Social Media",
       "management": "Management",
       "health": "Health & Beauty"
     },
@@ -117,9 +216,9 @@
     "join_now": "Join Now for Free",
     "browse_courses": "Browse All Courses",
     "about": {
-      "subtitle": "About NMS Academy",
+      "subtitle": "About WAKP Academy",
       "title": "We are here to help you achieve your learning goals",
-      "description": "NMS Academy is your first destination for smart learning, where we combine quality content and accessibility to provide you with a unique learning experience.",
+      "description": "WAKP Academy is your first destination for smart learning, where we combine quality content and accessibility to provide you with a unique learning experience.",
       "students_community": "Students in our community",
       "mission_title": "Our Mission",
       "mission_desc": "Empowering learners in the Arab world by providing high-quality educational content at competitive prices.",

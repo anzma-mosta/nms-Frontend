@@ -20,10 +20,16 @@ export const SEO = ({
 }: SEOProps) => {
   const { t } = useTranslation();
 
-  const siteTitle = t("common.site_name") || "NMS - National Management System";
+  const siteTitle = t("common.site_name") || "WAKP - National Management System";
   const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
-  const metaDescription = description || t("common.site_description") || "Empowering education through technology.";
-  const metaKeywords = keywords || t("common.site_keywords") || "education, learning, management, courses";
+  const metaDescription =
+    description ||
+    t("common.site_description") ||
+    "Empowering education through technology.";
+  const metaKeywords =
+    keywords ||
+    t("common.site_keywords") ||
+    "education, learning, management, courses";
 
   return (
     <Helmet>

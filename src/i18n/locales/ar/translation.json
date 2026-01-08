@@ -1,4 +1,102 @@
 {
+  "auth": {
+    "login_title": "تسجيل الدخول",
+    "register_title": "إنشاء حساب جديد",
+    "full_name": "الاسم الكامل",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirm_password": "تأكيد كلمة المرور",
+    "role": "نوع الحساب",
+    "student": "طالب",
+    "parent": "ولي أمر",
+    "instructor": "معلم",
+    "admin": "مسؤول",
+    "select_role": "اختر نوع الحساب",
+    "google_login": "الدخول بواسطة جوجل",
+    "facebook_login": "الدخول بواسطة فيسبوك",
+    "already_have_account": "لديك حساب بالفعل؟",
+    "dont_have_account": "ليس لديك حساب؟",
+    "login_now": "سجل دخولك الآن",
+    "register_now": "سجل الآن",
+    "forgot_password": "نسيت كلمة المرور؟",
+    "accept_terms": "أوافق على الشروط والأحكام",
+    "or_register_with": "أو سجل بواسطة",
+    "or_login_with": "أو سجل دخول بواسطة",
+    "enter_name": "أدخل اسمك",
+    "enter_email": "أدخل بريدك الإلكتروني",
+    "enter_password": "أدخل كلمة المرور",
+    "errors": {
+      "name_required": "الاسم الكامل مطلوب",
+      "email_invalid": "البريد الإلكتروني غير صحيح",
+      "password_min": "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
+      "password_mismatch": "كلمتا المرور غير متطابقتين",
+      "role_required": "يجب اختيار نوع الحساب",
+      "terms_required": "يجب الموافقة على الشروط"
+    }
+  },
+  "dashboard": {
+    "welcome": "مرحباً، {{name}}",
+    "student_title": "لوحة تحكم الطالب",
+    "parent_title": "لوحة تحكم ولي الأمر",
+    "my_courses": "دوراتي التدريبية",
+    "children_progress": "تقدم الأبناء",
+    "recent_activities": "الأنشطة الأخيرة",
+    "back_to_website": "العودة للموقع",
+    "sidebar": {
+      "dashboard": "الرئيسية",
+      "courses": "دوراتي",
+      "assignments": "الواجبات",
+      "exams": "الاختبارات",
+      "reports": "التقارير",
+      "messages": "الرسائل",
+      "settings": "الإعدادات",
+      "profile": "الملف الشخصي",
+      "logout": "تسجيل الخروج"
+    },
+    "stats": {
+      "completed_courses": "الدورات المكتملة",
+      "in_progress": "قيد الدراسة",
+      "total_hours": "إجمالي الساعات"
+    },
+    "completed": "مكتمل",
+    "lessons": "دروس",
+    "overall_progress": "التقدم العام",
+    "minutes_ago": "دقائق مضت",
+    "activities": {
+      "completed_lesson": "{{name}} أكمل درساً جديداً في {{course}}"
+    },
+    "admin": {
+      "title": "لوحة تحكم المسؤول",
+      "stats": {
+        "total_users": "إجمالي المستخدمين",
+        "active_courses": "الدورات النشطة",
+        "total_revenue": "إجمالي الإيرادات",
+        "pending_instructors": "طلبات المعلمين"
+      },
+      "users": {
+        "title": "إدارة المستخدمين",
+        "add_user": "إضافة مستخدم",
+        "edit_user": "تعديل مستخدم",
+        "delete_user": "حذف مستخدم",
+        "role_filter": "تصفية حسب الرتبة"
+      },
+      "courses": {
+        "title": "إدارة الدورات",
+        "create_course": "إنشاء دورة جديدة",
+        "edit_course": "تعديل الدورة",
+        "delete_course": "حذف الدورة",
+        "status_active": "نشطة",
+        "status_draft": "مسودة"
+      },
+      "payments": {
+        "title": "إدارة المدفوعات",
+        "transaction_id": "رقم العملية",
+        "amount": "المبلغ",
+        "status": "الحالة",
+        "date": "التاريخ"
+      }
+    }
+  },
   "common": {
     "search": "بحث...",
     "login": "دخول",
@@ -9,7 +107,7 @@
     "courses": "دورة",
     "previous": "السابق",
     "next": "التالي",
-    "site_name": "NMS - نظام الإدارة الوطني",
+    "site_name": "WAKP - نظام الإدارة الوطني",
     "site_description": "تمكين التعليم من خلال التكنولوجيا. انضم إلى المنصة التعليمية الأولى في الوطن العربي.",
     "site_keywords": "تعليم، تعلم، دورات، إدارة، تعلم عبر الإنترنت، الوطن العربي"
   },
@@ -122,9 +220,9 @@
     "join_now": "سجل الآن مجاناً",
     "browse_courses": "تصفح جميع الدورات",
     "about": {
-      "subtitle": "عن NMS Academy",
+      "subtitle": "عن WAKP Academy",
       "title": "نحن هنا لمساعدتك على تحقيق أهدافك التعليمية",
-      "description": "منصة NMS Academy هي وجهتك الأولى للتعلم الذكي، حيث نجمع بين جودة المحتوى التعليمي وسهولة الوصول، لنقدم لك تجربة تعليمية فريدة تناسب احتياجاتك.",
+      "description": "منصة WAKP Academy هي وجهتك الأولى للتعلم الذكي، حيث نجمع بين جودة المحتوى التعليمي وسهولة الوصول، لنقدم لك تجربة تعليمية فريدة تناسب احتياجاتك.",
       "students_community": "طلاب في مجتمعنا",
       "mission_title": "رسالتنا",
       "mission_desc": "تمكين المتعلمين في الوطن العربي من خلال توفير محتوى تعليمي عالي الجودة بأسعار تنافسية.",

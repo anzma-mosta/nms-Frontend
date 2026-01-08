@@ -38,8 +38,8 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="bg-card border-t border-border/40 pt-24 pb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-card border-t-2 border-border/40 pt-24 pb-12">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
           <div className="space-y-8">
             <Link to={ROUTES.HOME} className="flex items-center gap-3 group">
@@ -47,7 +47,7 @@ export const Footer = () => {
                 <GraduationCap className="w-7 h-7" />
               </div>
               <span className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-l from-primary to-blue-600">
-                NMS Academy
+                WAKP Academy
               </span>
             </Link>
             <p className="text-muted-foreground leading-relaxed text-sm">
@@ -68,7 +68,9 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-black text-lg mb-8 tracking-tight">{t("footer.platform")}</h4>
+            <h4 className="font-black text-lg mb-8 tracking-tight">
+              {t("footer.platform")}
+            </h4>
             <ul className="space-y-5">
               {footerLinks.platform.map((link) => (
                 <li key={link.name}>
@@ -85,7 +87,9 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-black text-lg mb-8 tracking-tight">{t("footer.support")}</h4>
+            <h4 className="font-black text-lg mb-8 tracking-tight">
+              {t("footer.support")}
+            </h4>
             <ul className="space-y-5">
               {footerLinks.support.map((link) => (
                 <li key={link.name}>
@@ -102,31 +106,47 @@ export const Footer = () => {
           </div>
 
           <div className="bg-secondary/30 p-8 rounded-[2rem] border border-border/50">
-            <h4 className="font-black text-lg mb-4 tracking-tight">{t("footer.newsletter")}</h4>
-            <p className="text-sm text-muted-foreground mb-6">{t("footer.newsletter_desc")}</p>
+            <h4 className="font-black text-lg mb-4 tracking-tight">
+              {t("footer.newsletter")}
+            </h4>
+            <p className="text-sm text-muted-foreground mb-6">
+              {t("footer.newsletter_desc")}
+            </p>
             <div className="space-y-3">
-              <input 
-                type="email" 
+              <input
+                type="email"
                 placeholder={t("footer.email_placeholder")}
                 className="w-full bg-background border-2 border-transparent rounded-2xl px-4 py-3 text-sm focus:border-primary outline-none transition-all"
               />
-              <Button className="w-full h-12 rounded-xl font-bold">{t("footer.subscribe")}</Button>
+              <Button className="w-full h-12 rounded-xl font-bold">
+                {t("footer.subscribe")}
+              </Button>
             </div>
           </div>
         </div>
 
         <div className="pt-10 border-t border-border/40 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-sm font-bold text-muted-foreground">
-            © {new Date().getFullYear()} NMS Academy. {t("common.all_rights_reserved")}
+            © {new Date().getFullYear()} WAKP Academy.{" "}
+            {t("common.all_rights_reserved")}
           </p>
           <div className="flex gap-8">
-            <Link to={ROUTES.PRIVACY} className="text-xs font-black text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest">
+            <Link
+              to={ROUTES.PRIVACY}
+              className="text-xs font-black text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest"
+            >
               {t("footer.privacy")}
             </Link>
-            <Link to={ROUTES.TERMS} className="text-xs font-black text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest">
+            <Link
+              to={ROUTES.TERMS}
+              className="text-xs font-black text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest"
+            >
               {t("footer.terms")}
             </Link>
-            <Link to="/cookies" className="text-xs font-black text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest">
+            <Link
+              to="/cookies"
+              className="text-xs font-black text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest"
+            >
               {t("footer.cookies")}
             </Link>
           </div>

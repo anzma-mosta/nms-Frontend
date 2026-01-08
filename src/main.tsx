@@ -22,7 +22,7 @@ createRoot(rootElement).render(
     <HelmetProvider>
       <ReduxProvider>
         <QueryProvider>
-          <ThemeProvider defaultTheme="light" storageKey="nms-theme">
+          <ThemeProvider defaultTheme="light" storageKey="wakp-theme">
             <AlertProvider>
               <AppRouter />
             </AlertProvider>

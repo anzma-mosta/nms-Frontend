@@ -1,5 +1,14 @@
 import { useTranslation } from "react-i18next";
-import { BookOpen, Users, Clock, Star, TrendingUp, Award, Globe, Heart } from "lucide-react";
+import {
+  BookOpen,
+  Users,
+  Clock,
+  Star,
+  TrendingUp,
+  Award,
+  Globe,
+  Heart,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "../../../utils/cn";
 
@@ -7,33 +16,33 @@ export const Stats = () => {
   const { t } = useTranslation();
 
   const stats = [
-    { 
-      label: t("home.stats.courses"), 
-      value: "500+", 
+    {
+      label: t("home.stats.courses"),
+      value: "500+",
       icon: BookOpen,
       color: "text-blue-500",
-      bg: "bg-blue-500/10"
+      bg: "bg-blue-500/10",
     },
-    { 
-      label: t("home.stats.instructors"), 
-      value: "120+", 
+    {
+      label: t("home.stats.instructors"),
+      value: "120+",
       icon: Users,
       color: "text-purple-500",
-      bg: "bg-purple-500/10"
+      bg: "bg-purple-500/10",
     },
-    { 
-      label: t("home.stats.hours"), 
-      value: "10k+", 
+    {
+      label: t("home.stats.hours"),
+      value: "10k+",
       icon: Clock,
       color: "text-orange-500",
-      bg: "bg-orange-500/10"
+      bg: "bg-orange-500/10",
     },
-    { 
-      label: t("home.stats.rating"), 
-      value: "4.9/5", 
+    {
+      label: t("home.stats.rating"),
+      value: "4.9/5",
       icon: Star,
       color: "text-yellow-500",
-      bg: "bg-yellow-500/10"
+      bg: "bg-yellow-500/10",
     },
   ];
 
@@ -41,8 +50,8 @@ export const Stats = () => {
     <section className="relative py-24 overflow-hidden">
       {/* Background Element */}
       <div className="absolute inset-0 bg-primary/[0.02] -skew-y-3 transform origin-left"></div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {stats.map((stat, i) => (
             <motion.div
@@ -54,19 +63,25 @@ export const Stats = () => {
               className="group relative"
             >
               <div className="flex flex-col items-center text-center space-y-4 p-8 rounded-[2.5rem] bg-card border border-border/50 hover:border-primary/30 hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] transition-all duration-500">
-                <div className={cn(
-                  "w-16 h-16 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3",
-                  stat.bg,
-                  stat.color
-                )}>
+                <div
+                  className={cn(
+                    "w-16 h-16 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3",
+                    stat.bg,
+                    stat.color
+                  )}
+                >
                   <stat.icon className="w-8 h-8" />
                 </div>
-                
+
                 <div className="space-y-1">
-                  <motion.h3 
+                  <motion.h3
                     initial={{ scale: 0.5 }}
                     whileInView={{ scale: 1 }}
-                    transition={{ type: "spring", stiffness: 100, delay: i * 0.1 + 0.2 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 100,
+                      delay: i * 0.1 + 0.2,
+                    }}
                     className="text-4xl lg:text-5xl font-black text-foreground tracking-tight"
                   >
                     {stat.value}
@@ -88,7 +103,7 @@ export const Stats = () => {
         </div>
 
         {/* Bottom trust badges */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.6 }}

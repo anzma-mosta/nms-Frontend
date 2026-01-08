@@ -2,7 +2,8 @@ export interface User {
   id: string;
   email: string;
   name: string;
-  role: "admin" | "user";
+  role: "admin" | "student" | "parent" | "instructor";
+  avatar?: string;
 }
 
 export interface AuthState {
@@ -89,7 +90,7 @@ export interface Instructor {
   coursesCount: number;
   students?: string;
   location: string;
-  joinedDate:string;
+  joinedDate: string;
   specialty: string;
   bio: string;
   skills: string[];
