@@ -55,14 +55,24 @@ export const CourseSidebar = ({ course }: CourseSidebarProps) => {
           <div className="space-y-8 mb-10">
             <div className="flex items-end gap-4">
               <span className="text-5xl font-black text-white tracking-tighter">
-                $99.99
+                {course.price}
               </span>
-              <span className="text-2xl text-slate-500 line-through font-bold mb-1">
-                $199.99
-              </span>
-              <Badge className="bg-emerald-400/10 text-emerald-400 border-emerald-400/20 px-4 py-2 rounded-xl text-xs font-black mb-1">
-                50% OFF
-              </Badge>
+              {course.oldPrice && (
+                <span className="text-2xl text-slate-500 line-through font-bold mb-1">
+                  {course.oldPrice}
+                </span>
+              )}
+              {course.oldPrice && (
+                <Badge className="bg-emerald-400/10 text-emerald-400 border-emerald-400/20 px-4 py-2 rounded-xl text-xs font-black mb-1">
+                  {Math.round(
+                    ((parseFloat(course.oldPrice.replace(/[^0-9.]/g, "")) -
+                      parseFloat(course.price.replace(/[^0-9.]/g, ""))) /
+                      parseFloat(course.oldPrice.replace(/[^0-9.]/g, ""))) *
+                      100
+                  )}
+                  % OFF
+                </Badge>
+              )}
             </div>
 
             <div className="space-y-4">

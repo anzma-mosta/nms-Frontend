@@ -110,7 +110,7 @@ const Courses = () => {
             setSelectedDuration={setSelectedDuration}
             ratings={ratings}
             selectedRating={selectedRating}
-            setSelectedRating={setSelectedRating}
+            setSelectedRating={(r: string | number) => setSelectedRating(Number(r))}
           />
 
           <CoursesList
